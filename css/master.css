@@ -283,7 +283,8 @@ a {
   margin: 4% auto;
 }
 .photo-grid {
-  width: 1200px;
+  /* width: 1200px; */
+  max-width: 380px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -677,19 +678,9 @@ opacity: 0.2;
 }
 
 
-
-/* Mobile Styles */
-@media only screen and (max-width: 480px) {
-  body {
-    /* background-color: #F09A9D; */
-    /* Red */
-  }
+/* Desktop Styles*/
+@media only screen and (min-width: 961px) {
+.photo-grid {
+  max-width: 1200px;
 }
-
-/* Mobile Styles */
-@media only screen and (min-width: 481px) {
-  body {
-    background-color: white;
-    /* Red */
-  }
 }
