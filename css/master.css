@@ -1,0 +1,695 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "muli", sans-serif;
+  font-size: 16px;
+  color: #555d6d;
+  font-weight: 400;
+  /* background-color: red; */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+}
+p{
+  margin: 0 0 1rem;
+ line-height: 1.5rem;
+}
+
+.bg-mesh{
+  background-image: url("../images/bg-mesh.png");
+  background-repeat: repeat;
+}
+
+.opac-10{
+  background-blend-mode: color-burn;
+}
+
+.bg-gradient{
+  /* background: linear-gradient(135deg, #f6d365 10%, #fda085 100%); */
+  /* color: white !important; */
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-container {
+  /*color: #333;*/
+  /*background-color: #feffef;*/
+  /*padding: 20px 0;*/
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  /*border: 1px solid blue;*/
+  background-color: white;
+  width: 100%;
+  opacity: 0.95;
+  z-index: 1000;
+  max-width: 1200px;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  /* uncomment the line to make the menu bar fixed at top */
+  /*box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);*/
+}
+
+.menu a {
+  color: #333;
+}
+
+.menu a:hover {
+  /*color: #235BC9;*/
+  font-weight: bolder;
+  transition: font-weight 0.4s ease;
+  /*transition: color 0.4s ease;*/
+}
+
+.menu .active{
+  font-weight: 900;
+
+}
+
+.footerContainer {
+  bottom: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.footerContent {
+  /*background-color: white;*/
+  border-top: 7px solid #235BC9;
+  /*opacity: 0.9;*/
+  /* width: 1200px; */
+  margin: 0 auto;
+
+  padding: 20px 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  /* margin: auto; */
+  /*position: fixed;  /* uncomment the line to make the menu bar fixed at top */
+  */
+  /*box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);*/
+}
+
+.footerContent a {
+  color: #222;
+  /*text-decoration: none;*/
+  padding: 5px 10px;
+  text-align: center;
+  /*background-color: yellow;*/
+}
+
+.footerContent a:hover {
+  /*color: orange;*/
+  /*text-decoration: underline;*/
+  /*background-color: black;*/
+  font-size: 1.2em;
+  transition: font-size 0.2s ease;
+  padding: 5px 10px;
+  text-align: center;
+  /*background-color: yellow;*/
+}
+
+.email {
+  margin-left: auto;
+}
+
+.divider {
+  margin: 0 10px;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #777;
+}
+
+.LinkedIn {
+  margin-left: 20px;
+}
+
+.logo {
+  text-transform: capitalize;
+  font-weight: normal;
+  font-size: 1em;
+  font-family: "muli";
+}
+
+.about {
+  margin-left: auto;
+}
+
+.caseStudy {
+  margin-left: 20px;
+}
+
+.intro {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  /*border: 1px solid red;*/
+}
+
+.myPic {
+  /* visibility: hidden; */
+  background-image: url("../images/about-image.jpg");
+  /* background-image: url("../images/giphy-hi.gif"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  /* float: right; */
+  /* border-radius: 100%; */
+  /* border: 2px solid #999; */
+  /* box-shadow: 0px 3px 19px 0px rgba(100,100,100,0.9); */
+  margin: 2% auto;
+}
+
+.hello {
+  margin: 7% 5% 5% 5%;
+  font-size: 1.6em;
+}
+
+.hello>h2 {
+  font-family: "muli", sans-serif;
+  line-height: 2;
+  font-size: 2em;
+  /* padding-bottom: 30px; */
+  text-decoration: underline;
+  /* float: left; */
+}
+
+.hello>h4 {
+  font-size: 1.6em;
+  font-weight: 300;
+  line-height: 1.7;
+  /* clear: left; */
+}
+
+.hello>p {
+  /* line-height: 1.2em; */
+  font-weight: 400;
+  /*font-family: "roboto-condensed";*/
+  font-size: 0.85em;
+  color: #777;
+}
+
+.download-resume {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  font-size: 0.7em;
+  font-family: "muli";
+  font-weight: 100;
+  display: block;
+  margin: 2em 35%;
+
+  /* position: relative;
+  top: 30px; */
+}
+.download-resume:hover {
+  background-color: #224CCF;
+  transition: background-color 0.7s ease;
+}
+
+
+
+
+/* NOTE: Start of Scroll Down MouseIcon styling */
+.mouse-icon {
+  border: 2px solid #000;
+  border-radius: 17px;
+  display: block;
+  height: 40px;
+  position: relative;
+  width: 20px;
+  z-index: 10;
+  opacity: 0.5;
+  margin: 0 auto;
+}
+.mouse-icon .scroll {
+  animation-delay: 0s;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: scrolling;
+  animation-play-state: running;
+  animation-timing-function: linear;
+}
+.mouse-icon .scroll {
+  background: #000 none repeat scroll 0 0;
+  border-radius: 10px;
+  height: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 4px;
+  width: 4px;
+}
+@keyframes scrolling {
+  0% {
+    opacity: 0;
+    top: 5px;
+  }
+
+  30% {
+    opacity: 1;
+    top: 10px;
+  }
+
+  100% {
+    opacity: 0;
+    top: 25px;
+  }
+}
+/* NOTE: Endof MouseIcon styling */
+
+.photo-grid-container {
+  /*margin: 200px auto;*/
+
+  clear: both;
+  display: flex;
+  justify-content: center;
+  /*border: 1px solid red;*/
+
+  margin: 4% auto;
+}
+.photo-grid {
+  width: 1200px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+.photo-grid-item {
+  width: 350px;
+  height: 450px;
+  margin: 35px 25px;
+  background-color: white;
+  /*border: 1px solid orange;*/
+
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.photo-grid-item:hover {
+  /*background-color: #ddd;*/
+
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.7s ease;
+}
+.photo-grid-item .projectImage {
+  width: 330px;
+  height: 200px;
+  background-color: gold;
+  position: relative;
+  margin: 10px auto;
+  /*border-top-right-radius:  20px;
+  border-top-left-radius:  20px;*/
+}
+
+/* Adding the splash images for the projects on the cards */
+.searchInside .projectImage {
+  background-image: url("../images/searchInside.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.wex .projectImage {
+  background-image: url("../images/wex.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.focusPen .projectImage {
+  background-image: url("../images/focusPen.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.haritkar .projectImage {
+  background-image: url("../images/haritkar.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.moneyMan .projectImage {
+  background-image: url("../images/moneyMan.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* End of adding the splash images for the projects on the cards */
+.photo-grid-item .projectDescription {
+  padding: 10px;
+}
+.photo-grid-item .projectDescription p {
+  line-height: 1.6em;
+}
+.photo-grid-item .projectDescription .details {
+  color: #222;
+  position: relative;
+  top: 5px;
+  font-weight: lighter;
+}
+.photo-grid-item .projectDescription ul {
+  list-style-type: none;
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+.photo-grid-item .projectDescription ul>li {
+  margin-right: 20px;
+  padding: 5px;
+  background-color: #eee;
+}
+.photo-grid-item .exploreCaseStudy {
+  text-decoration: none;
+  color: white;
+  background-color: #224CCF;
+  padding: 10px 15px;
+  /*margin: 5px auto;*/
+  /*border: 1px solid teal;*/
+  /*border-radius: 20px;*/
+
+  font-family: "muli";
+  font-weight: 100;
+  /*top: 40px;*/
+
+  position: absolute;
+  margin: 10px;
+}
+.photo-grid-item .exploreCaseStudy:hover {
+  background-color: #7c4ddf;
+  transition: background-color 0.4s ease;
+}
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+NOTE: Project Details Page Layout
+////////////////////////////////////////////////////////////////////////////////////////*/
+.projectDetail{
+  margin: 10% auto;
+}
+.projectDetail h1, .projectDetail h4, .section h4{
+  font-family: "muli",sans-serif;
+  /* color: #224CCF; */
+  color: black;
+
+}
+.projectTitle{
+  padding: 10px;
+  text-align: center;
+  font-size: 1em;
+  margin: 70px 0 4rem;
+  text-transform: uppercase;
+}
+.projectDetail .section{
+  margin: 2% 20%;      /* Change the margins to make the caseStudy content centered to the page.  */
+  padding-top: 20px;
+  font-size: 1.4em;
+}
+
+.projectDetail .section p,
+.projectDetail .section ul,
+.content-wrap p{
+  /* padding-top: 20px; */
+  /* margin: 0.5rem 0 0.5rem;
+  line-height: 1.6rem;
+  color: #333;
+  font-size: 1rem;
+  font-family: 'lato';
+  font-weight: 400; */
+
+  font-family: "muli", sans-serif;
+  font-size: 16px;
+  color: #555d6d;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+}
+
+.projectDetail .section .important-statement{
+  /* font-size: .95em; */
+  font-weight: bold;
+  color: #777;
+}
+
+.projectDetail .section ul li{
+  list-style-position: outside;
+  margin-left: 7%;
+  margin-bottom: 0.5rem;
+  list-style-type:   square ;
+
+}
+/* ////////////////////////////
+ ENDOF Project Details Common Layout
+ ////////////////////////////*/
+
+
+.projectDetail .section .documentation-image{
+  margin: 0 5%;
+  /* padding: 2px; */
+  border: 2px solid #eee;
+  width: 90%;
+  background-color: #efefef;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.research-data-image{
+  /* margin: 0 5%; */
+  /* padding: 2px; */
+  /* border: 2px solid #eee; */
+  width: 100%;
+}
+.projectDetail .section .design-process{
+  width: 100%;
+}
+
+
+.projectDetail .section .mock-gifs{
+  margin: 30px auto;
+  text-align: center;
+}
+/* //////////////////////////////////////////////////////////////////////
+NOTE: Adding a video wrapper for fluid design for embedded videos /////////////
+////////////////////////////////////////////////////////////////////////*/
+.projectDetail .section  .video-wrapper{
+	position: relative;
+  margin-top: 3%;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.projectDetail .section  .video-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/* //////////////////////////////////////////////////////////////////////
+ENDOF VIDEO WRAPPER
+////////////////////////////////////////////////////////////////////////*/
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+NOTE: For a collection of images, to show the documentation process captured over time.
+////////////////////////////////////////////////////////////////////////////////////////*/
+.projectDetail .section .collage{
+  display: flex;
+  justify-content: center;
+}
+
+.collage-item{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.collage-image{
+  width: 360px;
+  /* width: 40%; */
+  margin: 10px 10px;
+  background-color: white;
+  /* image-orientation: from-image; */
+}
+/* ////////////////////////////
+ ENDOF COLLAGE Layout
+ ////////////////////////////*/
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+NOTE: Page Navigation amongst projects.
+////////////////////////////////////////////////////////////////////////////////////////*/
+/* .page-navigation{
+  border-top: 1px solid #235BC9;
+  margin: 0 auto;
+} */
+.page-navigation hr{
+  margin: 0 3%;
+}
+.page-navigation > ul{
+  margin: 2% 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-navigation li{
+  list-style: none;
+  padding: 15px 10px;
+}
+
+
+
+.page-navigation li > a{
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #555;
+  border-radius: 2px;
+  color: #777;
+
+}
+
+.page-navigation li > a:hover{
+  color: #000;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.5s ease;
+  /* background-color: black; */
+
+}
+.page-navigation li .show{
+  visibility: visible;
+}
+.page-navigation li .hide{
+  visibility: hidden;
+}
+/* ////////////////////////////
+ ENDOF Pagination Layout
+ ////////////////////////////*/
+ .content-wrap{
+     display: flex;
+     flex-flow: row wrap;
+     /* align-content:  center; */
+     justify-content: center;
+     margin: 100px 15%;
+     padding-top: 20px;
+     font-size: 1.4em;
+ }
+
+.about-sections h4{
+  color:#444;
+}
+ .content-wrap .section{
+   margin-top: 10px;
+ }
+ .content-wrap .section .collage-image{
+    /* display: flex; */
+   width:400px;
+   /* width: 45%; */
+   /* align-items:  baseline; */
+   margin: 0px 2%;
+ }
+
+ .content-wrap .section .post-script,
+ .projectDetail .section .image-notes {
+   font-size: 0.6em;
+ }
+.content-wrap .section .collage-image a{
+text-decoration: none;
+line-height: 1.3em;
+font-size: .7em;
+/* margin-left: 5px;
+padding-left: 5px; */
+color: #444;
+font-weight: bold;
+/* font-style: normal; */
+/* border-left: 3px solid cyan; */
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1em 10px;
+  padding: 0.5em 10px;
+  /* quotes: "\201C""\201D""\2018""\2019"; */
+  quotes: "\201C""\201D";
+}
+
+
+blockquote:before {
+  color: #aaa;
+  content:  open-quote;
+  font-size: 3em;
+  line-height: 0.07em;
+  /* margin-right: 0.25em; */
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+.about-sections blockquote a {
+/* color: #224CCF; */
+color: blue;
+}
+
+
+.research-data-quote blockquote{
+  color:grey;
+  /* width: 70%; */
+  text-align: left;
+  /* line-height: 1.5em; */
+  display: block;
+}
+
+.research-data-quote blockquote::before{
+font-weight: bolder;
+opacity: 0.2;
+
+}
+.percentage blockquote::before{
+  content: "\0025";
+}
+.timeline blockquote::before{
+  content: "\276f";
+}
+.research-data-quote blockquote .highlight{
+ font-size: 2.5em;
+ line-height: 1.5em;
+ display: block;
+ float: left;
+ margin-right: 20px;
+}
+
+.possible-interventions blockquote{
+  font-size: 00.9em;
+  color: #444;
+}
+.possible-interventions blockquote::before{
+  content: none;
+}
+
+
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: #F09A9D;
+    /* Red */
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (min-width: 401px) {
+  body {
+    background-color: white;
+    /* Red */
+  }
+}
