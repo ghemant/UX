@@ -154,10 +154,16 @@ left:3%;
 }
 
 .intro {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   text-align: center;
-  margin: 0px;
+  margin: 0 20px;
   padding: 0px;
+  /* height: 50vh; */
   /*border: 1px solid red;*/
+top:50%;
+left:50%;
 }
 
 .myPic {
@@ -182,12 +188,13 @@ left:3%;
 }
 
 .hello>h2 {
-  font-family: "muli", sans-serif;
+  font-family: "museo", sans-serif;
   line-height: 2;
   font-size: 2em;
   /* padding-bottom: 30px; */
   text-decoration: underline;
   /* float: left; */
+  color: black;
 }
 
 .hello>h4 {
@@ -240,6 +247,7 @@ left:3%;
   z-index: 10;
   opacity: 0.5;
   margin: 0 auto;
+  top: 10%;
 }
 .mouse-icon .scroll {
   animation-delay: 0s;
@@ -310,7 +318,7 @@ left:3%;
   /*background-color: #ddd;*/
 
   box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: box-shadow 0.7s ease;
+  transition: box-shadow 2s ease;
 }
 .photo-grid-item .projectImage {
   width: 330px;
@@ -339,7 +347,8 @@ left:3%;
   background-repeat: no-repeat;
 }
 .haritkar .projectImage {
-  background-image: url("../images/haritkar.png");
+  background-image: url("../images/case-studies/haritkar/haritkar-card-image.png ");
+  /* ../images/haritkar.png */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -479,6 +488,10 @@ NOTE: Project Details Page Layout
   width: 100%;
 }
 
+.projectDetail .section .project-banner{
+  width: 150%;
+  margin: 0 -20%;
+}
 
 .projectDetail .section .mock-gifs{
   margin: 30px auto;
