@@ -358,6 +358,18 @@ left:50%;
   background-repeat: no-repeat;
 }
 
+.hopUpBusService .projectImage {
+  background-image: url("../images/hopUpBusService.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.serviceDesignCabDrivers .projectImage {
+  background-image: url("../images/serviceDesignCabDrivers.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* End of adding the splash images for the projects on the cards */
 .photo-grid-item .projectDescription {
   padding: 10px;
