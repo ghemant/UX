@@ -223,9 +223,7 @@ left:50%;
   font-family: "muli";
   font-weight: 100;
   display: block;
-  margin: 1em 35%;
-
-  border-radius: 4px;
+  margin: 2em 35%;
 
   /* position: relative;
   top: 30px; */
@@ -787,7 +785,6 @@ TRIAL Slideshow of scenario illustrations
   max-width: 1000px;
   position: relative;
   margin: auto;
-  border: 1px dotted black;
 }
 
 /* Hide the images by default */
