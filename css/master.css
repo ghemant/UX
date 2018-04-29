@@ -491,6 +491,10 @@ NOTE: Project Details Page Layout
   text-align: center;
   margin: 0 10px;
 }
+
+.projectDetail .section .firstParaMargin{
+  margin-top: 5px;
+}
 /* ////////////////////////////
  ENDOF Project Details Common Layout
  ////////////////////////////*/
