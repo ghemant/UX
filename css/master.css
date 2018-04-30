@@ -212,7 +212,7 @@ left:50%;
   color: #777;
 }
 
-.download-resume {
+.download-resume, .research-paper  {
   text-decoration: none;
   color: white;
   background-color: black;
@@ -232,6 +232,21 @@ left:50%;
 }
 .download-resume:hover {
   background-color: #224CCF;
+  transition: background-color 0.7s ease;
+}
+
+.research-paper {
+  font-weight: 700;
+  width: 90%;
+  margin: 1em auto 2em;
+  text-align: center;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+
+}
+.research-paper:hover {
+  color: black;
+  background-color: #47C1FF;
+
   transition: background-color 0.7s ease;
 }
 
