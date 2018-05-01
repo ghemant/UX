@@ -481,8 +481,7 @@ NOTE: Project Details Page Layout
   font-weight: 400; */
 
   font-family: "muli", sans-serif;
-  /* font-size: 16px; */
-  font-size: 0.8em;
+  font-size: 16px;
   color: #555d6d;
   font-weight: 400;
   text-rendering: optimizeLegibility;
