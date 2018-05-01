@@ -464,7 +464,7 @@ NOTE: Project Details Page Layout
   /* text-transform: uppercase; */
 }
 .projectDetail .section{
-  margin: 2% 20%;      /* Change the margins to make the caseStudy content centered to the page.  */
+  margin: 2% 19%;      /* Change the margins to make the caseStudy content centered to the page.  */
   padding-top: 20px;
   font-size: 1.4em;
 }
@@ -481,7 +481,8 @@ NOTE: Project Details Page Layout
   font-weight: 400; */
 
   font-family: "muli", sans-serif;
-  font-size: 16px;
+  /* font-size: 16px; */
+  font-size: 0.8em;
   color: #555d6d;
   font-weight: 400;
   text-rendering: optimizeLegibility;
