@@ -400,6 +400,7 @@ left:50%;
   top: 5px;
   font-weight: lighter;
 }
+
 .photo-grid-item .projectDescription ul {
   list-style-type: none;
   margin-top: 15px;
@@ -543,6 +544,10 @@ NOTE: Project Details Page Layout
 .projectDetail .section .mock-gifs{
   margin: 30px auto;
   text-align: center;
+}
+
+.projectDetail .section .system-overview{
+  margin: 2% auto;
 }
 /* //////////////////////////////////////////////////////////////////////
 NOTE: Adding a video wrapper for fluid design for embedded videos /////////////
