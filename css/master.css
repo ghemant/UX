@@ -212,7 +212,7 @@ left:50%;
   color: #777;
 }
 
-.download-resume, .research-paper  {
+.download-resume, .research-paper, .quick-view  {
   text-decoration: none;
   color: white;
   background-color: black;
@@ -246,6 +246,21 @@ left:50%;
 .research-paper:hover {
   color: black;
   background-color: #47C1FF;
+
+  transition: background-color 0.7s ease;
+}
+
+.quick-view{
+  color: orange;
+  font-weight: bolder;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quick-view:hover {
+  color: black;
+  background-color: orange;
 
   transition: background-color 0.7s ease;
 }
@@ -382,7 +397,7 @@ left:50%;
 }
 
 .serviceDesignCabDrivers .projectImage {
-  background-image: url("../images/serviceDesignCabDrivers.png");
+  background-image: url("../images/cabServiceCoverImage.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -547,7 +562,7 @@ NOTE: Project Details Page Layout
 }
 
 .projectDetail .section .system-overview{
-  margin: 2% auto;
+  margin-top: 3%;
 }
 /* //////////////////////////////////////////////////////////////////////
 NOTE: Adding a video wrapper for fluid design for embedded videos /////////////
@@ -901,4 +916,11 @@ TRIAL Slideshow of scenario illustrations
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+.highlightIt{
+  font-weight:bolder;
+  font-style:italic;
+  /* background-color: grey; */
+  color:black;
 }
