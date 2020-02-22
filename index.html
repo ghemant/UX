@@ -1,261 +1,350 @@
 <!DOCTYPE html>
 <html>
+  <!-- Hello There!
+
+    I know why are you here in inspect element mode.
+    Just to make it clear, I know the existing code is not formatted and cleaned
+    properly as how it should be.
+
+    But making a portfolio website is a long, iterative and never ending job;
+    because of that you will find so much of useful but commented and redundant
+    but uncommented code in here. Which with further iterations will slowly take
+    correct form.
+
+    Thanks for dropping by,
+
+    ps: 97% of the website is handcoded using the Bulma.io framework except the opensource
+    javascript code scroll-reveal.
+ -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hemant Gupta | Portfolio</title>
+    <script src="js/scrollreveal.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style type="text/css">
+        /* NOTE: Start of Scroll Down MouseIcon styling */
+        .mouse-icon {
+          border: 2px solid rgb(243, 184, 73);
+          border-radius: 17px;
+          display: block;
+          height: 40px;
+          position: relative;
+          width: 20px;
+          z-index: 10;
+          opacity: 0.5;
+          margin: 0 auto;
+          top: 10%;
+        }
+        .mouse-icon .scroll {
+          animation-delay: 0s;
+          animation-duration: 1s;
+          animation-iteration-count: infinite;
+          animation-name: scrolling;
+          animation-play-state: running;
+          animation-timing-function: linear;
+        }
+        .mouse-icon .scroll {
+          background: rgb(243, 184, 73) none repeat scroll 0 0;
+          border-radius: 10px;
+          height: 7px;
+          margin-left: auto;
+          margin-right: auto;
+          position: relative;
+          top: 4px;
+          width: 4px;
+        }
+        @keyframes scrolling {
+          0% {
+            opacity: 0;
+            top: 5px;
+          }
+
+          30% {
+            opacity: 1;
+            top: 10px;
+          }
+
+          100% {
+            opacity: 0;
+            top: 25px;
+          }
+        }
+        /* NOTE: Endof MouseIcon styling */
+    </style>
   </head>
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="#">
-            <img src="./images/logo_hg.png" width="112" height="28">
-          </a>
-      
-          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="true" >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item">
-              About
-            </a>
-      
-            <a class="navbar-item">
-              Contact
-            </a>
-          </div>
-        </div>
-      </nav>
-    <section class="hero  is-fullheight-with-navbar">
+  
+    <section class="hero  is-fullheight">
         <div class="hero-body">
             <div class="container">
-                <div class="columns">
-                    <div class="column is-2"></div>
+                <div class="columns is-gapless">
+                    <div class="column is-3"></div>
                     <div class="column is-12">
-                <h1 class="title is-2">
-                  Product Designer <br><img src="./images/rectangle_highlighter.png">
-                </h1>
-                
-                <p class="subtitle is-3">
-                  Designing fintech solutions <strong>@Zeta</strong>!
-                </p>
-                <br>
-                <p class="subtitle is-5"> M.Des Interaction Design, National Institute of Design <br> <br>
-          
-          Previously worked at Niyo, Samsung Design Delhi, Ciena </p>
-              </div>
+                      <h1 class="title is-1 has-text-weight-bold">
+                        Hemant Gupta<br><img src="./images/rectangle_highlighter.png">
+                      </h1>
+                      <p class="title is-3 has-text-weight-light	">
+                        User Experience Designer II <strong class="has-text-weight-normal">@Zeta</strong>
+                      </p>
+                      <br>
+                      <p class="subtitle is-4 has-text-weight-light	"> M.Des Interaction Design, NID <br>Previously worked at Niyo, Samsung Design Delhi, Ciena </p>
+                      <br><br>
+                      <span class="subtitle is-4 has-text-weight-light">
+                        <a class="button is-warning is-large" href="./HemantGupta_Resume_UX_Research_ExperienceDesign_NID.pdf" target="_blank">
+                          <span class="icon">
+                            <i class="fas fa-file-download"></i>
+                          </span>
+                          <span class="has-text-weight-normal">Download Resume</span>
+                        </a>
+                      </span>
+                      </div>
+                  </div>
             </div>
+          <div class="column is-0"></div>
+          <div class="column is-2">
+              <img src="./images/hero_image.png">
+          </div>
+          <div class="column is-2"></div>
         </div>
-        <div class="column"></div>
-            <div class="column is-3">
-                <img src="./images/hero_image.png">
 
-            </div>
-            <div class="column is-1"></div>
+        <div class="mouse-icon hidden-xs">
+          <div class="scroll"></div>
         </div>
-<!-- Filters to select the various categories of the projects -->
-        <!-- <div class="hero-foot">
-            <nav class="tabs is-boxed is-fullwidth">
-              <div class="container">
-                <ul>
-                  <li class="is-active">
-                    <a>All Projects</a>
-                  </li>
-                  <li>
-                    <a>Insdustry Projects</a>
-                  </li>
-                  <li>
-                    <a>Academic Projects</a>
-                  </li>
-                  <li>
-                    <a>Side Projects</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div> -->
+        <br>
       </section>
+      
+      
 
 <section>
-    
-    <div class="columns">
-    <div class="column is-6">
-        <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="./images/zeta_cipher.png" alt="Placeholder image">
-            </figure>
-          </div>
+<!-- Zeta Cipher -->
+<div>
+  <div class="columns is-gapless has-background-white">
+    <div class="column is-1"></div>
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/zeta_cipher.png" alt="Placeholder image">
+        </figure>
+      </div>
     </div>
-    <div class="column is-6">
-        <div class="card-content">        
-            <div class="content">
-                <br><br> <p class="subtitle is-6">Ongoing Porject | Product Design: Market Research + UX Design | Jun 2019 - Present </p>
-               <br> 
-               <p class="title is-1">Zeta-Cipher <br>
-                <img src="./images/rectangle_bar.png"></p>
-               <p class="subtitle is-3"> As part of Zeta Banking, Cipher is a product which provides future-ready ACS solution that enables best-in-class payment rates. </p>
-                <br> 
-                <br>
-              <a href="https://www.zeta.tech/banking-platform/cipher/" target="_blank"> 👉 Visit Official Website</a>
-              <br>
-            </div>
-          </div>    </div>
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-5">Ongoing Porject | Market Research + UX Design | Jun 2019 - Present </p>
+                  <br> 
+                  <p class="title is-1">Zeta-Cipher <br>
+                    <img src="./images/rectangle_bar.png"></p> <br><br>
+                  <p class="subtitle is-4"> As part of Zeta Banking, Cipher is a product which provides future-ready ACS solution that enables best-in-class payment rates. </p>
+                    <br> 
+                    <br>
+                    <span class="subtitle is-4">
+                  <a href="https://www.zeta.tech/banking-platform/cipher/" target="_blank"> 👉 Visit Official Website</a>
+                </span>
+                  <br>
+        </div>
+        <div class="column is-3"></div>
+      </div>
+      
+    </div>
+    <div class="column is-1"></div>
   </div>
-
-<!-- Niyo Bharat App -->
-
-  <div class="columns is-gapless">
-    <div class="column is-6">
-        <div class="card-content">        
-            <div class="content">
-                <br><br> <p class="subtitle is-6">Live Project | Product Design: User Research + UI/UX Design | Jan-Jun, 2019 </p>
-               <br> 
-               <p class="title is-1">Niyo Bharat App <br>
-               <img src="./images/rectangle_bar.png"></p>
-               <p class="subtitle is-3"> Redesigned Version 2.0 of the android based vernacular mobile app for all the banking needs of blue collared segment users who are semi-literate. </p>
-                <br> 
-                <br>
-              <a href="https://www.goniyo.com/salary-account.html" target="_blank"> 👉 Visit Official Website</a> <br>
-               👉 Download App from <a href="https://play.google.com/store/apps/details?id=com.niyoblue.customer&hl=en_IN" target="_blank">Google Playstore</a>
-              <br>
-            </div>
-          </div>    
+</div>
+<!-- NIYO BHARAT APP -->
+<div>
+  <div class="columns is-gapless has-background-white-bis">
+    <div class="column is-1 "></div>
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-5">Live Project | Product Design: User Research + UI/UX Design | Jan-Jun, 2019</p>
+                  <br> 
+                  <p class="title is-1">Niyo Bharat App <br>
+                    <img src="./images/rectangle_bar.png"></p> <br><br>
+                  <p class="subtitle is-4"> Redesigned Version 2.0 of the android based vernacular mobile app for all the banking needs of blue collared segment users who are semi-literate.</p>
+                    <br> 
+                    <br>
+                    <span class="subtitle is-4">
+                    <a href="https://www.goniyo.com/salary-account.html" target="_blank"> 👉 Visit Official Website</a> <br><br>
+                    👉 Download App from <a href="https://play.google.com/store/apps/details?id=com.niyoblue.customer&hl=en_IN" target="_blank">Google Playstore</a>   
+                  </span>
+                  <br>
+        </div>
+        <div class="column is-3"></div>
+      </div>
     </div>
-    <div class="column is-6">
-        <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="./images/niyo_bharat.png" alt="Placeholder image">
-            </figure>
-          </div>
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/niyo_bharat.png" alt="Placeholder image">
+        </figure>
+      </div>
     </div>
+    <div class="column is-1"></div>
   </div>
+</div>
 
-
-  <!-- Samsung Rewards Platform -->
-  <div class="columns">
-    <div class="column is-6">
-        <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="./images/samsung_rewards_platform.png" alt="Placeholder image">
-            </figure>
-          </div>
+<!-- Samsung Rewards Platform -->
+<div>
+  <div class="columns is-gapless has-background-white">
+    <div class="column is-1 "></div>
+    <div class="column is-5 ">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/samsung_rewards_platform.png" alt="Placeholder image">
+        </figure>
+      </div>
     </div>
-    <div class="column is-6">
-        <div class="card-content">        
-            <div class="content">
-                <br><br> <p class="subtitle is-6">Graduation Project | Concept | User Research + UX Design | Jun-Dec, 2018 </p>
-               <br> 
-               <p class="title is-1">Samsung Rewards Platform <br>
-                <img src="./images/rectangle_bar.png"></p>
-               <p class="subtitle is-3"> Explored the rewards platform system for Samsung Apps and services in India, to create a unified User Experience.
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-5">Graduation Project | Concept | User Research + UX Design | Jun-Dec, 2018</p>
+                  <br> 
+                  <p class="title is-1">Samsung Rewards Platform <br>
+                    <img src="./images/rectangle_bar.png"></p> <br><br>
+                  <p class="subtitle is-4"> Explored the rewards platform system for Samsung Apps and services in India, to create a unified User Experience.
 
-                Propsed concept of a rewards platform which enables users to discover newer Samsung services and redeem their existing points from a single point access. </p>
-                <br> 
-                <br>
-              <a href="#" >View Project 👉</a>
-              <br>
-            </div>
-          </div>    </div>
+                    Propsed concept of a rewards platform which enables users to discover newer Samsung services and redeem their existing points from a single point access.
+                  <br><br>
+                    Because of the Non-Disclosure-Agreement signed with Samsung, I cannot keep the project public. However we can discuss it in person for portfolio review purposes.
+                </p>
+                    <br> 
+                    <br>
+                    <span class="subtitle is-4">
+                  <a href="mailto:g.hemant2007@gmail.com?subject=Interseted in discussing Samsung Rewards Platform Project" target="_blank"> 👉 Drop a line to discuss further.</a>
+                </span>
+                  <br>
+        </div>
+        <div class="column is-3"></div>
+      </div>
+      
+    </div>
+    <div class="column is-1 "></div>
   </div>
-
-<!-- PlayUp App -->
-
-  <div class="columns">
-    <div class="column is-6">
-        <div class="card-content">        
-            <div class="content">
-                <br><br> <p class="subtitle is-6">Side Project - Concept | UI/UX Design </p>
-               <br> 
-               <p class="title is-1">PlayUp <br>
-               <img src="./images/rectangle_bar.png"></p>
-               <p class="subtitle is-3"> Let’s you play your faviourate sport - anytime, anywhere with anyone! </p>
-                <br> 
-                <br>
-              <a href="#" >View Project 👉</a>
-              <br>
-            </div>
-          </div>    
+</div>
+<!-- PlayUp Mobile App -->
+<div>
+  <div class="columns is-gapless has-background-white-bis">
+    <div class="column is-1 "></div>
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-5">Side Project - Concept | UI/UX Design </p>
+                  <br> 
+                  <p class="title is-1">PlayUp Mobile App <br>
+                    <img src="./images/rectangle_bar.png"></p> <br><br>
+                  <p class="subtitle is-4"> Let’s you play your faviourate sport - anytime, anywhere with anyone! </p>
+                    <br> 
+                    <br>
+                    <span class="subtitle is-4">
+                    <a href="#" target="_blank"> 👉 View Project</a>  
+                  </span>
+                  <br>
+        </div>
+        <div class="column is-2"></div>
+      </div>
     </div>
-    <div class="column is-6">
-        <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="./images/play_up.png" alt="Placeholder image">
-            </figure>
-          </div>
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/play_up.png" alt="Placeholder image">
+        </figure>
+      </div>
     </div>
+    <div class="column is-1 "></div>
   </div>
+</div>
 
 
-   <!-- cab drivers experience -->
-   <div class="columns">
-    <div class="column is-6">
-        <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="./images/cab_drivers.png" alt="Placeholder image">
-            </figure>
-          </div>
+<!-- Cab Driver's Experience -->
+<div>
+  <div class="columns is-gapless has-background-white">
+    <div class="column is-1 "></div>
+    <div class="column is-5 ">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/cab_drivers.png" alt="Placeholder image">
+        </figure>
+      </div>
     </div>
-    <div class="column is-6">
-        <div class="card-content">        
-            <div class="content">
-                <br><br> <p class="subtitle is-6">Design Project 3 @NID | User Research + UX design | Feb-Mar, 2018</p>
-               <br> 
-               <p class="title is-1">Cab Drivers Experience <br>
-                <img src="./images/rectangle_bar.png"></p>
-               <p class="subtitle is-3"> Making the experience more simpler, safer and profitable for the aggregator services’ cab drivers. Considered Ola as a case study for suggested feature enhancements.</p>
-                <br> 
-                <br>
-              <a href="../UX/case-study/cab-drivers-experience-service-design.html" > 👉 View Project</a>
-              <br>
-            </div>
-          </div>    </div>
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-5">Design Project 3 @NID | User Research + UX design | Feb-Mar, 2018</p>
+                  <br> 
+                  <p class="title is-1">Cab Drivers Experience<br>
+                    <img src="./images/rectangle_bar.png"></p> <br><br>
+                  <p class="subtitle is-4"> Making the experience more simpler, safer and profitable for the aggregator services’ cab drivers. Considered Ola as a case study for suggested feature enhancements.</p>
+                    <br> 
+                    <br>
+                    <span class="subtitle is-4">
+                      <a href="../UX/case-study/cab-drivers-experience-service-design.html" target="_blank"> 👉 View Project</a>
+                    </span>
+                  <br>
+        </div>
+        <div class="column is-3"></div>
+      </div>
+      
+    </div>
+    <div class="column is-1"></div>
   </div>
-
-<!-- video_experience App -->
-
-  <div class="columns">
-    <div class="column is-6">
-        <div class="card-content">        
-            <div class="content">
-                <br><br> <p class="subtitle is-6">Design Project 1 @NID | User Research + UX design | Mar-April, 2017 </p>
-               <br> 
-               <p class="title is-1">Inside Video Experience <br>
-               <img src="./images/rectangle_bar.png"></p>
-               <p class="subtitle is-3"> Taking YouTube as case study to explore new ways to interact with online videos. Enabling various uses cases in academics and office meetings video consumption by respective users.
-            </p>
-                <br> 
-                <br>
-              <a href="../UX/case-study/search-inside-video.html">  👉 View Project</a>
-              <br>
-            </div>
-          </div>    
+</div>
+<!-- Video Watching Experience -->
+<div>
+  <div class="columns is-gapless has-background-white-bis">
+    <div class="column is-1"></div>
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-5">esign Project 1 @NID | User Research + UX design | Mar-April, 2017 </p>
+                  <br> 
+                  <p class="title is-1">Inside Video Experience  <br>
+                    <img src="./images/rectangle_bar.png"></p> <br><br>
+                  <p class="subtitle is-4"> Taking YouTube as case study to explore new ways to interact with online videos. Enabling various uses cases in academics and office meetings video consumption by respective users.
+                  </p>
+                    <br> 
+                    <br>
+                    <span class="subtitle is-4">
+                    <a href="../UX/case-study/search-inside-video.html" target="_blank"> 👉 View Project</a>  
+                  </span>
+                  <br>
+        </div>
+        <div class="column is-2"></div>
+      </div>
     </div>
-    <div class="column is-6">
-        <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="./images/video_experience.png" alt="Placeholder image">
-            </figure>
-          </div>
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/video_experience.png" alt="Placeholder image">
+        </figure>
+      </div>
     </div>
+    <div class="column is-1"></div>
   </div>
+</div>
 
 </section>
 
-<footer class="footer is-narrow">
-    <div class="content has-text-centered">
-      <p>
-        Designed by <strong>Hemant Gupta</strong> <br> Developed using
-        <a href="https://bulma.io/">Bulma</a>
-      </p>
+<footer class="footer has-background-light	 has-text-grey-darker">
+    <div class="content has-text-centered ">
+      <p class="subtitle is-4">
+        Designed & Developed by Hemant Gupta &#169; All Rights Reserved 2020</p>
     </div>
   </footer>
-
-  </body>
+  
+</body>
+<script type="text/javascript">
+  window.sr = ScrollReveal({
+    duration: 1000
+  });
+  sr.reveal('.intro');
+  sr.reveal('.photo-grid-item', 40);
+</script>
 </html>
