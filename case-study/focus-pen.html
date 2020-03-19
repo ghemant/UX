@@ -5,40 +5,50 @@
   <meta charset="utf-8">
   <title>Hemant Gupta | Portfolio</title>
   <script src="../js/scrollreveal.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="../css/master.css">
   <link rel="shortcut icon" href="../images/logo@1x.png">
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+  <meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 </head>
 
-<body>
-  <div class="menu-container">
-    <div class="menu">
-      <a class="logo" href="../index.html"><strong>G.Hemant</strong> </a>
-      <a class="about" href="../about.html">About</a>
-      <a class="caseStudy" href="../index.html#caseStudySection">Case Study</a>
+<body class="has-background-white">
+  
+  <nav class="navbar has-background-white has-shadow is-fixed-top" role="navigation" aria-label="main navigation">    
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-light" href="../index.html">
+            <i class="fas fa-arrow-circle-left"></i>
+          </a>
+        <span class="button is-white is-uppercase" href="#">
+          Focus Pen
+        </span>
+      </div>
+      </div>
+      </div>  
     </div>
-  </div>
+  </nav>
 
   <div class="projectDetail">
 
-
     <div class="projectTitle">
-      <h1>The Focus Pen : <i>Future of Digital Note Taking</i></h1>
-    </div>
+      <p class="title is-2 has-text-centered">
+        The Focus Pen</p>
+        <br>
+        <p class="subtitle has-text-centered">
+          An IoT solution for Future of Digital Note Taking.</p>
+          <br>
+        <img class="research-data-image" src="../images/case-studies/focus-pen/focusPenContext.png">
+    </div> 
 
-    <div class="section deliverable">
-      <!-- <img class="project-banner" src="../images/focusPenBanner.png"> -->
-      <div class="video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/L_h0oPhRB90?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-    </div>
     <div class="section about">
+      <h2 class="title is-3">About The Project</h2>
       <p class="firstParaMargin">The project is the outcome of a classroom project in Ubiquitous Computing
         module, in July 2017, of a duration of 3 weeks, at the National Institute
-        of Design - Bengaluru, India. <br> A design research paper on this project documenting the process and the findings, has been accepted by SIDeR'18 (Student Interaction Design Research) conference. You can view the paper by clicking the button below.
-      </p>
-      <a class="research-paper" href="../research-papers/focusPen-EntryForSIDeR2018Conference.pdf" target="_blank">View the entry for SIDeR 2018 conference</a>
-      <h4>About The Project</h4>
+        of Design - Bengaluru, India.</p>
       <p>As a part of the curriculum, the students were required to read a lot of
          research papers as reading material to build an understanding of what Ubiquitous means? <br>
         We observed that most of the classmates spoke about the struggle and frustrations; at maintaining
@@ -46,12 +56,25 @@
       <blockquote cite="http://">
           Bro! I can not read through the papers, I am getting zoned out every now and then while reading them.
         </blockquote>
-        <h4>The Problem</h4>
-         <br> <strong>Not being able to maintain <em> FOCUS</em> and comprehend the information available in printed reading materials by the students / researchers.</strong>
+        <br>
+        <h2 class="title is-3">The Problem</h2>
+
+         <span class="subtitle is-4 has-background-light">  Not being able to maintain <em> FOCUS</em> and comprehend the information available in printed reading materials by the students / researchers.</span>
+          <br>
+          <br>
+        <h2 class="title is-3">Final Deliverable</h2>
+        <p> A design research paper on this project documenting the process and the findings, has been accepted by SIDeR'18 (Student Interaction Design Research) conference. You can view the paper by clicking the button below.
+        </p>
+        <p class="button is-warning " href="../research-papers/focusPen-EntryForSIDeR2018Conference.pdf" target="_blank">View the entry for SIDeR 2018 conference</p>
+        <br>
+        <div class="video-wrapper">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/L_h0oPhRB90?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
     </div>
+    
 
     <div class="section process">
-      <h4>My Team and My Role</h4>
+      <h2 class="title is-3">My Team and My Role</h2>
       <img class="design-process" src="../images/case-studies/focus-pen/team.jpg">
       <p class="image-notes">From left to right: Andre Parr, Hemant Gupta and Akshay Khurana.</p>
 
@@ -70,7 +93,7 @@
     </div>
 
     <div class="section ourApproach">
-      <h4>Understanding</h4>
+      <h2 class="title is-3">Understanding</h2>
       <p class="firstParaMargin">We started off with initial discussions amongst ourselves to build an understanding of</p>
         <ul>
           <li>What is Ubiquitous Computing (or Ubicomp)? and</li>
@@ -87,7 +110,7 @@
       <p class="image-notes">Whiteboard discussions.</p>
 
 
-      <h4>Our Approach</h4>
+      <h2 class="title is-3">Our Approach</h2>
       <p class="firstParaMargin">Since, this particular module was  for a small duration of 3 weeks only therefore we
         decided to make use of following steps : </p>
         <ul>
@@ -148,7 +171,7 @@
 
 
     <div class="section proposedSolution">
-      <h4>Our Solution : The Focus Pen <i>+ Companion Dock</i></h4>
+      <h2 class="title is-3">Our Solution : The Focus Pen <i>+ Companion Dock</i></h2>
       <img class="research-data-image firstParaMargin" src="../images/case-studies/focus-pen/focusPenContext.png">
 
       <strong>Product's Details</strong>
@@ -184,7 +207,7 @@
 
     <!-- To be enabled with content filled -->
     <!-- <div class="section how-it-works">
-      <h4>How It Works?</h4>
+      <h2 class="title is-3">How It Works?</h4>
       <p></p>
       <br>
       <p><strong>Persona</strong></p>
@@ -195,12 +218,12 @@
     </div> -->
 
     <!-- <div class="section future-scope">
-      <h4>Future Scope</h4>
+      <h2 class="title is-3">Future Scope</h4>
       <p></p>
     </div> -->
 
     <div class="section key-takeaways">
-      <h4>Key Takeaways</h4>
+      <h2 class="title is-3">Key Takeaways</h2>
       <br>
       <ul>
         <li>Learnt a great deal while planning and executing an user experiment (that too in a controlled environment);
@@ -223,14 +246,15 @@
 
 
   <!-- Pagination  -->
+  <footer class="footer has-background-blueish-light">
+    <div class="has-text-centered ">
+      <p class="subtitle is-5 has-text-black">🙏 <br> Thanks for viewing the project! </p>
+        <p class="subtitle is-6 has-text-black">
 
-  <div class="page-navigation">
-    <ul>
-      <li><a class="hide" href="./wearable-exerciser.html"> &larr; Previous Project</a></li>
-      <li><a class="show" href="../index.html">...</a></li>
-      <li><a class="hide" href="#">Next Project &rarr;</a></li>
-    </ul>
-  </div>
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. <br><br> © All Rights Reserved 2017.
+      </p>
+    </div>
+  </footer>
 
   <script type="text/javascript">
     window.sr = ScrollReveal();

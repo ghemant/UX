@@ -292,7 +292,7 @@ left:50%;
 
 /* NOTE: Start of Scroll Down MouseIcon styling */
 .mouse-icon {
-  border: 2px solid #000;
+  border: 2px solid rgb(243, 184, 73);
   border-radius: 17px;
   display: block;
   height: 40px;
@@ -312,7 +312,7 @@ left:50%;
   animation-timing-function: linear;
 }
 .mouse-icon .scroll {
-  background: #000 none repeat scroll 0 0;
+  background: rgb(243, 184, 73) none repeat scroll 0 0;
   border-radius: 10px;
   height: 7px;
   margin-left: auto;
@@ -490,7 +490,7 @@ left:50%;
 NOTE: Project Details Page Layout
 ////////////////////////////////////////////////////////////////////////////////////////*/
 .projectDetail{
-  margin: 10% auto;
+  margin-top: 7%;
 }
 .projectDetail h1, .projectDetail h4, .section h4{
   font-family: "muli",sans-serif;
