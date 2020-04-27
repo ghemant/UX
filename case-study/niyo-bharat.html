@@ -188,9 +188,14 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-NoDeriv
   </footer>
 
   <script type="text/javascript">
-    window.sr = ScrollReveal();
-    sr.reveal('.projectTitle', 10);
-    sr.reveal('.section *', 20);
+    var config={
+    origin:'top',
+    distance:'3rem',
+    easing:'ease-in-out',
+  };
+  window.sr = ScrollReveal(config);  
+  sr.reveal('.projectTitle', 10);
+    sr.reveal('.section');
     // sr.reveal('.section');
   </script>
 </body>

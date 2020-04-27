@@ -203,12 +203,12 @@
                     <img src="./images/rectangle_bar.png"> 
                   <p class="subtitle"><br> Designed the SME portal website and Niyo Bharat mobile app, for salaried employees and the blue-collar workers to access financial services.</p> 
                   <!-- <i class="has-background-light">                      -->
-                     <a href="./case-study/niyo-sme-portal.html" target="_blank"> 👉 View Project: SME Banking Portal</a><br>
+                     <a href="./case-study/niyo-sme-portal.html" target="_blank"> 👉 View Project: SME Banking Portal</a><br><br>
                      <a href="./case-study/niyo-bharat.html" target="_blank"> 👉 View Project: NiYO Bharat App</a><br>
 
-                     Niyo Bharat app 👉 <a href="https://play.google.com/store/apps/details?id=com.niyoblue.customer&hl=en_IN" target="_blank">available on Google playstore.</a>
+                     <!-- Niyo Bharat app 👉 <a href="https://play.google.com/store/apps/details?id=com.niyoblue.customer&hl=en_IN" target="_blank">available on Google playstore.</a> -->
                     <!-- </i> -->
-                    <br><br>
+                    <br>
                     <span class="subtitle is-6">
                     👉 Tech Crunch: <a href="https://techcrunch.com/2019/07/09/india-niyo-neo-bank-seriesb/" target="_blank">India’s NiYO ‘neo-bank’ raises $35M to help blue-collar workers access financial services</a> <br>
                   </span>
@@ -492,10 +492,12 @@
 
 </body>
 <script type="text/javascript">
-  window.sr = ScrollReveal({
-    duration: 1000
-  });
-  sr.reveal('.intro');
-  sr.reveal('.photo-grid-item', 40);
+  var config={
+    origin:'top',
+    distance:'3rem',
+    easing:'ease-in-out',
+  };
+  window.sr = ScrollReveal(config);
+  sr.reveal('.column');
 </script>
 </html>
