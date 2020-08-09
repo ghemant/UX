@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
+
 body {
-  font-family: "muli", sans-serif;
+  font-family: "Muli", sans-serif;
   font-size: 16px;
   color: #555d6d;
   font-weight: 400;
-  /* background-color: red; */
-  /* text-rendering: optimizeLegibility; */
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 
 }
@@ -36,6 +36,11 @@ p{
 a {
   text-decoration: none;
   color: black;
+}
+
+#custom-card :hover{
+  transform: scale(1.09,1.09);
+  transition:ease-in-out;
 }
 
 .menu-container {
