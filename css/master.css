@@ -6,18 +6,20 @@
 
 
 body {
-  font-family: "Muli", sans-serif;
-  font-size: 16px;
-  color: #555d6d;
-  font-weight: 400;
+  font-family: "muli", sans-serif;
+  font-size: 14px;
+  letter-spacing: -0.003em;
+  line-height: 2.4rem;
+  color: #212223;
+  font-weight: 300;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-
+background: #1D2229;
 }
-p{
+/* p{
   margin: 0 0 1rem;
  line-height: 1.5rem;
-}
+} */
 
 .bg-mesh{
   background-image: url("../images/bg-mesh.png");
