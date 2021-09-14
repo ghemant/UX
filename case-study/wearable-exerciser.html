@@ -3,14 +3,14 @@
 
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161445346-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161445346-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-161445346-1');
-</script>
+    gtag('config', 'UA-161445346-1');
+  </script>
   <meta charset="utf-8">
   <title>Hemant Gupta | Portfolio</title>
   <script src="../js/scrollreveal.min.js" charset="utf-8"></script>
@@ -18,231 +18,342 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="../css/master.css">
   <link rel="shortcut icon" href="../images/logo@1x.png">
-  <meta name='viewport'
-      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 </head>
 
 <body class="has-background-white">
-  
-  <nav class="navbar has-background-white has-shadow is-fixed-top" role="navigation" aria-label="main navigation">    
+
+  <nav class="navbar has-background-white has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-light" href="../index.html">
-            <i class="fas fa-arrow-circle-left"></i>
-          </a>
-        <a class="button is-white is-uppercase" href="#pageTop">
-          <strong>Wearable Exerciser</strong>
-        </a>
+          <div class="buttons">
+            <a class="button is-light" href="../index.html">
+              <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="button is-white is-uppercase" href="#pageTop">
+              <strong>Wearable Exerciser</strong>
+            </a>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>  
     </div>
   </nav>
 
-  <div class="projectDetail">
+  <div class="section">
+    <aside class="column is-2  is-narrow-mobile is-fullheight section is-hidden-mobile has-background-white sticky"
+      style="float:left;">
 
-    <div class="projectTitle">
-      <p class="title is-2 has-text-centered">
-        WEX - Wearable Exerciser</p>
-        <br>
-        <p class="subtitle has-text-centered">
-          An IoT health wearable device with a mobile application</p>
-          <br>
-        <img class="research-data-image" src="../images/wex.png">
-    </div> 
-    <div id="pageTop"></div>
+      <ul class="menu-list">
+        <p class="menu-label is-hidden-touch">On this page</p>
+        <li>
+          <a href="#project-overview" class="project-overview is-active">
+            <span class="icon"><i class="fa fa-eye"></i></span> Project overview
+          </a>
+        </li>
+        <li>
+          <a href="#problem-statement" class="problem-statement">
+            <span class="icon"><i class="fa fa-exclamation-triangle"></i></span> Problem statement
+          </a>
+        </li>
+        <li>
+          <a href="#proposed-solution" class="proposed-solution">
+            <span class="icon"><i class="fa fa-magic"></i></span> Proposed solution
+          </a>
+        </li>
+        <li>
+          <a href="#design-process" class="design-process">
+            <span class="icon"><i class="fa fa-drafting-compass"></i></span> Design process
+          </a>
 
-
-
-    <div class="section problem">
-      <h2 class="title is-3"> Problem Statement</h2>
-      <p><br>
-        To Design a modular holistic health wearable. The focus has to be to optimise the wearable design for comfort, non-invasiveness, ease of use, communication and efficiency. The wearable should sense/measure the following:</p>
-      <ul>
-        <li>Sunlight exposure</li>
-        <li>Abdominal sounds, signals, and movements</li>
-        <li>Heart rate variability</li>
-        <li>Posture/stretching </li>
-        <li>Breathing</li>
-        <li>Blood Pressure</li>
+          <ul>
+            <li>
+              <a href="#research" class="research">
+                <span class="icon is-small"><i class="fa fa-crosshairs"></i></span> Research
+              </a>
+            </li>
+            <li>
+              <a href="#ideations" class="ideations">
+                <span class="icon is-small"><i class="fa fa-pencil-ruler"></i></span> Ideations
+              </a>
+            </li>
+            <li>
+              <a href="#testing" class="testing">
+                <span class="icon is-small"><i class="fa fa-user-astronaut"></i></span> Testing
+              </a>
+            </li>
+            <li>
+              <a href="#results" class="results">
+                <span class="icon is-small"><i class="fa fa-map-signs"></i></span> Results
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#learnings" class="learnings">
+            <span class="icon"><i class="fa fa-book-reader"></i></span> Key takeaways
+          </a>
+        </li>
       </ul>
-      <p>The sensors DO NOT have to be developed by the participant but adequate research needs to be done on available sensors that can be part of your wearable.</p>
+    </aside>
 
-    </div>
+    <section class="main-content columns is-fullheight">
 
-    <div class="section process">
-      <h2 class="title is-3">My Team and My Role</h2>
-      <img class="design-process" src="../images/case-studies/wearable-exerciser/teamMembers.jpg">
-      <p class="image-notes">From left to right: Hemant Gupta (IxD), Omkar Khadamkar (DRE), &#x2B06; Rohan Dinde (DRE) and &#x2B06; Shubi Agrawal (UD), at IIT-Guwahati after our final presentation to the faculties and TATA representatives.</p>
+      <div class="container column is-10 scrollable-content">
+        <div class="section side-layout">
+          <div id="project-overview" class="scroll-padding">
+            <h2 class="title is-1">WEX - Wearable Exerciser 🏃‍♂️
+              <hr>
+            </h2>
+            <p class="subtitle is-5 tags">
+               <span class="tag is-medium is-info is-light">
+                <strong>Competition:</strong> &emsp;IIT-Guwahati & Tata: Health wearable
+              </span>
+              <span class="tag is-medium is-info is-light">
+                <strong>Ranking:</strong> &emsp; Finalists
+              </span>
+              <span class="tag is-medium is-info is-light">
+                <strong>Time:</strong> &emsp; 1 month (Nov'16)
+              </span>
+              <span class="tag is-medium is-info is-light">
+                <strong>Contribution:</strong> &emsp; Team (4)
+              </span>
+            </p>
+            <!-- <p>
+              A proposed solution for unified rewards platform for Samsung apps and services in India.</p>
+            <br> -->
 
-      <p>This project was a <strong>finalist entry</strong> (amongst top 7 teams out of total 59 teams)
-        for a wearable design competition conducted by IIT - Guwahati and TATA in 2016. We were
-        <strong>a team of 4 students</strong> from different disciplines, i.e. Design for Retail
-        Experience (DRE), Universal Design (UD) and Interaction Design(IxD), at NID Bangalore.
-         My contribution mainly involved in user and market research for health wearables and their sensors, which mainly comprised of secondary research - reading literary research papers, comparative study of existing wearables; and designing the mobile application,</p>
-      <!-- <img class="design-process" src="../images/case-studies/wearable-exerciser/design-process.png"> -->
+            <h2 class="title is-3">
+              <hr> Overview
+            </h2>
+            <div id="pageTop"></div>
+            <img class="research-data-image" src="../images/case-studies/wearable-exerciser/rendered-product.png">
+            <p>This project was a <strong>finalist entry</strong> (amongst top 7 teams out of total 59 teams)
+              for a wearable design competition conducted by IIT - Guwahati and TATA in 2016. We were
+              <strong>a team of 4 students</strong> from NID Bangalore.
+              My contribution mainly involved in user and market research for health wearables and their sensors, which
+              mainly comprised of secondary research - reading literary research papers, comparative study of existing
+              wearables; and designing the mobile application.
+            </p>
+          </div>
 
-    </div>
-
-    <div class="section process">
-      <h2 class="title is-3">Design Process</h2>
-      <!-- <p></p> -->
-      <img class="design-process" src="../images/case-studies/wearable-exerciser/design-process.png">
-
-    </div>
-
-    <!-- <div class="section design-philosophy">
-      <h4>Design Philosophy</h4>
-      <blockquote cite="https://medium.com/the-year-of-the-looking-glass/finding-ideas-d9c07ca1a076">
-        To find ideas, find problems. To find problems, talk to people.
-        <p>- Julie Zhuo</p>
-      </blockquote>
-    </div> -->
-
-    <div class="section research">
-      <h4>Research</h4>
-      <p> We ideated about the possible ways to wear a health wearables, alongwith exploring different forms and mechanisms to design a wearable, which can measure all the required parameters.</p>
-      <p>To get a better understanding we studied available sensor technologies, which can be used for wearables, in the market. After finalising on the general idea of wearing the wearable, we started making thermocol mockup of the desired form.</p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/form-explorations.png">
-      <p class="image-notes">Wearable sketches and form explorations.</p>
-    </div>
-
-    <div class="section design-consideration">
-      <h4>Design Considerations</h4>
-      <p>Considering the usability of the wearable and the range of types of users including Indian ladies <em>wearing sarees</em>,<em>aged people</em>,<em>young folks</em> who wish to make a style statement through the wearble, the final concept is a wrist band
-        with removable device which can then be tucked-in near the waist. </p>
-
-        <img class="research-data-image" src="../images/case-studies/wearable-exerciser/rendered-product.png">
-
-        <img class="research-data-image" src="../images/case-studies/wearable-exerciser/product.gif">
-
-
-    </div>
-
-
-    <div class="section science-behind">
-      <!-- <h4>Science Behind</h4> -->
-      <strong>How it works?</strong>
-      <p><strong>Monitoring blood pressure</strong></p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/blood-pressure.png">
-      <p>Two arrays of sensors are placed along the same artery to pick up signals. The distance between two sensors and the time blood takes to travel between them is measured to obtain the pulse wave velocity. Pulse wave velocity is directly related to
-        blood pressure.</p>
-
-      <br>
-      <p><strong>Breathing and posture</strong></p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/breathing-posture.png">
-      <p>The breathing rate is measured by detecting the change in pressure as a result of the movement of the diaphragm. For posture the devices needs to be calibrated for neutral or idle posture initially. The change in posture is detected when the pressure
-        measured is below the calibrated one and haptic feedback is given to the user to correct his posture.</p>
-
-      <br>
-      <p><strong>Pulse rate</strong></p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/pulse-rate.png">
-      <p>The pulse is detected with help of LED and photodiode sensors. The LED light is shined into the skin. The scattered light is detedcted by the photodiode and the pulse rate is calculated. The heart rate is in direct relation with the pulse rate.
-        </p>
-
-      <br>
-      <p><strong>Abdominal sounds</strong></p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/abdominal-sound.png">
-      <p>Vibration sensor calculates abdominal sounds caused by the movement between the intestinal contents.</p>
+          <div id="problem-statement" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br> Problem statement
+            </h2>
+            <p>
+              To Design a modular holistic health wearable. The focus has to be to optimise the wearable design for
+              comfort, non-invasiveness, ease of use, communication and efficiency. The wearable should sense/measure
+              the
+              following:</p>
+            <ul>
+              <li>■&emsp;Sunlight exposure</li>
+              <li>■&emsp;Abdominal sounds, signals, and movements</li>
+              <li>■&emsp;Heart rate variability</li>
+              <li>■&emsp;Posture/stretching </li>
+              <li>■&emsp;Breathing</li>
+              <li>■&emsp;Blood Pressure</li>
+            </ul>
+            <p>The sensors DO NOT have to be developed by the participant but adequate research needs to be done on
+              available sensors that can be part of your wearable.</p>
+          </div>
 
 
-      <strong>Usecase scenarios</strong>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/scenario-one.png">
-      <p>Wrist band calculates sun exposure, heart rate and blood pressure. </p>
+          <div id="proposed-solution" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br> Proposed solution
+            </h2>
 
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/scenario-two.png">
-      <p>Tuck-in module calculates abdomenal sounds, posture and breathing.</p>
+            <strong>A modular 2 part IoT health wearable + mobile app</strong>
+            <p>User can track the status and check out the trends using WEX mobile phone application</p>
+            <img class="research-data-image" src="../images/case-studies/wearable-exerciser/eco-system.png">
 
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/scenario-three.png">
-      <p>Wrist band is a good stress buster and muscle strengthner when used as a hand grip exerciser.</p>
+            <p>User can track the status and check out the trends using WEX mobile phone application</p>
+            <img class="research-data-image" src="../images/wex.png">
+            <br><br>
+            <strong>Mobile app video prototype</strong>
+            <br>
+            <div class="video-wrapper">
+              <!-- USE various aspect ratios recommended : 960x540 -->
+              <iframe width="960" height="540" src="https://www.youtube.com/embed/r3lU-dUD_xE" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
 
-      <p class="image-notes">Credits: All the illustration made by Omkar Khadamkar (Team member).</p>
+          <!-- <div class="section process">
+          <h2 class="title is-3">My Team and My Role</h2>
+          <img class="design-process" src="../images/case-studies/wearable-exerciser/teamMembers.jpg">
+          <p class="image-notes">From left to right: Hemant Gupta (IxD), Omkar Khadamkar (DRE), &#x2B06; Rohan Dinde
+            (DRE) and &#x2B06; Shubi Agrawal (UD), at IIT-Guwahati after our final presentation to the faculties and
+            TATA representatives.</p>
 
-    </div>
+          <p>This project was a <strong>finalist entry</strong> (amongst top 7 teams out of total 59 teams)
+            for a wearable design competition conducted by IIT - Guwahati and TATA in 2016. We were
+            <strong>a team of 4 students</strong> from different disciplines, i.e. Design for Retail
+            Experience (DRE), Universal Design (UD) and Interaction Design(IxD), at NID Bangalore.
+            My contribution mainly involved in user and market research for health wearables and their sensors, which
+            mainly comprised of secondary research - reading literary research papers, comparative study of existing
+            wearables; and designing the mobile application,
+          </p>
 
+        </div> -->
 
-    <div class="section proposed-design">
-      <h2 class="title is-3">Prototyping and Evaluation</h2>
-      <br>
-      <div class="collage">
-        <div class="collage-item">
-          <img class="collage-image" src="../images/case-studies/wearable-exerciser/material-one.gif">
-          <img class="collage-image" src="../images/case-studies/wearable-exerciser/material-two.gif">
+          <div id="design-process" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br> Design process
+            </h2>
+            <!-- <p></p> -->
+            <img class="design-process" src="../images/case-studies/wearable-exerciser/design-process.png">
+
+          </div>
+
+          <div id="research" class="scroll-padding">
+            <h2 class="title is-4"><br> <br> Research</h4>
+              <p> We ideated about the possible ways to wear a health wearables, alongwith exploring different forms and
+                mechanisms to design a wearable, which can measure all the required parameters.</p><br>
+              <p>To get a better understanding we studied available sensor technologies, which can be used for
+                wearables, in
+                the market. </p>
+                <br>
+      
+                  <div class="columns">
+                    <div class="column card">
+                      <p class="card-header-title">Monitoring blood pressure</p>
+                      <img class="card-image" src="../images/case-studies/wearable-exerciser/blood-pressure.png">
+                      <p class="card-content">Two arrays of sensors are placed along the same artery to pick up signals. The
+                        distance between two sensors
+                        and the time blood takes to travel between them is measured to obtain the pulse wave velocity. Pulse
+                        wave
+                        velocity is directly related to
+                        blood pressure.</p>
+                    </div>
+                    <div class="column card">
+                      <p class="card-header-title">Breathing and posture</p>
+                      <img class="card-image" src="../images/case-studies/wearable-exerciser/breathing-posture.png">
+                      <p class="card-content">The breathing rate is measured by detecting the change in pressure as a result of the movement of the
+                        diaphragm. For posture the devices needs to be calibrated for neutral or idle posture initially. The
+                        change
+                        in posture is detected when the pressure
+                        measured is below the calibrated one and haptic feedback is given to the user to correct his posture.</p>
+                    </div>
+                    
+                  </div>
+                  <br>
+                  <div class="columns">
+                    <div class="column card">
+                      <p class="card-header-title">Pulse rate</p>
+                      <img class="card-image" src="../images/case-studies/wearable-exerciser/pulse-rate.png">
+                      <p class="card-content">The pulse is detected with help of LED and photodiode sensors. The LED light is shined into the skin. The
+                        scattered light is detedcted by the photodiode and the pulse rate is calculated. The heart rate is in
+                        direct
+                        relation with the pulse rate.</p>
+                    </div>
+                    <div class="column card">
+                      <p class="card-header-title">Abdominal sounds</p>
+                      <img class="card-image" src="../images/case-studies/wearable-exerciser/abdominal-sound.png">
+                      <p class="card-content">Vibration sensor calculates abdominal sounds caused by the movement between the intestinal contents.</p>
+                    </div>
+                  </div>
+          </div>
+
+          <div id="ideations" class="scroll-padding">
+            <h2 class="title is-4"><br> <br> Ideations</h2>
+            <p>Considering the usability of the wearable and the range of types of users including Indian ladies
+              <em>wearing sarees</em>,<em>aged people</em>,<em>young folks</em> who wish to make a style statement
+              by modern looking wearble, we went to sketch out the final model and made a thermocol mocked model of the desired form.
+            </p>
+            <img class="research-data-image" src="../images/case-studies/wearable-exerciser/form-explorations.png">
+            <p>The final concept is a wrist band
+              with removable device which can then be tucked-in near the waist.</p>
+            <img class="research-data-image" src="../images/case-studies/wearable-exerciser/product.gif">
+          </div>
+          
+          <div id="testing" class="scroll-padding">
+            <h2 class="title is-3"><br><br>Physical prototype testing</h2>
+            
+              <p class="card-header-title">Material Explorations </p>
+              <div class="card-content">
+                <div class="columns is-gapless">
+                  <div class="column">
+                    <img class="collage-image" src="../images/case-studies/wearable-exerciser/material-one.gif">
+                  </div>
+                  <div class="column">
+                    <img class="collage-image" src="../images/case-studies/wearable-exerciser/material-two.gif">
+                  </div>
+                </div>
+                <p> 3D printing was used to create the prototype of WEX and usability of WEX was studied by asking different
+              users to wear it for a day.</p>
+            
+            </div>
+            <p class="card-header-title">Users with 1:1 scale 3D printed prototype </p>
+                <img class="card-image" src="../images/case-studies/wearable-exerciser/prototype-evaluation.png">  
+            </div>
+            
+          
+
+          <div id="results" class="scroll-padding">
+            <h2 class="title is-4"><br><br> Results: Use case scenarios</h2></strong>
+
+          <div class="columns">
+            <div class="column card">
+              <p class="card-header-title">Wrist band</p>
+              <img class="card-image" src="../images/case-studies/wearable-exerciser/scenario-one.png">
+              <p class="card-content">Wrist band calculates sun exposure, heart rate and blood pressure.</p>
+            </div>
+            <div class="column card">
+              <p class="card-header-title">Tuck-in module</p>
+              <img class="card-image" src="../images/case-studies/wearable-exerciser/scenario-two.png">
+              <p class="card-content">Tuck-in module calculates abdomenal sounds, posture and breathing.</p>
+            </div>
+            <div class="column card">
+              <p class="card-header-title">Stress buster</p>
+              <img class="card-image" src="../images/case-studies/wearable-exerciser/scenario-three.png">
+              <p class="card-content">Wrist band is a good stress buster and muscle strengthner when used as a hand grip exerciser.</p>
+            </div>
+          </div>
+
         </div>
+
+        <div id="learnings" class="scroll-padding">
+          <h2 class="title is-3"> <br><hr><br> Key Takeaways</h2>
+          <br>
+          <img src="../images/case-studies/wearable-exerciser/teamMembers.jpg">
+          <p>From left to right: Hemant Gupta (IxD), Omkar Khadamkar (DRE), ⬆ Rohan Dinde (DRE) and ⬆ Shubi Agrawal (UD), at IIT-Guwahati after our final presentation to the faculties and TATA representatives.</p>
+
+          <br>
+          <ul>
+            <li><i class="has-text-info fas fa-check-circle"></i> Learned the skill of working in an interdesciplinary design team, where each individual brought
+              different perspective to the discussion table.</li>
+            <li><i class="has-text-info fas fa-check-circle"></i> Got exposure to different types of softwares e.g. 3D (Rhinocerous; Keyshot and SketchUp) and Adobe
+              Creative Suite, to create the product renders and aninations.</li>
+            <li><i class="has-text-info fas fa-check-circle"></i> Had a great experience travelling to and presenting our work at Indian Institute of Technology,
+              Guwahati.</li>
+          </ul>
+        </div>
+
+        <!-- Pagination  -->
+        <footer class="footer custom-bg-gradient">
+          <div class="has-text-centered ">
+            <p class="subtitle is-5 has-text-black">🙏 <br> Thanks for viewing the project! </p>
+            <p class="subtitle is-6 has-text-black">
+
+              This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+              License. <br><br> © All Rights Reserved 2016.
+            </p>
+          </div>
+        </footer>
       </div>
-      <p class="image-notes">Material Explorations</p>
-      <p>3D printing was used to create the prototype of WEX and usability of WEX was studied by asking different users to wear it for a day.</p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/prototype-evaluation.png">
-      <p class="image-notes">Conducting the user testing with the 3D printed prototype.</p>
-
-      <br>
-      <strong>Data flow in ecosystem</strong>
-      <p>User can track the status and check out the trends using WEX mobile phone application</p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/eco-system.png">
-
-    </div>
-    <div class="section proposed-design">
-      <h2 class="title is-3">Mobile Application : WEX</h2>
-
-      <br>
-      <strong>Wireflow Diagram</strong>
-      <p>User can track the status and check out the trends using WEX mobile phone application</p>
-      <img class="research-data-image" src="../images/case-studies/wearable-exerciser/app-wireflow.png">
-
-      <strong>Video Prototype</strong>
-      <div class="video-wrapper">
-        <iframe width="1224" height="689" src="https://www.youtube.com/embed/r3lU-dUD_xE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-    </div>
-
-    <!-- To be enabled with content filled -->
-    <!-- <div class="section how-it-works">
-      <h4>How It Works?</h4>
-      <p></p>
-      <br>
-      <p><strong>Persona</strong></p>
-      <br>
-      <p><strong>User Journey</strong></p>
-      <br>
-      <p><strong>Use Case Scenarios</strong></p>
-    </div> -->
-
-    <!-- <div class="section future-scope">
-      <h2 class="title is-3">Future Scope</h4>
-      <p></p>
-    </div> -->
-
-    <div class="section key-takeaways">
-      <h2 class="title is-3">Key Takeaways</h2>
-<br>
-      <ul>
-        <li>Learned the skill of working in an interdesciplinary design team, where each individual brought different perspective to the discussion table.</li>
-        <li>Got exposure to different types of softwares e.g. 3D (Rhinocerous; Keyshot and SketchUp) and Adobe Creative Suite, to create the product renders and aninations.</li>
-        <li>Had a great experience travelling to and presenting our work at Indian Institute of Technology, Guwahati.</li>
-      </ul>
-    </div>
-
-  </div>
+    </section>
 
 
-  <!-- Pagination  -->
-  <footer class="footer has-background-blueish-light">
-    <div class="has-text-centered ">
-      <p class="subtitle is-5 has-text-black">🙏 <br> Thanks for viewing the project! </p>
-        <p class="subtitle is-6 has-text-black">
 
-This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. <br><br> © All Rights Reserved 2016.
-      </p>
-    </div>
-  </footer>
-
-  <script type="text/javascript">
-    window.sr = ScrollReveal();
-    sr.reveal('.projectTitle', 10);
+    <script type="text/javascript">
+      window.sr = ScrollReveal();
+      sr.reveal('.projectTitle', 10);
     // sr.reveal('.section');
-  </script>
+    </script>
+    <script src="../js/sideNavScroll.js" charset="utf-8"></script>
 </body>
 
 </html>
