@@ -3,14 +3,14 @@
 
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161445346-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161445346-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-161445346-1');
-</script>
+    gtag('config', 'UA-161445346-1');
+  </script>
 
   <meta charset="utf-8">
   <title>Hemant Gupta | Portfolio</title>
@@ -19,331 +19,544 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="../css/master.css">
   <link rel="shortcut icon" href="../images/logo@1x.png">
-  <meta name='viewport'
-      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 </head>
 
-<body>
-  
-  <nav class="navbar has-background-white has-shadow is-fixed-top" role="navigation" aria-label="main navigation">    
+<body class="has-background-white">
+
+  <nav class="navbar has-background-white has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-light" href="../index.html" >
-            <i class="fas fa-arrow-circle-left"></i>
-          </a>
-        <a class="button is-white is-uppercase" href="#pageTop">
-          Cab Drivers Experience
-        </a>
+          <div class="buttons">
+            <a class="button is-light" href="../index.html">
+              <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <span class="button is-white is-uppercase" href="#pageTop">
+              <strong>Cab drivers' Experience</strong>
+            </span>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>  
     </div>
   </nav>
 
+  <div class="section">
+    <aside class="column is-2  is-narrow-mobile is-fullheight section is-hidden-mobile has-background-white sticky"
+      style="float:left;">
 
-  <div class="projectDetail">
-    <div class="projectTitle">
-      <p class="title is-2 has-text-centered">
-        Cab Drivers Experience</p>
-        <br>
-        <p class="subtitle has-text-centered">
-          Enhancing the user experience of 3rd party cab-aggregator service's drivers</p>
-          <br>
-        <img class="research-data-image" src="../images/case-studies/cab-driver-experiences/coverImage.png">
-        <div id="pageTop"></div>
-    </div> 
-
-    <div class="section about">
-      <!-- <img class="design-process" src="../images/case-studies/cab-driver-experiences/coverImage.png"> -->
-
-      <h2 class="title is-3">About The Project</h2>
-
-      <br>The project is the outcome of 4th semester design project for a duration of 10 weeks during February - April 2018, at the National Institute of Design - Bengaluru, India.
-      The <strong>objective</strong> of the design project was to understand and apply the systems/service design process and methods for conceptualization, while keeping the focus on System/ Service design paradigm to conceptualizing physical devices
-        for home,
-        <strong> automobile </strong>, healthcare, banking and retail.
-    </div>
-
-    <div class="section has-background-white-bis">
-      <h2 class="title is-3">Key Highlight + Little Bragging 😉</h2>
-      This complete project was <strong>independently</strong> conceived and presented as a Design Project outcome of <strong>10 Weeks</strong> duration (<strong>February - April 2018</strong>) in 
-    <strong>M.Des Interaction Design</strong> 4th Semester at National Institute of Design, India. <br><br>
-  
-      Some of my design research observations and insights proposed feature enhancements for Cab Aggregator services (i.e. taking OLA as a case study), for example <br> <br>
-      ● easy accessibility of necessary trip information (including live traffic data) <br><br>
-      ● enhancing the heat map interaction <br> <br>
-      were similar to what Uber has introduced in their  <a href="https://www.uber.design/case-studies/driver-app"> "The New Driver App: Building a better co-pilot"</a> launched in <strong> April 2018</strong> . However, I still have few more feature enhancements which havenʼt been implemented anywhere as of now. <br> <br>
-      
-  
-      <div class="columns">
-        
-        <div class="column">
-          
-          <div class="card-content has-background-black">
-            <a id="custom-card" href="https://www.theatlantic.com/technology/archive/2018/04/uber-driver-app-revamp/557117/"  target="_blank" >
-            <h2 class="has-text-white-bis"> <i class="fa fa-link" aria-hidden="true"></i> <br><br>
-              <strong>The Atlantic:</strong> <br>3 Million Uber Drivers Are About to Get a New Boss</h2><br>
+      <ul class="menu-list">
+        <p class="menu-label is-hidden-touch">On this page</p>
+        <li>
+          <a href="#project-overview" class="project-overview is-active">
+            <span class="icon"><i class="fa fa-eye"></i></span> Project overview
           </a>
-          <h2>Published on: April 10, 2018 </h2>
+        </li>
+        <li>
+          <a href="#problem-statement" class="problem-statement">
+            <span class="icon"><i class="fa fa-exclamation-triangle"></i></span> Problem statement
+          </a>
+        </li>
+        <li>
+          <a href="#proposed-solution" class="proposed-solution">
+            <span class="icon"><i class="fa fa-magic"></i></span> Proposed solution
+          </a>
+        </li>
+        <li>
+          <a href="#design-process" class="design-process">
+            <span class="icon"><i class="fa fa-drafting-compass"></i></span> Design process
+          </a>
+
+          <ul>
+            <li>
+              <a href="#discover" class="discover">
+                <span class="icon is-small"><i class="fa fa-crosshairs"></i></span> Discovery phase
+              </a>
+            </li>
+            <li>
+              <a href="#define" class="define">
+                <span class="icon is-small"><i class="fa fa-pencil-ruler"></i></span> Defining phase
+              </a>
+            </li>
+            <li>
+              <a href="#ideate" class="ideate">
+                <span class="icon is-small"><i class="fa fa-user-astronaut"></i></span> Ideation phase
+              </a>
+            </li>
+            <li>
+              <a href="#test" class="test">
+                <span class="icon is-small"><i class="fa fa-map-signs"></i></span> Design phase
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#learnings" class="learnings">
+            <span class="icon"><i class="fa fa-book-reader"></i></span> Key learnings
+          </a>
+        </li>
+        <li>
+          <a href="#little-brag" class="little-brag">
+            <span class="icon"><i class="fas fa-star"></i></span> Little brag
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <section class="main-content columns is-fullheight">
+
+      <div class="container column is-10 scrollable-content">
+        <div class="section side-layout">
+
+          <div id="project-overview" class="scroll-padding">
+            <h2 class="title is-1">OLA / Uber - Cab drivers' experience 🚘
+              <hr>
+            </h2>
+            <p class="subtitle is-5 tags">
+               <span class="tag is-medium is-info is-light">
+                <strong>NID:</strong> &emsp; DP3
+              </span>
+              <span class="tag is-medium is-info is-light">
+                <strong>Role:</strong> &emsp; UX designer, researcher
+              </span>
+              <span class="tag is-medium is-info is-light">
+                <strong>Duration:</strong> &emsp; 10 weeks (Feb-Apr, 2018)
+              </span>
+              <span class="tag is-medium is-info is-light">
+                <strong>Contribution:</strong> &emsp; Individual
+              </span>
+            </p>
+
+            <h2 class="title is-3">
+              <hr> Overview
+            </h2>
+            <img class="research-data-image" src="../images/case-studies/cab-driver-experiences/coverImage.png">
+            <div id="pageTop"></div>
+            <br>
+            <p>Proposed the enhnacements to the user experience of 3rd party cab-aggregator drivers</p>
+            <br>
+            <p>
+              The project is the outcome of 4th semester design project for a duration of 10 weeks during February -
+              April 2018, at the National Institute of Design - Bengaluru, India.
+              The objective of the design project was to understand and apply the systems/service design process and
+              methods for conceptualization, while keeping the focus on <strong>System/ Service design</strong>
+              paradigm.
+            </p>
           </div>
-  
-        </div>
-          <div class="column">
+
+          <div id="problem-statement" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br> Problem statement
+            </h2>
            
-            <div class="card-content has-background-black">
-              <a id="custom-card" href="https://www.uber.design/case-studies/driver-app" target="_blank" >
-              <h2 class="has-text-white-bis"> <i class="fa fa-link" aria-hidden="true"></i> <br><br>
-                <strong>Uber Design:</strong> <br>The New Driver App: Building a better co-pilot              </h2><br>
-            </a>
-            <h2>Published on: April, 2018 </h2>
+            
+            <p> The project was aimed at exploring the existing modes of transportation within the urban cities, and understand the existing problems faced by commuters
+               in their daily commute. Intially, it started off with the travellers as primary target audience in mind, but with time and further research it was discovered
+               that not only travellers have better solutions to avail transportation but also helped in identifying the friction that existed between the riders and drivers.
+               <br>
+               On further investigation, it was found that the for riders there were so many ways of making their experience more easy, however the other side of the equation
+               i.e. drivers were totally ignored by the transportation system.
+               
+               <br>
+               The focus of this project was on the cab travel experience because most of the users (i.e. riders) interviewed initially, were mostly using cabs for their commuting needs.
+               And they complained about the driver behaviours. To understand why does that happen, drivers were interviewed and they had a completely
+               different story to narrate. 
+               <br> <br> Therefore, resulting into the complete direction change in the research focussing on drivers as primary persona for further studies and coming up with below design brief i.e.
+              </p>
+              <blockquote>
+                To make the experience more simpler, profitable and safer for aggregator cab drivers.
+              </blockquote>
+          </div>
+
+          <div id="proposed-solution" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br> Proposed solution
+            </h2>              
+            An enhancement list of new features was proposed for the existing cab aggregator app driver's mobile application as the end solution.
+            
+            <img class="design-process" src="../images/case-studies/cab-driver-experiences/proposedSolution.png">
+            
+            <h2 class="title is-5">🏷️ User Interface Design</h2>
+            <img style="box-shadow: 0px 1px 10px 0px rgba(200,200,200,0.4);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/01.png">
+            <img style="box-shadow: 0px 1px 10px 0px rgba(200,200,200,0.4);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/02.png">
+            <img style="box-shadow: 0px 1px 10px 0px rgba(200,200,200,0.4);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/03.png">
+            <i> * The content is an exclusive set of features proposed in the solution. Please get in tocuh with me to discuss the content offline.</i>
+            <img style="box-shadow: 0px 1px 10px 0px rgba(200,200,200,0.4);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/04.png">
+            <img style="box-shadow: 0px 1px 10px 0px rgba(200,200,200,0.4);"src="../images/case-studies/cab-driver-experiences/mobileAppScreens/05.png">
+            <img style="box-shadow: 0px 1px 10px 0px rgba(200,200,200,0.4);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/06.png">
+          </div>
+
+
+          <div id="design-process" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br> Design Process
+            </h2>
+
+            <figure class="image">
+              <img src="../images/case-studies/cab-driver-experiences/designProcess.png" alt="Placeholder image">
+            </figure>
+
+            <div class="video-wrapper">
+              <!-- USE various aspect ratios recommended : 960x540 -->
+              <!-- <iframe width="960" height="540" src="https://www.youtube.com/embed/H5lYglxiR-E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+              <!-- <iframe width="1224" height="689" src="https://www.youtube.com/embed/LWoyX4sbSuM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+              <!-- <iframe width="960" height="540" src="https://www.youtube.com/embed/LWoyX4sbSuM" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+             <iframe src="https://player.vimeo.com/video/243557231" width="960" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
             </div>
+
+          </div>
+
+          <div id="discover" class="scroll-padding">
+            <h2 class="title is-4"> <br> Discovery phase
+            </h2>
+
+            For this project I intended to do something with the<strong class="highlightIt"> transportation system in
+              the city </strong> (like Bangalore). So, I started off by conducting a participatory brainstorming session
+            with a group of people who had
+            different experiences in travelling within a city (going to college / office / resturants / pubs etc.); and
+            asked them to write down with anything that comes to their mind related to transportation within a city like
+            Bangalore (without discussing
+            anything with other participants). <br><br>
+
+            <h2 class="title is-5">🏷️ Participatory brainstorming session </h2>
+            <img class="design-process"
+              src="../images/case-studies/cab-driver-experiences/processDocumentation/participatoryBrainstorming.png">
+            
+            
+
+
+            After the brainstorming session, all the points that the participants had jotted down were discussed amongst
+            the participating group, and <strong class="highlightIt">affinity mapping</strong> of the ideas was done to
+            explore the different domains
+            that emerged from the exercise.</p>
+
+            As an output of the above exercise, few<strong class="highlightIt"> problem domains</strong> emerged (listed
+            below) which were wide enough for the participants to frame HOW MIGHT WE question on those topics.
+
+            <ul>
+
+              <li>■&emsp;Information accessibility</li>
+              <li>■&emsp;Language Barrier</li>
+              <li>■&emsp;<strong>Safety</strong></li>
+              <li>■&emsp;<strong>Causes of Frustrations (Commuters / Drivers)</strong></li>
+              <li>■&emsp;Infrastructure</li>
+              <li>■&emsp;Expensive (Travelling cost)</li>
+
+            </ul>
+
+
+
+            <p>Later on, I invited different group of participants to rate the <strong class="highlightIt">How Might
+              We</strong> questions, so that the voting would remain unbaised and brings new perspective to the already
+            identified problem areas.</p>
+            <br>
+
+
+            <h2 class="title is-5">🏷️ How Might We? (Voting and Discussions with peers) </h2>
+            <img class="research-data-image"
+              src="../images/case-studies/cab-driver-experiences/processDocumentation/howMightWe.png">
+           
+
+            <!-- <h4>HMW Outcome:</h4> -->
+            <blockquote cite="http://">
+              How Might We <strong class="highlightIt">encourage the urban commuting</strong> TO <strong
+                class="highlightIt">enhance the experience of people</strong> with the help of technology?
+            </blockquote>
+
+            For this I started off my primary research by <strong class="highlightIt">observing the interactions between
+              transpotation service providers</strong> (drivers / conductors / air hostesses etc.) and <strong
+              class="highlightIt"> passengers</strong>. <br><br>
+
+              <h2 class="title is-5">🏷️ Observations made during the various inter and intra city travel</h2>
+            <img class="research-data-image"
+              src="../images/case-studies/cab-driver-experiences/processDocumentation/fieldObservations.png">
+            
+            <p>
+            Being in constant discussions with my faculty, friends, and fellow designers; I realised there were many
+            solution already existing for the commuters <strong class="highlightIt">but there were hardly any solutions
+              which took care of the drivers / conductors' experience</strong> while they perform their duty.
+            So I decided to work on a smaller system of aggregated cab services in India, to understand how drivers are
+            affected and how their user experience can be improved?</p>
+
+          </div>
+
+
+          <div id="define" class="scroll-padding">
+            <h2 class="title is-4"> <br>Defining phase
+            </h2>
+          
+            <h2 class="title is-5">🏷️ Primary Research - Observing OLA / UBER mobile apps being used by cab drivers.</h2>
+            <img class="research-data-image"
+              src="../images/case-studies/cab-driver-experiences/processDocumentation/contextualInquiry.png">
+            
+            
+            <h2 class="title is-5">🏷️ Secondary Research - Policies related to cab aggregator services</h2>
+            <img class="research-data-image" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.5);"
+              src="../images/case-studies/cab-driver-experiences/processDocumentation/secondaryResearchMaterials.png">
+            
+            <br>
+            <br>
+            <h2 class="title is-5">🏷️ User research summary</h2>
+            <img class="research-data-image"
+              src="../images/case-studies/cab-driver-experiences/processDocumentation/researchDataSynthesis.png">
+            <strong>Key Observations</strong>
+            <ul>
+              <li>■&emsp;Drivers are concerned about their life and car’s safety, driving late in night</li>
+              <li>■&emsp;Complaints made by drivers are not acted upon immediately by customer care</li>
+              <li>■&emsp;Most of the government and other cab policies are not cab driver friendly</li>
+              <li>■&emsp;Many cab drivers have been falsely alleged for harassment of female passengers</li>
+              <li>■&emsp;Multiple cab drivers park their cars together on the road while staying for the night, for
+                safety reasons </li>
+            </ul>
+            <br>
+
+            <blockquote cite="http://">
+              All these studies pointed out that there is an opportunity area to intervene in designing better user
+              experiences for the cab drivers.
+            </blockquote>
+           
+
+
+<br>
+            <h2 class="title is-5">🏷️ System Overview: City Transportation (Cab Aggregators)</h2>
+            <ul>
+              <li> 1. Overall Transportation System overview
+                <img src="../images/case-studies/cab-driver-experiences/systemUnderstanding/01.png">
+              </li><br>
+              <li>2. Government Policies Sub-System
+                <img src="../images/case-studies/cab-driver-experiences/systemUnderstanding/02.png">
+              </li><br>
+              <li>3. Cab Driver's Experience Sub-System
+                <img src="../images/case-studies/cab-driver-experiences/systemUnderstanding/03.png">
+              </li><br>
+              <li>4. Rider's Experience Sub-System
+                <figure class="image"><img
+                    src="../images/case-studies/cab-driver-experiences/systemUnderstanding/04.png"></figure>
+              </li>
+            </ul>
+          </div>
+
+
+          <div id="ideate" class="scroll-padding">
+            <h2 class="title is-4"><br>Ideation phase
+            </h2>
+            <div>
+            <h2 class="title is-5">🏷️ Why OLA was considered as a case study? </h2>
+            <p>For this project, the <strong class="highlightIt"> drivers' experience sub-system was selected </strong>
+              to work on further. For this cab aggregator Services like OLA and UBER were being considered, out of which
+              OLA was selected as the case study
+              because of the mentioned figures about OLA (being a major player in Indian market) but the same is equally
+              applicable for Uber as well.
+            </p>
+            <img class="design-process" src="../images/case-studies/cab-driver-experiences/whyOlaAsCaseStudy.png">
+            </div>
+
+            <div>
+            <h2 class="title is-5">🏷️ Service Blueprint</h2>
+            <img class="design-process" src="../images/case-studies/cab-driver-experiences/serviceBlueprint.png">
+          </div>
+            <div>
+              <br>
+            <h2 class="title is-5">🏷️ Perspective Framework - W.W.W.W.H</h2>
+            <img class="design-process" src="../images/case-studies/cab-driver-experiences/perspectiveFramework.png">
+          </div>
+
+           <div> 
+             <br>
+             <h2 class="title is-5">🏷️ Design ideas</h2>
+            <br>
+            <div class="columns">
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/01.png">
+                </div>
+              </div>
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/02.png">
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/03.png">
+                </div>
+              </div>
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/04.png">
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/05.png">
+                </div>
+              </div>
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/06.png">
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column">
+                <div class="card-image">
+                  <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/07.png">
+                </div>
+              </div>
+              <div class="column">
+                <div class="card-image">
+                  <!-- <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/02.png"> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section persona">
+            <h2 class="title is-5">👉User persona</h2>
+            <p class="firstParaMargin highlightIt">
+      
+            </p>
+            <img src="../images/case-studies/cab-driver-experiences/personas.png">
+          </div>
+      
+          <div class="section userJourneyMap">
+            <h2 class="title is-5">👉Customer Journey Map</h2>
+            </p>
+              For this journey map we will consider the persona of Rameshwara, who starts of his day as <strong class="highlightIt">OLA</strong> driver at 6:30 am daily (except Sundays). Below is a scenario illustrating a day in life of cab drivers like Rameshwara.
+            </p>
+            <img class="design-process" style="border-top: 3px solid black;border-bottom: 3px solid black;" src="../images/case-studies/cab-driver-experiences/userJourneyMap.png">
+          </div>
+          </div>
+
+         
+
+            <div id="test" class="scroll-padding">
+              <h2 class="title is-3">Design phase</h2>
+              <h2 class="title is-5">🏷️ Final Prototype</h2>
+              <div class="video-wrapper has-text-centered">
+                <iframe src="https://marvelapp.com/47ifj81?emb=1&iosapp=false&frameless=false" width="449" height="868" allowTransparency="true" frameborder="0"></iframe>
+              </div>
+            
+              <h2 class="title is-5">🏷️ User testing: with actual drivers</h2>
+              <img class="design-process" src="../images/case-studies/cab-driver-experiences/userTesting.png">
+              <br>
+              <h2 class="title is-5">🏷️ Observations from the UT</h2>
+              <ul>
+                <li>■&emsp;Mental model of the mobile app is existing with the OLA Partners.</li>
+                <li>■&emsp;They easily got used to the concept of how to access the new features.</li>
+                <li>■&emsp;However, they were sceptical about possibility of these features because they feel they are on their own and OLA would not go through all of these pains to help them out.</li>
+              </ul>
+            
+        
+        <br>
+              <h2 class="title is-5">🏷️ Future scope of work</h2>
+              <p>
+                The mobile application features list for OLA is just the <strong>1st part of the BIG solution</strong> as an outcome of this project. Apart from the mobile application enhancement, I am in the process of making a <strong>business model proposal for cab
+               aggregator services like OLA / Uber</strong> keeping in mind the cab driver's Experiences, which <strong>NOT ONLY</strong> provides them new avenues to generate revenues for their business model <strong>BUT ALSO</strong> allows them to retain a
+                loyal drivers fleet for the long run. <br><br>
+              <i>The development of the business model is currently a W.I.P (work in progress), please check back for the business model section (to be added soon).</i>
+            </p>
+            </div>
+
+          
+
+          <div id="learnings" class="scroll-padding">
+            <h2 class="title is-3"> <br>
+              <hr><br>Key Learnings
+            </h2>
+
+            <p><i class="has-text-info fas fa-check-circle"></i> &#09;Realised the how important it is to bounce off your ideas to different people and get their perspective.</p>
+            <p><i class="has-text-info fas fa-check-circle"></i> &#09;Made use of the methods that I learnt during the Bangalore Service JAM 2018, e.g. participatory brainstorming and HMW techniques.</p>
+            <p><i class="has-text-info fas fa-check-circle"></i> &#09;Build a basic understanding of how to study a service / system, using various perspectives. Learnt how to use PESTEL and WWWWH frameworks.</p>
+            <p><i class="has-text-info fas fa-check-circle"></i> &#09;Was able to conduct an actual user testing with real users (i.e. Cab Drivers) though very few in numbers; realised how easy it would be to test something which they are really used to (in this case existing OLA driver mobile app).</p>
+            
+          </div>
+
+          <div id="little-brag" class="scroll-padding">
+            <h2 class="title is-3">
+              <hr>Key Highlight + Little Bragging 😉</h2>
+            This complete project was <strong>independently</strong> conceived and presented as a Design Project outcome
+            of <strong>10 Weeks</strong> duration (<strong>February - April 2018</strong>) in
+            <strong>M.Des Interaction Design</strong> 4th Semester at National Institute of Design, India. <br><br>
+
+            Some of my design research observations and insights proposed feature enhancements for Cab Aggregator
+            services (i.e. taking OLA as a case study), for example <br> <br>
+            👉 easy accessibility of necessary trip information (including live traffic data) <br><br>
+            👉 enhancing the heat map interaction <br> <br>
+            were similar to what Uber has introduced in their <a href="https://www.uber.design/case-studies/driver-app">
+              "The New Driver App: Building a better co-pilot"</a> launched in <strong> April 2018</strong> . However, the 
+            research findings had few more features which were not implemented by any of the cab aggregator app as of then. <br> <br>
+
+
+            <div class="columns">
+
+              <div class="column">
+
+                <div class="card-content has-background-black">
+                  <a id="custom-card"
+                    href="https://www.theatlantic.com/technology/archive/2018/04/uber-driver-app-revamp/557117/"
+                    target="_blank">
+                    <h2 class="has-text-white-bis"> <i class="fa fa-link" aria-hidden="true"></i> <br><br>
+                      <strong>The Atlantic:</strong> <br>3 Million Uber Drivers Are About to Get a New Boss
+                    </h2><br>
+                  </a>
+                  <h2>Published on: April 10, 2018 </h2>
+                </div>
+
+              </div>
+              <div class="column">
+
+                <div class="card-content has-background-black">
+                  <a id="custom-card" href="https://www.uber.design/case-studies/driver-app" target="_blank">
+                    <h2 class="has-text-white-bis"> <i class="fa fa-link" aria-hidden="true"></i> <br><br>
+                      <strong>Uber Design:</strong> <br>The New Driver App: Building a better co-pilot
+                    </h2><br>
+                  </a>
+                  <h2>Published on: April, 2018 </h2>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+
+          <!-- Pagination  -->
+          <footer class="footer custom-bg-gradient">
+            <div class="has-text-centered ">
+              <p class="subtitle is-5 has-text-black">🙏 <br> Thanks for viewing the project! </p>
+              <p class="subtitle is-6 has-text-black">
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. <br> © All Rights Reserved 2016.
+      </p>
+            </div>
+          </footer>
         </div>
       </div>
-    </div>
 
-    <div class="section process">
-      <h2 class="title is-3">Design Process</h4>
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/designProcess.png">
-      <a class="button is-warning is-fullwidth is-medium" href="#finalSolution">Click here to get to the final solution directly!</a>
-    </div>
-
-    <div class="section research">
-      <h2 class="title is-3">User Research</h2>
-      
-        For this project I intended to do something with the<strong class="highlightIt"> transportation system in the city </strong> (like Bangalore). So, I started off by conducting a participatory brainstorming session with a group of people who had
-        different experiences in travelling within a city (going to college / office / resturants / pubs etc.); and asked them to write down with anything that comes to their mind related to transportation within a city like Bangalore (without discussing
-        anything with other participants). <br><br>
-      
-
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/processDocumentation/participatoryBrainstorming.png">
-      <p class="image-notes">Participatory brainstorming session.</p>
-
-      
-        After the brainstorming session, all the points that the participants had jotted down were discussed amongst the participating group, and <strong class="highlightIt">affinity mapping</strong> of the ideas was done to explore the different domains
-        that emerged from the exercise.</p>
-
-      As an output of the above exercise, few<strong class="highlightIt"> problem domains</strong> emerged (listed below) which were wide enough for the participants to frame HOW MIGHT WE question on those topics.
-        
-          <li>Information accessibility</li>
-          <li>Language Barrier</li>
-          <strong class="highlightIt"><li>Safety</li>
-          <li>Causes of Frustrations (Commuters / Drivers)</li></strong>
-          <li>Infrastructure</li>
-          <li>Expensive (Travelling cost)</li>
-        
-      
-      
-        Later on, I invited different group of participants to rate the <strong class="highlightIt">How Might We</strong> questions, so that the voting would remain unbaised and brings new perspective to the already identified problem areas.
-      
-      <img class="research-data-image" src="../images/case-studies/cab-driver-experiences/processDocumentation/howMightWe.png">
-      <p class="image-notes"> <strong class="highlightIt">How Might We</strong> : Voting and Discussions with peers</p>
-
-      <!-- <h4>HMW Outcome:</h4> -->
-      <blockquote cite="http://">
-        How Might We <strong class="highlightIt">encourage the urban commuting</strong> TO <strong class="highlightIt">enhance the experience of people</strong> with the help of technology?
-      </blockquote>
-
-      For this I started off my primary research by <strong class="highlightIt">observing the interactions between transpotation service providers</strong> (drivers / conductors / air hostesses etc.) and <strong class="highlightIt"> passengers</strong>. <br><br>
-      
-      <img class="research-data-image" src="../images/case-studies/cab-driver-experiences/processDocumentation/fieldObservations.png">
-      <p class="image-notes">Observations made during the various inter and intra city travel</p>
-      
-        Being in constant discussions with my faculty, friends, and fellow designers; I realised there were many solution already existing for the commuters <strong class="highlightIt">but there were hardly any solutions which took care of the drivers / conductors' experience</strong>        while they perform their duty.
-      So I decided to work on a smaller system of aggregated cab services in India, to understand how drivers are affected and how their user experience can be improved?
-      
-
-
-    </div>
-
-    <div class="section understanding-data">
-      <h2 class="title is-3">Final Design Brief</h2>
-      <blockquote>
-        To make the experience more simpler, profitable and safer for aggregator cab drivers.
-      </blockquote>
-
-
-    </div>
-
-    <div class="section understanding-data">
-      <img class="research-data-image" src="../images/case-studies/cab-driver-experiences/processDocumentation/contextualInquiry.png">
-      <p class="image-notes">Primary Research - Observing OLA / UBER mobile apps being used by cab drivers.</p>
-      <img class="research-data-image" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.5);" src="../images/case-studies/cab-driver-experiences/processDocumentation/secondaryResearchMaterials.png">
-      <p class="image-notes">Secondary Research - Policies related to cab aggregator services</p>
-      <img class="research-data-image" src="../images/case-studies/cab-driver-experiences/processDocumentation/researchDataSynthesis.png">
-      <strong class="highlightIt">Key Observations</strong>
-      
-        <li>Drivers are concerned about their life and car’s safety, driving late in night</li>
-        <li>Complaints made by drivers are not acted upon immediately by customer care</li>
-        <li>Most of the government and other cab policies are not cab driver friendly</li>
-        <li>Many cab drivers have been falsely alleged for harassment of female passengers</li>
-        <li>Multiple cab drivers park their cars together on the road while staying for the night, for safety reasons </li>
-      
-      <br>
-
-      All these studies pointed out that there is an opportunity area to intervene in designing better user experiences for the cab drivers.
-    </div>
-
-    <div class="section systemUnderstanding">
-      <h2 class="title is-3">System Overview : City Transportation (Cab Aggregators)</h2>
-      <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.5);" src="../images/case-studies/cab-driver-experiences/systemUnderstanding/01.png">
-      <p class="image-notes"> Overall Transportation System overview</p>
-
-      
-
-      </p>
-      <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.5);" src="../images/case-studies/cab-driver-experiences/systemUnderstanding/02.png">
-      <p class="image-notes">Government Policies Sub-System</p>
-
-      <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.5);" src="../images/case-studies/cab-driver-experiences/systemUnderstanding/03.png">
-      <p class="image-notes">Cab Driver's Experience Sub-System</p>
-
-      <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.5);" src="../images/case-studies/cab-driver-experiences/systemUnderstanding/04.png">
-      <p class="image-notes">Rider's Experience Sub-System</p>
-
-
-
-    </div>
-
-
-
-    <div class="section serviceBlueprint">
-      <h2 class="title is-3">Why OLA as a case study for this project?</h2>
-      <br>
-      
-        For this project, the <strong class="highlightIt"> drivers' experience sub-system was selected </strong> to work on further. For this cab aggregator Services like OLA and UBER were being considered, out of which OLA was selected as the case study
-        because of the mentioned figures about OLA (being a major player in Indian market).
-      </p>
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/whyOlaAsCaseStudy.png">
-    </div>
-
-
-    <div class="section serviceBlueprint">
-      <h2 class="title is-3">Service Blueprint</h2>
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/serviceBlueprint.png">
-    </div>
-
-    <div class="section serviceBlueprint">
-      <h2 class="title is-3">Perspective Framework - W.W.W.W.H</h2>
-      <p class="firstParaMargin highlightIt">
-
-      </p>
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/perspectiveFramework.png">
-    </div>
-
-    <div class="section persona">
-      <h2 class="title is-3">Personas</h2>
-      <p class="firstParaMargin highlightIt">
-
-      </p>
-      <img class="design-process" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/personas.png">
-    </div>
-
-    <div class="section userJourneyMap">
-      <h2 class="title is-3">Customer Journey Map</h2>
-      </p>
-        For this journey map we will consider the persona of Rameshwara, who starts of his day as <strong class="highlightIt">OLA</strong> driver at 6:30 am daily (except Sundays). Below is a scenario illustrating a day in life of cab drivers like Rameshwara.
-      </p>
-      <img class="design-process" style="border-top: 3px solid black;border-bottom: 3px solid black;" src="../images/case-studies/cab-driver-experiences/userJourneyMap.png">
-    </div>
-
-    <br>
-    <div class="section prototype">
-      <h2 class="title is-3">Design Concepts</h2>
-      <br>
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/01.png">
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/02.png">
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/03.png">
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/04.png">
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/05.png">
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/06.png">
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/concepts/07.png">
-    </div>
-
-
-
-    <div class="section proposed-design">
-      <h2 class="title is-3">Proposed Design Solution</h2>
-      
-      Based on the overall understanding of the system and user experience of cab drivers, an enhancement
-      list of new features is proposed for the existing OLA driver's mobile application as the end solution.
-      
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/proposedSolution.png">
-    </div>
-
-    <!-- To be enabled with content filled -->
-    <div id="finalSolution">
-
-      <div class="section how-it-works">
-        <h2 class="title is-3">User Interface Design</h2>
-        <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/01.png">
-        <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/02.png">
-        <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/03.png">
-        <p class="image-notes" style="color:black;font-weight:bolder"> * The content is an exclusive set of features proposed in the solution, and may be subject to copyright. <br> Please get in tocuh with me to discuss the content offline.</p>
-        <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/04.png">
-        <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/05.png">
-        <img class="design-process system-overview" style="box-shadow: 0px 3px 19px 0px rgba(200,200,200,0.8);" src="../images/case-studies/cab-driver-experiences/mobileAppScreens/06.png">
-      </div>
-    </div>
-    <div class="section userTesting">
-      <h2 class="title is-3">Final Prototype</h2>
-      <div class="video-wrapper">
-        <!-- <iframe width="960" height="540" src="https://www.youtube.com/embed/H5lYglxiR-E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-        <!-- <iframe width="1224" height="689" src="https://www.youtube.com/embed/LWoyX4sbSuM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-        <iframe src="https://marvelapp.com/47ifj81?emb=1&iosapp=false&frameless=false" width="449" height="868" allowTransparency="true" frameborder="0"></iframe>
-      </div>
-    </div>
-
-    <div class="section userTesting">
-      <h2 class="title is-3">User Testing: (with actual cab drivers)</h2>
-      <img class="design-process" src="../images/case-studies/cab-driver-experiences/userTesting.png">
-      <h2 class="title is-4">Observations from the UT</h2>
-      
-        <li>Mental model of the mobile app is existing with the OLA Partners.</li>
-        <li>They easily got used to the concept of how to access the new features.</li>
-        <li>However, they were sceptical about possibility of these features because they feel they are on their own and OLA would not go through all of these pains to help them out.</li>
-      
-    </div>
-
-    <div class="section future-scope">
-      <h2 class="title is-3">Future Scope</h2>
-      
-        The mobile application features list for OLA is just the <strong>1st part of the BIG solution</strong> as an outcome of this project. Apart from the mobile application enhancement, I am in the process of making a <strong>business model proposal for cab
-       aggregator services like OLA / Uber</strong> keeping in mind the cab driver's Experiences, which <strong>NOT ONLY</strong> provides them new avenues to generate revenues for their business model <strong>BUT ALSO</strong> allows them to retain a
-        loyal drivers fleet for the long run. <br><br>
-      The development of the business model is currently a W.I.P (work in progress), please check back for the business model section (to be added soon).
-    </div>
-
-    <div class="section key-takeaways">
-      <h2 class="title is-3">Key Takeaways</h2>
-      <br>
-      
-        <li>Realised the how important it is to bounce off your ideas to different people and get their perspective.</li>
-        <li>Made use of the methods that I learnt during the Bangalore Service JAM 2018, e.g. participatory brainstorming and HMW techniques.</li>
-        <li>Build a basic understanding of how to study a service / system, using various perspectives. Learnt how to use PESTEL and WWWWH frameworks.</li>
-        <li>Was able to conduct an actual user testing with real users (i.e. Cab Drivers) though very few in numbers; realised how easy it would be to test something which they are really used to (in this case existing OLA driver mobile app).</li>
-      
-    </div>
+    </section>
 
   </div>
 
-  <!-- Pagination  -->
-  <footer class="footer has-background-light">
-    <div class="has-text-centered ">
-      <p class="subtitle is-5 has-text-black">🙏 <br> Thanks for viewing the project! </p>
-        <p class="subtitle is-6 has-text-black">
 
-This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. <br><br> © All Rights Reserved 2018.
-      </p>
-    </div>
-  </footer>
+
 
   <script type="text/javascript">
-    window.sr = ScrollReveal();
-    sr.reveal('.projectTitle', 10);
+    var config = {
+      origin: 'top',
+      distance: '2.5rem',
+      easing: 'ease-in-out',
+    };
+    window.sr = ScrollReveal(config);
+    sr.reveal('.projectTitle', 5);
     // sr.reveal('.section');
+    // sr.reveal('.column');
+
   </script>
+  <script src="../js/sideNavScroll.js" charset="utf-8"></script>
 </body>
 
 </html>
