@@ -4,15 +4,13 @@
   box-sizing: border-box;
 }
 
-html{
-  scroll-behavior: smooth;
-}
+
 body {
   font-family: "muli", sans-serif;
-  font-size: 1.2rem;
+  font-size: 14px;
   letter-spacing: -0.003em;
-  line-height: 2.1rem;
-  color: #313233;
+  line-height: 2.4rem;
+  color: #212223;
   font-weight: 300;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -499,12 +497,12 @@ left:50%;
 NOTE: Project Details Page Layout
 ////////////////////////////////////////////////////////////////////////////////////////*/
 .projectDetail{
-  margin-top: 5%;
+  margin-top: 7%;
 }
 .projectDetail h1, .projectDetail h4, .section h4{
   font-family: "muli",sans-serif;
   /* color: #224CCF; */
-  color: #414243;
+  color: black;
 
 }
 .projectTitle{
@@ -514,41 +512,10 @@ NOTE: Project Details Page Layout
   margin: 70px 0 4rem;
   /* text-transform: uppercase; */
 }
-
-.section{
-  padding-bottom: 0%;
-}
 .projectDetail .section{
-  margin: 2% 16% 2% 4%;      /* Change the margins to make the caseStudy content centered to the page.  */
-  padding-top: 12px;
-  font-size: 1.2em;
-}
-
-.side-layout{
-  margin:0% 14% 0% 0%;
-}
-
-.scrollable-content{
-  border-left: #eaeaea 1px solid ;
-}
-
-.sticky	{
-	position:sticky;
-  top:30px;
-}
-
-.scroll-padding{
-  margin-top: 2%;
-}
-
-#learnings{
-  margin-bottom: 15%;
-}
-
-.custom-bg-gradient{
-background: #E0EAFC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin: 2% 19%;      /* Change the margins to make the caseStudy content centered to the page.  */
+  padding-top: 20px;
+  font-size: 1.4em;
 }
 
 .projectDetail .section p,
@@ -563,9 +530,9 @@ background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, F
   font-weight: 400; */
 
   font-family: "muli", sans-serif;
-  font-size: 1.2rem;
-  color: #414141;
-  font-weight: 300;
+  font-size: 16px;
+  color: #555d6d;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
 -webkit-font-smoothing: antialiased;
 }
@@ -878,12 +845,6 @@ opacity: 0.2;
 .photo-grid {
   max-width: 1200px;
 }
-}
-
-@media screen and (max-width: 768px) {
-  #menu-toggle:checked + .nav-menu {
-    display: block;
-  }
 }
 
 
