@@ -33,6 +33,7 @@
     <script src="js/scrollreveal.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="shortcut icon" href="../images/logo@1x.png">
     <style type="text/css">
         /* NOTE: Start of Scroll Down MouseIcon styling */
@@ -153,11 +154,42 @@
       </section>
       
       
+      <section class="category-tabs">
+        <br>
+        <div class="tabs is-boxed is-centered is-toggle">
+          <ul>
+            <li data-list="corporate-tab">
+              <a href="#corporate-work" >
+                <!-- <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span> -->
+                <span>Corporate Work</span>
+              </a>
+            </li>
+            <li data-list="nid-project-tab">
+              <a href="#nid-projects" >
+                <!-- <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span> -->
+                <span>NID Projects</span>
+              </a>
+            </li>
+            <li data-list="design-exercise-tab">
+              <a href="#design-exercises">
+                <!-- <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span> -->
+                <span>Desgin Exercises</span>
+              </a>
+            </li>
+            <li data-list="side-project-tab">
+              <a href="#side-projects">
+                <!-- <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span> -->
+                <span>Side Projects</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
 <section>
 
 <!-- Ciena MCP -->
-<div>
+<div class="tab-content corporate-tab">
   <br>
   <div class="columns is-gapless has-background-white-bis">
     <div class="column is-1"></div>
@@ -193,9 +225,18 @@
   </div>
 </div>  
 <!-- UBER CASE STUDY -->
-<!-- <div>
-  <div class="columns is-gapless">
+<div class="tab-content design-exercise-tab">
+  <br>
+  <div class="columns is-gapless has-background-white-bis">
     <div class="column is-1 "></div>
+    
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/case-studies/uber-case-study/uber-case-study.png" alt="Placeholder image">
+        </figure>
+      </div>
+    </div>
     <div class="column is-5">
       <div class="columns">
         <div class="column is-1"></div>
@@ -212,22 +253,24 @@
         <div class="column is-3"></div>
       </div>
     </div>
-    <div class="column is-5">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src="./images/" alt="Placeholder image">
-        </figure>
-      </div>
-    </div>
     <div class="column is-1"></div>
   </div>
-</div>   -->
+</div>  
 
 
   <!-- AIRTEL CASE STUDY -->
-<!-- <div>
-  <div class="columns is-gapless">
+<div class="tab-content design-exercise-tab">
+  <br>
+  <div class="columns is-gapless has-background-white">
     <div class="column is-1 "></div>
+    
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="./images/airtel-thanks-app.png" alt="Placeholder image">
+        </figure>
+      </div>
+    </div>
     <div class="column is-5">
       <div class="columns">
         <div class="column is-1"></div>
@@ -246,19 +289,12 @@
         <div class="column is-3"></div>
       </div>
     </div>
-    <div class="column is-5">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src="./images/airtel-thanks-app.png" alt="Placeholder image">
-        </figure>
-      </div>
-    </div>
     <div class="column is-1"></div>
   </div>
-</div>   -->
+</div>  
 
 <!-- Zeta Cipher -->
-<div>
+<div class="tab-content corporate-tab">
   <br>
   <div class="columns is-gapless">
     <div class="column is-1"></div>
@@ -295,7 +331,7 @@
 </div>
 
 <!-- NIYO BHARAT APP -->
-<div>
+<div class="tab-content corporate-tab">
   <br>
   <div class="columns is-gapless has-background-white-bis">
     <div class="column is-1 "></div>
@@ -337,7 +373,7 @@
 </div>
 
 <!-- Samsung Rewards Platform -->
-<div>
+<div class="tab-content corporate-tab">
   <br>
   <div class="columns is-gapless ">
     <div class="column is-1 "></div>
@@ -371,10 +407,49 @@
     <div class="column is-1 "></div>
   </div>
 </div>
-<!-- PlayUp Mobile App -->
-<div>
+
+<!-- Fixrishta Mobile App -->
+<div class="tab-content side-project-tab">
   <br>
   <div class="columns is-gapless has-background-white-bis">
+    <div class="column is-1 "></div>
+    <div class="column is-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <a href="./case-study/playup.html" target="_blank"><img src="./images/case-studies/fixrishta/fixrishta-webpage-hero.png" alt="Placeholder image" id="card_image"></a>
+        </figure>
+      </div>
+    </div>
+    <div class="column is-5">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="card-content"> <br><br>
+          <p class="subtitle is-6"><i class="fas fa-eye-slash"></i> Side Project | UI/UX Design | 2021 | Collaborators (2) </p>
+                  <br> 
+                  <p class="title">Fixrishta App </p>
+                    <img src="./images/rectangle_bar.png">
+                  <p class="subtitle"><br> Fix the rishta - smarter way! 
+                    <br> <br>
+                      Dating is too casual & traditional matrimony is too sanskari to find your Mr. / Mrs. right!
+                    </p>
+                    <br>
+                    <span class="subtitle is-6">
+                      <a href="mailto:g.hemant2007@gmail.com?subject=Interseted in discussing Fix-Rishta app" target="_blank"> 👉 Drop a line to discuss further</a>
+                      <!-- <a href="https://www.figma.com/proto/L6wThlwQ9Ty7MrI23uLt7s/Subh-Managalam?node-id=35%3A0" target="_blank"> 👉 View figma prototype</a>   -->
+                  </span>
+                  <br>
+        </div>
+        <div class="column is-2"></div>
+      </div>
+    </div>
+    <div class="column is-1 "></div>
+  </div>
+</div>
+
+<!-- PlayUp Mobile App -->
+<div class="tab-content side-project-tab">
+  <br>
+  <div class="columns is-gapless has-background-white">
     <div class="column is-1 "></div>
     <div class="column is-5">
       <div class="card-image">
@@ -408,9 +483,9 @@
 
 
 <!-- Cab Driver's Experience -->
-<div>
+<div class="tab-content nid-project-tab">
   <br>
-  <div class="columns is-gapless">
+  <div class="columns is-gapless has-background-white-bis">
     <div class="column is-1 "></div>
     <div class="column is-5 ">
       <div class="card-image">
@@ -443,9 +518,9 @@
 </div>
 
 <!-- Video Watching Experience -->
-<div>
+<div class="tab-content nid-project-tab">
   <br>
-  <div class="columns is-gapless has-background-white-bis">
+  <div class="columns is-gapless has-background-white">
     <div class="column is-1 "></div>
 
     <div class="column is-5 ">
@@ -491,9 +566,9 @@
 
 
 <!-- Focus Pen -->
-<div>
+<div class="tab-content nid-project-tab">
   <br>
-  <div class="columns is-gapless">
+  <div class="columns is-gapless has-background-white-bis">
     <div class="column is-1"></div>
     
     <div class="column is-5">
@@ -530,9 +605,9 @@
 </div>
 
 <!-- Wearable Exerciser -->
-<div>
+<div class="tab-content nid-project-tab">
   <br>
-  <div class="columns is-gapless has-background-white-bis">
+  <div class="columns is-gapless has-background-white">
     <div class="column is-1"></div>
    
     <div class="column is-5">
@@ -603,6 +678,7 @@
   </footer> -->
 
   <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">  
+    <br>
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <p class="navbar-item">
@@ -644,11 +720,32 @@
 <script type="text/javascript">
   var config={
     origin:'top',
-    distance:'3rem',
+    distance:'1rem',
     easing:'ease-in-out',
   };
   window.sr = ScrollReveal(config);
   sr.reveal('.column');
 
 </script>
+
+<script> 
+$(document).ready(function(){
+    
+  $("ul li").click(function(){
+    $("ul li").removeClass("is-active");
+    $(this).addClass("is-active");
+
+    var current_tab_type = $(this).attr("data-list");
+    $(".tab-content").hide();
+    $("."+current_tab_type).show();
+    
+  });
+
+  $(".tab-content").hide();
+  $(".tab-content:first-child").show();
+  $("ul li:first-child").addClass("is-active");
+  $("ul li:first-child").click();
+});
+</script>
+
 </html>
