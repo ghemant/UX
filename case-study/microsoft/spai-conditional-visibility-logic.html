@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Visibility Logic Deep Dive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --paper: #FAFAF9;
+            --ink: #121212;
+            --muted: #717174;
+            --rule: rgba(18,18,18,.1);
+            --accent: #0d3d2e;
+            --warm: #EEF4F1;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { display: block; max-width: 100%; }
+
+        .shell { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+        .topbar {
+            border-bottom: 1px solid var(--rule);
+            padding: 14px 0;
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(250,250,249,.92);
+            backdrop-filter: blur(8px);
+        }
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .topbar-name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .topbar-nav { display: flex; gap: 4px; }
+        .topbar-nav a {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-radius: 2px;
+            transition: color .2s, background .2s;
+        }
+        .topbar-nav a:hover { color: var(--ink); background: var(--rule); }
+
+        .breadcrumb {
+            position: sticky;
+            top: 52px;
+            z-index: 190;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--rule);
+            font-size: 12px;
+            color: var(--muted);
+            background: rgba(250,250,249,.96);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-block {
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .hero-kicker {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+        .hero-h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: .96;
+            letter-spacing: -.02em;
+            font-weight: 400;
+            max-width: 920px;
+        }
+        .hero-lede {
+            margin-top: 28px;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(20px, 2.6vw, 30px);
+            line-height: 1.25;
+            font-style: italic;
+            color: #2a2a2a;
+            max-width: 900px;
+        }
+
+        .section {
+            padding: 68px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-inner {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .section-label {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+        }
+        .section-line {
+            margin-top: 16px;
+            height: 32px;
+            border-left: 1px solid var(--rule);
+        }
+        .body-h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+            margin-bottom: 14px;
+        }
+        .body-p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+        .body-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        .body-list li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+            align-items: start;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            color: var(--accent);
+            background: transparent;
+            white-space: nowrap;
+        }
+        .tag.owned {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .callout {
+            padding: 22px;
+            margin: 24px 0;
+            background: var(--warm);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+        }
+        .callout-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .callout-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .figma-embed {
+            margin: 28px 0;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .figma-embed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 16px;
+            background: var(--warm);
+            border-bottom: 1px solid var(--rule);
+        }
+        .figma-embed-title { font-weight: 600; font-size: 13px; }
+        .figma-embed-link {
+            font-size: 12px;
+            border-bottom: 1px solid var(--accent);
+            white-space: nowrap;
+        }
+        .figma-embed-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #fff;
+        }
+        .figma-embed-meta {
+            padding: 14px 16px;
+            font-size: 13px;
+            color: var(--muted);
+            border-top: 1px solid var(--rule);
+            background: var(--warm);
+        }
+        .site-footer {
+            border-top: 1px solid var(--rule);
+            padding: 32px 0;
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .footer-links { display: flex; gap: 20px; }
+
+        @media (max-width: 860px) {
+            .shell { padding: 0 20px; }
+            .section-inner { grid-template-columns: 1fr; gap: 20px; }
+            .figma-embed-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script src="theme-toggle.js"></script>
+</head>
+<body>
+<header class="topbar">
+    <div class="shell">
+        <div class="topbar-inner">
+            <span class="topbar-name">Hemant Gupta — SPAI Deep Dive</span>
+        </div>
+    </div>
+</header>
+
+<div class="breadcrumb">
+    <div class="shell">
+        <a href="full-journey.html">Full Journey</a> / <a href="full-journey.html#ch3">SharePoint AI Verticals</a> / <strong>Conditional Visibility Logic</strong>
+    </div>
+</div>
+
+<section class="hero-block">
+    <div class="shell">
+        <div class="hero-kicker">SharePoint AI Verticals Deep Dive / Oct 2025 – May 2026</div>
+        <h1 class="hero-h1">Conditional Visibility Logic — Design Owner</h1>
+        <p class="hero-lede">I treated conditional visibility as a platform behavior problem, not a one-off feature. My job was to turn vague expectations around dynamic forms into a rule system that PM, engineering, and design could all reason about in the same way.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Problem?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">The Product Needed Shared Logic, Not Just More UI</div>
+                <p class="body-p">By late 2025, SPAI had strong momentum around forms-led workflows, but conditional behavior was still too fragmented to scale cleanly. Different scenarios needed fields, sections, and downstream steps to appear or disappear based on user input, yet the product did not have one consistent mental model for how that logic should work.</p>
+                <p class="body-p">That created two problems at the same time: authors could not reliably predict what would happen in the form, and PM plus engineering teams did not have a stable UX language for discussing rule behavior, dependencies, or implementation tradeoffs.</p>
+                <div class="callout">
+                    <div class="callout-title">Why this mattered</div>
+                    <div class="callout-text">Without a clear conditional visibility system, DocGen Forms could not become a reusable foundation for legal, HR, and procurement scenarios. It would remain a set of bespoke flows instead of a platform capability.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Approach?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">I Used DocGen Forms As The Platform Anchor</div>
+                <p class="body-p">My approach was to frame conditional visibility as a system of user-facing semantics instead of isolated controls. I centered the work on rule-builder UX, AND/OR evaluation behavior, show/hide outcomes, and the interaction language required to make the model understandable to both authors and builders.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Rule model</span> <span>I focused on how conditions should be composed, read, and edited so that complex visibility logic could still feel understandable.</span></li>
+                    <li><span class="tag owned">Terminology</span> <span>I aligned language across design, PM, and engineering so the same behavior meant the same thing in specs, reviews, and implementation threads.</span></li>
+                    <li><span class="tag">Adjacent systems</span> <span>I kept the work connected to autofill, pagination, sectioning, and forms architecture so conditional visibility would behave like a core platform layer.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Finalized Solution?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">A Reusable Visibility Language For Dynamic Forms</div>
+                <p class="body-p">The solution I finalized was not just a cleaned-up screen. It was a clearer interaction model for conditional visibility inside DocGen Forms: authors could define rule behavior with more confidence, the system could express show/hide logic more consistently, and downstream product conversations had a more stable semantic foundation.</p>
+                <p class="body-p">In practical terms, the work established the UX direction for rule-builder behavior, clarified how visibility outcomes should be interpreted, and reduced ambiguity in the way dynamic form behavior was discussed across teams.</p>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">Conditional Visibility Logic — Feature Exploration</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/FtckWLV429L0yJfcFKtIDD/Conditional-visibility-logic?node-id=79-77221&t=cuBzo5ELJzjvBtpE-4" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/spai-conditional-visibility-logic.png" alt="Conditional visibility logic feature exploration from Figma" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Walkthrough note:</strong> this artifact captures the feature-specific conditional visibility exploration used to align rule behavior, visibility states, and authoring semantics.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">How Did It<br>Get Solved?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">Review Loops, Wall Reviews, and Cross-Functional Alignment</div>
+                <p class="body-p">I solved this through repeated design exploration and alignment rather than a single proposal. From roughly Feb through May 2026, I used artifact reviews, wall reviews, and design conversations with PM and engineering to narrow the rule behavior into something that could survive implementation pressure.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Design owner</span> <span>I drove the end-to-end UX direction for the conditional visibility stream.</span></li>
+                    <li><span class="tag">Collaborators</span> <span>I worked in active loops with partners including Vamshi Sagar Barla, Shreya Ganguly, Rasika Sapate, Ravi Gopinath, Manoj, and design peers.</span></li>
+                    <li><span class="tag">Resolution path</span> <span>I used review framing, terminology alignment, and adjacent-spec discussions to resolve ambiguity before it hardened into implementation debt.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Impact On<br>Business Goals?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">Platform Readiness, Not Just Feature Completion</div>
+                <p class="body-p">The business value of this work was that it made dynamic forms more reusable across vertical scenarios. Instead of solving conditional behavior differently for each workflow, I helped define a logic system that could support broader platformization goals.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Platform readiness</span> <span>I helped move SPAI from isolated feature execution toward reusable AI-vertical capability.</span></li>
+                    <li><span class="tag">Cross-functional clarity</span> <span>I reduced ambiguity across PM, design, and engineering handoffs, which directly supported faster and safer execution.</span></li>
+                    <li><span class="tag">Scale support</span> <span>The work strengthened the case for customer-first validation and reusable components, which were central to the broader SPAI scale plan in 2026.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="shell">
+        <div class="footer-inner">
+            <span>Built with AI &#10084;&#65039; by Hemant Gupta | 2022-2026</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

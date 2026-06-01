@@ -1,3 +1,6 @@
+/* Top of master CSS file */
+@import url('https://googleapis.com');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +11,7 @@ html{
   scroll-behavior: smooth;
 }
 body {
-  font-family: "muli", sans-serif;
+  font-family: 'Instrument serif', "inter","muli", sans-serif;
   font-size: 1.2rem;
   letter-spacing: -0.003em;
   line-height: 2.1rem;
@@ -502,7 +505,7 @@ NOTE: Project Details Page Layout
   margin-top: 5%;
 }
 .projectDetail h1, .projectDetail h4, .section h4{
-  font-family: "muli",sans-serif;
+  font-family: "Instrument Serif";
   /* color: #224CCF; */
   color: #414243;
 

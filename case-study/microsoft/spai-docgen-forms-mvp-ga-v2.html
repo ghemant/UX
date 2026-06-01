@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocGen Forms MVP to GA and V2 Deep Dive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --paper: #FAFAF9;
+            --ink: #121212;
+            --muted: #717174;
+            --rule: rgba(18,18,18,.1);
+            --accent: #0d3d2e;
+            --warm: #EEF4F1;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { display: block; max-width: 100%; }
+
+        .shell { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+        .topbar {
+            border-bottom: 1px solid var(--rule);
+            padding: 14px 0;
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(250,250,249,.92);
+            backdrop-filter: blur(8px);
+        }
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .topbar-name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .topbar-nav { display: flex; gap: 4px; }
+        .topbar-nav a {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-radius: 2px;
+            transition: color .2s, background .2s;
+        }
+        .topbar-nav a:hover { color: var(--ink); background: var(--rule); }
+
+        .breadcrumb {
+            position: sticky;
+            top: 52px;
+            z-index: 190;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--rule);
+            font-size: 12px;
+            color: var(--muted);
+            background: rgba(250,250,249,.96);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-block {
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .hero-kicker {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+        .hero-h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: .96;
+            letter-spacing: -.02em;
+            font-weight: 400;
+            max-width: 940px;
+        }
+        .hero-lede {
+            margin-top: 28px;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(20px, 2.6vw, 30px);
+            line-height: 1.25;
+            font-style: italic;
+            color: #2a2a2a;
+            max-width: 900px;
+        }
+
+        .section {
+            padding: 68px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-inner {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .section-label {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+        }
+        .section-line {
+            margin-top: 16px;
+            height: 32px;
+            border-left: 1px solid var(--rule);
+        }
+        .body-h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+            margin-bottom: 14px;
+        }
+        .body-p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+        .body-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        .body-list li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+            align-items: start;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            color: var(--accent);
+            background: transparent;
+            white-space: nowrap;
+        }
+        .tag.owned {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .callout {
+            padding: 22px;
+            margin: 24px 0;
+            background: var(--warm);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+        }
+        .callout-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .callout-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .figma-embed {
+            margin: 28px 0;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .figma-embed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 16px;
+            background: var(--warm);
+            border-bottom: 1px solid var(--rule);
+        }
+        .figma-embed-title { font-weight: 600; font-size: 13px; }
+        .figma-embed-link {
+            font-size: 12px;
+            border-bottom: 1px solid var(--accent);
+            white-space: nowrap;
+        }
+        .figma-embed-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #fff;
+        }
+        .figma-embed-meta {
+            padding: 14px 16px;
+            font-size: 13px;
+            color: var(--muted);
+            border-top: 1px solid var(--rule);
+            background: var(--warm);
+        }
+        .site-footer {
+            border-top: 1px solid var(--rule);
+            padding: 32px 0;
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .footer-links { display: flex; gap: 20px; }
+
+        @media (max-width: 860px) {
+            .shell { padding: 0 20px; }
+            .section-inner { grid-template-columns: 1fr; gap: 20px; }
+            .figma-embed-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script src="theme-toggle.js"></script>
+</head>
+<body>
+<header class="topbar">
+    <div class="shell">
+        <div class="topbar-inner">
+            <span class="topbar-name">Hemant Gupta - SPAI Deep Dive</span>
+        </div>
+    </div>
+</header>
+
+<div class="breadcrumb">
+    <div class="shell">
+        <a href="full-journey.html">Full Journey</a> / <a href="full-journey.html#ch3">SharePoint AI Verticals</a> / <strong>DocGen Forms MVP through GA and V2</strong>
+    </div>
+</div>
+
+<section class="hero-block">
+    <div class="shell">
+        <div class="hero-kicker">SharePoint AI Verticals Deep Dive / Sep 2025 - May 2026</div>
+        <h1 class="hero-h1">DocGen Forms - MVP through GA and V2</h1>
+        <p class="hero-lede">I stayed deeply involved across this stream while mentoring a junior designer who drove detailed execution. My responsibility was to set direction, keep stakeholders aligned, and protect UX quality as the feature matured from MVP to GA and then V2.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Problem?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">Execution Needed Guardrails Across Rapid Product Maturity</div>
+                <p class="body-p">DocGen Forms moved quickly from MVP ambitions toward GA expectations and V2 scope expansion. The risk was not just shipping late; the larger risk was shipping fragmented experiences where creation flow, navigation, and AI field behavior drifted apart across scenarios.</p>
+                <p class="body-p">I saw that we needed stronger UX direction and cross-functional framing so implementation could move fast without losing clarity. This became especially important because a junior designer was owning detailed artifacts, and the quality bar depended on clear mentorship plus decision boundaries.</p>
+                <div class="callout">
+                    <div class="callout-title">Role boundary I maintained</div>
+                    <div class="callout-text">I did not execute the full set of detailed screens end-to-end. I mentored the executing designer, framed key UX decisions, and aligned PM and engineering around what had to stay consistent to make DocGen Forms scalable.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Approach?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">Mentor-Led Execution with Tight Review Loops</div>
+                <p class="body-p">My approach was to create structured execution conditions: define the north-star interaction model, make tradeoffs explicit in review meetings, and keep PM-engineering-design loops synchronized so implementation choices did not dilute the UX model.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Mentorship loop</span> <span>I assigned and reviewed work with Manasi Bhuskute across recurring Figma and review threads, helping her carry execution while maintaining design intent.</span></li>
+                    <li><span class="tag owned">Direction setting</span> <span>I co-authored direction artifacts such as design POV material and used them to anchor decisions across MVP, GA readiness, and V2 discussions.</span></li>
+                    <li><span class="tag owned">Stakeholder alignment</span> <span>I facilitated blocker and spec conversations with partners including Vamshi Sagar Barla, Ravi Gopinath, Shreya Ganguly, Manoj Babu, and engineering peers.</span></li>
+                    <li><span class="tag">Quality protection</span> <span>I pushed for clarity around user drop-off points, requirement ambiguity, and conceptual distinctions like visibility behavior versus branching behavior.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Finalized Solution?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">A Cohesive Forms Direction That Survived MVP to V2 Pressure</div>
+                <p class="body-p">The final outcome was a more coherent DocGen Forms direction across creation flow, navigation, and AI field handling. Detailed UI execution was delivered by the junior designer, while I focused on preserving coherence and continuity in the system model as priorities shifted.</p>
+                <p class="body-p">This let us keep product conversations grounded in reusable UX principles instead of one-off fixes, which improved readiness for GA and reduced rework pressure during V2 alignment.</p>
+
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">DocGen Forms - Feature Surface (MVP to GA)</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/HoArR5UuhgYDuxcqgSZ366/DocGen-Forms?node-id=6199-45895&t=wfQcMceK2eVW8umn-4" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/spai-docgen-forms-mvp-ga-v2-overview.png" alt="DocGen Forms feature surface from Figma showing MVP to GA scope" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Walkthrough note:</strong> this snapshot represents the broader DocGen Forms feature surface that guided MVP-to-GA UX consistency reviews.</div>
+                </div>
+
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">DocGen Forms - V2 Alignment</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/HoArR5UuhgYDuxcqgSZ366/DocGen-Forms?node-id=1213-48817" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/spai-docgen-forms-mvp-ga-v2-v2flow.png" alt="DocGen Forms V2 alignment from Figma" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Walkthrough note:</strong> this V2 artifact captures flow and consistency decisions that I used for review framing and stakeholder alignment.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">How Did It<br>Get Solved?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">Meeting, Review, and Chat Signals Backed the Direction</div>
+                <p class="body-p">I used recurring evidence loops across meetings, design reviews, and chat/email threads to keep the stream stable. High-confidence signals included task assignment and iterative review cycles with Manasi, co-authored design POV work, GA blocker syncs I organized, and V2 alignment meetings with cross-team stakeholders.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Mentor and reviewer</span> <span>I helped the executing designer maintain momentum through structured feedback, clear next steps, and scoped decisions rather than ad hoc critique.</span></li>
+                    <li><span class="tag owned">Cross-functional bridge</span> <span>I translated between PM intent, engineering feasibility, and UX quality requirements so decisions stayed actionable.</span></li>
+                    <li><span class="tag owned">Pushback moments</span> <span>I raised quality risks around drop-off points, flow complexity, and requirement ambiguity, then helped align on practical corrections.</span></li>
+                    <li><span class="tag">Confidence building</span> <span>By clarifying review criteria and decision rationale, I helped the executing designer present work with stronger confidence in design forums.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">What Is The<br>Impact On<br>Business Goals?</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">Stronger GA Readiness and Safer V2 Scaling</div>
+                <p class="body-p">This contribution model increased delivery resilience: execution stayed with the right owner while I kept strategic and cross-functional quality guardrails in place. That balance helped us move faster without compromising product coherence.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Delivery leverage</span> <span>Mentorship plus review framing enabled faster execution by the junior designer without sacrificing UX quality.</span></li>
+                    <li><span class="tag owned">Alignment efficiency</span> <span>Spec and blocker discussions converged faster because tradeoffs were framed early and consistently across PM and engineering.</span></li>
+                    <li><span class="tag">Platform maturity</span> <span>DocGen Forms stayed on a platform trajectory, supporting broader SPAI vertical use cases beyond one release milestone.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="shell">
+        <div class="footer-inner">
+            <span>Built with AI &#10084;&#65039; by Hemant Gupta | 2022-2026</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

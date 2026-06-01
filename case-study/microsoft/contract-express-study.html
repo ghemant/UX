@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Express Competitive Study &mdash; Design Deep Dive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset ──────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Tokens ─────────────────────────────────────── */
+        :root {
+            --paper:      #FAFAF9;
+            --ink:        #121212;
+            --muted:      #717174;
+            --rule:       rgba(18,18,18,.1);
+            --accent:     #1a3a5c;
+            --warm:       #F5F0EB;
+        }
+
+        /* ── Base ───────────────────────────────────────── */
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { display: block; max-width: 100%; }
+
+        /* ── Shell ──────────────────────────────────────── */
+        .shell { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+        /* ── Topbar ─────────────────────────────────────── */
+        .topbar {
+            border-bottom: 1px solid var(--rule);
+            padding: 14px 0;
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(250,250,249,.92);
+            backdrop-filter: blur(8px);
+        }
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .topbar-name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .topbar-nav {
+            display: flex;
+            gap: 4px;
+        }
+        .topbar-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-radius: 2px;
+            transition: color .2s, background .2s;
+        }
+        .topbar-nav a:hover { color: var(--ink); background: var(--rule); }
+
+        /* ── Breadcrumb ─────────────────────────────────── */
+        .breadcrumb {
+            position: sticky;
+            top: 52px;
+            z-index: 190;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--rule);
+            font-size: 12px;
+            color: var(--muted);
+            background: rgba(250,250,249,.96);
+            backdrop-filter: blur(6px);
+        }
+        .breadcrumb a { color: var(--accent); }
+
+        /* ── Hero ───────────────────────────────────────── */
+        .hero-block {
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .hero-kicker {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+        .hero-h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(52px, 7.5vw, 86px);
+            line-height: .94;
+            letter-spacing: -.02em;
+            font-weight: 400;
+            max-width: 860px;
+        }
+        .hero-lede {
+            margin-top: 32px;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(20px, 2.8vw, 30px);
+            line-height: 1.25;
+            font-style: italic;
+            color: var(--muted);
+            max-width: 860px;
+        }
+
+        /* ── Sections ───────────────────────────────────── */
+        .section {
+            padding: 72px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section:last-of-type { border-bottom: none; }
+        .section-inner {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .section-label {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+        }
+        .section-line {
+            margin-top: 16px;
+            height: 32px;
+            border-left: 1px solid var(--rule);
+        }
+
+        /* ── Body ───────────────────────────────────────── */
+        .body-h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .body-p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: var(--ink);
+        }
+        .body-list {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .body-list li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: start;
+        }
+        .body-list li:last-child { margin-bottom: 0; }
+        .body-list span:first-child { flex-shrink: 0; }
+
+        /* ── Tags ───────────────────────────────────────── */
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            color: var(--accent);
+            background: transparent;
+            white-space: nowrap;
+        }
+        .tag.owned {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ── Callout ────────────────────────────────────── */
+        .callout {
+            padding: 24px;
+            margin: 28px 0;
+            background: var(--warm);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+        }
+        .callout-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .callout-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        /* ── Pull Quote ─────────────────────────────────── */
+        .pull-quote {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            line-height: 1.4;
+            font-style: italic;
+            padding: 28px 0;
+            margin: 28px 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            color: var(--ink);
+        }
+
+        /* ── Figma Embed ────────────────────────────────── */
+        .figma-embed {
+            margin: 32px 0;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .figma-embed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px;
+            background: var(--warm);
+            border-bottom: 1px solid var(--rule);
+        }
+        .figma-embed-title {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .figma-embed-link {
+            font-size: 12px;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--accent);
+        }
+        .figma-embed-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .figma-embed-meta {
+            padding: 16px;
+            font-size: 13px;
+            color: var(--muted);
+            background: var(--warm);
+            border-top: 1px solid var(--rule);
+        }
+        .figma-embed-meta strong {
+            color: var(--ink);
+        }
+
+        /* ── Footer ─────────────────────────────────────── */
+        .site-footer {
+            border-top: 1px solid var(--rule);
+            padding: 32px 0;
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+        .footer-links a:hover { border-color: var(--ink); color: var(--ink); }
+
+        /* ── Responsive ─────────────────────────────────── */
+        @media (max-width: 860px) {
+            .shell { padding: 0 20px; }
+            .section-inner { grid-template-columns: 1fr; gap: 20px; }
+            .figma-embed-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script src="theme-toggle.js"></script>
+</head>
+<body>
+
+<!-- ── Topbar ───────────────────────────────────────────────── -->
+<header class="topbar">
+    <div class="shell">
+        <div class="topbar-inner">
+            <span class="topbar-name">Hemant Gupta — Competitive Study Deep Dive</span>
+        </div>
+    </div>
+</header>
+
+<!-- ── Breadcrumb ──────────────────────────────────────────── -->
+<div class="breadcrumb">
+    <div class="shell">
+        <a href="full-journey.html">Full Journey</a> / <a href="full-journey.html#ch2">Agreements in Word</a> / <strong>Contract Express Study</strong>
+    </div>
+</div>
+
+<!-- ── Hero ────────────────────────────────────────────────── -->
+<section class="hero-block">
+    <div class="shell">
+        <div class="hero-kicker">
+            <span>Strategic Research & Competitive Intelligence</span>
+            <span style="opacity:.4">/</span>
+            <span>Aug – Sep 2023</span>
+        </div>
+        <h1 class="hero-h1">Contract Express<br>Teardown Study</h1>
+        <p class="hero-lede">A competitive analysis that surfaced a critical product constraint: Content Assembly was invoked from SharePoint Document Library and rendered the document inside a webpage iframe with a side panel, which made true in-canvas editing infeasible. These insights became the strategic push to deliver template creation and document generation directly in users' flow of work: Word documents.</p>
+    </div>
+</section>
+
+<!-- ── Research Mandate ────────────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Research<br>Mandate</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">Why Study Contract Express?</div>
+                <p class="body-p">Contract Express held a commanding position in legal tech document generation—trusted by enterprises to create contracts through questionnaire-driven workflows. Microsoft was considering Content Assembly as an alternative entry point for legal workflows, but the positioning was unclear. The competitive question was direct: what does Contract Express do well, where does it fall short, and what does that teach us about the market's expectations?</p>
+                <div class="callout">
+                    <div class="callout-title">🎯 Research Question</div>
+                    <div class="callout-text">Can we understand Contract Express well enough to identify not just feature gaps, but architectural constraints in our current SharePoint-invoked model that required a different strategic direction?</div>
+                </div>
+                <div class="body-h3" style="margin-top: 28px;">Study Scope</div>
+                <ul class="body-list">
+                    <li><span class="tag owned">Primary focus</span> <span>Template authoring + document generation workflows in Contract Express. How do power users and business users experience the platform?</span></li>
+                    <li><span class="tag">Secondary focus</span> <span>Governance, approval, and collaboration patterns. Does Contract Express handle multi-user workflows well?</span></li>
+                    <li><span class="tag owned">Comparative lens</span> <span>What would it take to exceed Contract Express while moving template creation and generation into users' native Word flow of work?</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Contract Express Anatomy ────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Contract<br>Express<br>Anatomy</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">Strengths: Form-Driven Generation at Scale</div>
+                <p class="body-p">Contract Express built an elegant mental model for legal document generation: templates author business rules and variables inside Word; end users answer a plain-language questionnaire; the system generates contracts without touching code. This pattern works because it outsources complexity to the questionnaire design phase.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Questionnaire-driven UX</span> <span>Users fill simple forms (not touching template logic). Reduces friction and lowers the skill floor for document creation.</span></li>
+                    <li><span class="tag">Business rule engine</span> <span>Rules embedded in questionnaire logic determine which variables apply, auto-fill fields, and govern approval chains. Powerful for complex contracts.</span></li>
+                    <li><span class="tag">Fast generation cycle</span> <span>Typical flow: start questionnaire → fill fields (5–15 minutes) → generate contract → done. No intermediate wizards or multi-step dialogs.</span></li>
+                    <li><span class="tag owned">Word-native authoring</span> <span>Template authors work directly in Word (via add-in) to define variables, conditionals, and document structure. Familiar environment.</span></li>
+                </ul>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">📐 Variable Authoring Inside Word Ribbon</span>
+                        <a href="https://www.figma.com/design/u44xIviqxyvOphca8d1iO2/ContractExprs_Study?node-id=5-78901" class="figma-embed-link" target="_blank">View Screen in Figma →</a>
+                    </div>
+                    <img src="images/figma-contract-express/node-5-78901.png" alt="Contract Express Word ribbon flow showing insert variable field and dictionary editor" class="figma-embed-img">
+                    <div class="figma-embed-meta">
+                        <strong>Why this mattered:</strong> This screen shows exactly where Contract Express is strong: variable authoring is embedded in the familiar Word canvas, reducing training load for legal ops teams.
+                    </div>
+                </div>
+                <div class="body-h3" style="margin-top: 28px;">Weaknesses: Governance + Collaboration Gaps</div>
+                <p class="body-p">But Contract Express shows friction in areas where legal workflows become organizational challenges. The platform was built for template authoring + generation, not for the messy parts of enterprise contract work.</p>
+                <ul class="body-list">
+                    <li><span class="tag">Approval workflows</span> <span>Limited multi-step approval chains. Fine for self-serve document generation; breaks down when contracts require review cycles.</span></li>
+                    <li><span class="tag owned">Collaboration + versioning</span> <span>No built-in change tracking, comment threads, or revision history. Users resort to email and manual version numbering.</span></li>
+                    <li><span class="tag">Knowledge management</span> <span>Snippet libraries and clause repositories are weak. Legal teams can't share or reuse contract clauses across templates easily.</span></li>
+                    <li><span class="tag owned">Conditional complexity</span> <span>Business rule authoring (when questionnaire answers trigger which clauses) becomes a bottleneck. Power users struggle with conditional logic.</span></li>
+                    <li><span class="tag">Template governance</span> <span>No centralized control for template updates. Changes ripple unpredictably across the organization.</span></li>
+                </ul>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">📐 Web-App DocGen Journey (Questionnaire + Preview + Warnings)</span>
+                        <a href="https://www.figma.com/design/u44xIviqxyvOphca8d1iO2/ContractExprs_Study?node-id=55-5816" class="figma-embed-link" target="_blank">View Screen in Figma →</a>
+                    </div>
+                    <img src="images/figma-contract-express/node-55-5816.png" alt="Contract Express web app journey with questionnaire warnings and document preview controls" class="figma-embed-img">
+                    <div class="figma-embed-meta">
+                        <strong>Observed friction:</strong> This panel-driven model mirrors the same limitation we had in Content Assembly: when the experience is orchestrated through a webpage shell and side panel, users are forced into context switching away from direct document interaction.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Key Insights ────────────────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Strategic<br>Insights</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">Insight #1: Architecture Was the Constraint, Not Just UX Preference</div>
+                <p class="body-p">The key learning was not simply that users preferred in-document interaction. It was that our existing Content Assembly offering, invoked from SharePoint Document Library with the document rendered in a webpage iframe plus side panel, could not deliver true in-canvas editing by design.</p>
+                <div class="callout">
+                    <div class="callout-title">⚡ Direct User Signal</div>
+                    <div class="callout-text">"Task pane based experiences… not preferred. Experience immersive to the Word Canvas is required to match users' mental model." (CELA Interviews, Sep 2023)</div>
+                </div>
+                <p class="body-p" style="margin-top: 24px;">This wasn't hypothetical. Legal professionals work in Word documents. They expect to create templates and generate documents within that environment. The iframe + side-panel pattern introduced unavoidable friction and became the evidence for relocating both capabilities into Word-native flow of work.</p>
+                <div class="body-h3" style="margin-top: 28px;">Insight #2: Forms ≠ The Entire Solution</div>
+                <p class="body-p">Contract Express proves questionnaires work for initial data capture. But legal workflows are about more than questionnaires. They're about review, negotiation, collaboration, and change tracking. Forms handle the intake; the document is where the real work happens.</p>
+                <ul class="body-list">
+                    <li><span class="tag">Forms excel at</span> <span>Initial data capture, guiding users through complex decision trees, reducing errors through validation.</span></li>
+                    <li><span class="tag owned">Forms fail at</span> <span>Showing context (what does the clause actually say?), enabling inline edits (click to change text), tracking changes (who changed what?), collaboration (comments, review cycles).</span></li>
+                </ul>
+                <div class="body-h3" style="margin-top: 28px;">Insight #3: Market Moving Toward Unified Workflows</div>
+                <p class="body-p">Contract Express is single-function: generate documents via questionnaire. But enterprise legal teams don't work in single functions. They work across drafting → review → negotiation → execution. Fragmentation across tools is the pain point.</p>
+                <div class="pull-quote">The strategic move was not "make the side panel better." It was "move template creation and document generation into Word-native flow of work," where creation, review, and execution can happen without architectural context switching.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── The Pivot Decision ──────────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Strategic<br>Pivot</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">From SharePoint-Invoked Assembly to Word-Native Workflows</div>
+                <p class="body-p">The Contract Express study made the case for a fundamental strategic shift. Instead of continuing with a SharePoint-invoked iframe + side-panel assembly model, we needed to provide template creation and document generation directly inside Word, where legal professionals already do their core work.</p>
+                <div class="body-h3" style="margin-top: 28px;">The Strategic Logic</div>
+                <ul class="body-list">
+                    <li><span class="tag owned">Contract Express validated</span> <span>Questionnaire-driven doc generation (forms layer) is valuable. Users appreciate the guided approach to data capture.</span></li>
+                    <li><span class="tag">Constraint identified</span> <span>Content Assembly architecture (web iframe + side panel from SharePoint Document Library) could not support true in-canvas editing inside the document surface.</span></li>
+                    <li><span class="tag owned">Microsoft's advantage</span> <span>We own Word. We can make a product that unifies forms (intake) + document (execution) + AI (review) + approval (governance) in one platform.</span></li>
+                    <li><span class="tag">The pivot</span> <span>Move template creation and document generation into Word-native flow of work, replacing the SharePoint-invoked panel model with a document-first execution path.</span></li>
+                </ul>
+                <div class="callout">
+                    <div class="callout-title">🎯 Competitive Position</div>
+                    <div class="callout-text">Contract Express showed clear market demand for guided generation in a document-centric workflow. Our opportunity was to remove the architectural gap in our own offering by making Word the native surface for template creation and generation, then layering review, approval, and AI on top.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Design Implications ─────────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Design<br>Principles<br>Defined</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">What the Teardown Taught Design</div>
+                <p class="body-p">This competitive study became the blueprint for how we'd design Agreements in Word. Every design principle traced back to a Contract Express strength or weakness:</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Principle: Architecture-aware UX</span> <span>Do not promise in-canvas behavior on a surface that is iframe + side-panel by construction. Align interaction model with platform capabilities.</span></li>
+                    <li><span class="tag">Principle: Questionnaires for intake</span> <span>Adopt Contract Express's approach to initial data capture, but embed it in the document experience (not a separate form).</span></li>
+                    <li><span class="tag owned">Principle: Inline collaboration</span> <span>Contrast with Contract Express's weak approval workflows. Build change tracking, comments, and approval chains directly into the document.</span></li>
+                    <li><span class="tag">Principle: AI + human expertise</span> <span>Where Contract Express relies on rules engines, we invest in AI—smart clause suggestions, risk detection, negotiation guidance.</span></li>
+                    <li><span class="tag owned">Principle: Flow-of-work delivery</span> <span>Place template creation and generation where users already work every day: Word documents, not detached web orchestration surfaces.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Design Presentation ─────────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Leadership<br>Case</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">Presenting the Pivot to Leadership</div>
+                <p class="body-p">The Contract Express study became the foundation for the pitch to shift from Content Assembly to Agreements AI. The presentation highlighted an architecture reality: SharePoint-invoked iframe + side-panel orchestration limited direct document interaction, while Word-native delivery enabled template creation and generation in users' actual flow of work.</p>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">📐 Product Offering Model (Request → Sign → Manage)</span>
+                        <a href="https://www.figma.com/design/u44xIviqxyvOphca8d1iO2/ContractExprs_Study?node-id=53-1470" class="figma-embed-link" target="_blank">View Screen in Figma →</a>
+                    </div>
+                    <img src="images/figma-contract-express/node-53-1470.png" alt="Contract Express product offering diagram showing request, sign, and manage lifecycle" class="figma-embed-img">
+                    <div class="figma-embed-meta">
+                        <strong>How this was used in the LT narrative:</strong> This visual made the business model legible in one frame: intake (request), execution (sign), and operational continuity (manage). It helped frame where Microsoft could differentiate: stronger in-document collaboration and workflow governance on top of this lifecycle.
+                    </div>
+                </div>
+                <div class="body-h3" style="margin-top: 28px;">Key Arguments in the Pitch</div>
+                <ul class="body-list">
+                    <li><span class="tag owned">Market validation</span> <span>Contract Express proves questionnaire-driven workflows work at enterprise scale. We're not inventing a new concept; we're executing it better.</span></li>
+                    <li><span class="tag">UX + architecture insight</span> <span>User feedback and platform constraints aligned: panel-first orchestration was not enough, and Word-native flow was required for the target legal experience.</span></li>
+                    <li><span class="tag owned">Platform advantage</span> <span>We own Word. Contract Express runs on top of Office. We can build integration that is 100x deeper.</span></li>
+                    <li><span class="tag">Scope clarity</span> <span>Instead of trying to be everything in Content Assembly, focus on one use case (legal contracts) and own the entire workflow.</span></li>
+                    <li><span class="tag owned">Time window</span> <span>Legal tech is moving to the cloud. Contract Express is legacy. If we move now (Sep 2023), we can establish Word + Agreements as the new standard.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Impact ──────────────────────────────────────────────── -->
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Impact<br>& Legacy</div>
+                <div class="section-line"></div>
+            </aside>
+            <div class="section-body">
+                <div class="body-h3">The Pivot That Changed Everything</div>
+                <p class="body-p">The Contract Express teardown study was catalyst for the strategic decision to pivot from Content Assembly (SharePoint-invoked iframe model) to Agreements AI (Word-native model). This wasn't a minor UX tweak; it was a platform-level reorientation toward delivering template creation and generation in the user's document flow of work.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Sep 2023: Strategy locked</span> <span>Leadership approved the pivot to Word-native Agreements based on this research. Committed resources shifted from Content Assembly to Agreements development.</span></li>
+                    <li><span class="tag">Q4 2023 – Q2 2024: Execution</span> <span>Agreements AI shipped with Word canvas integration, questionnaire-driven template selection, and inline collaboration. The design principles defined by Contract Express analysis shaped every detail.</span></li>
+                    <li><span class="tag owned">2024 – 2026: Growth</span> <span>Agreements became the fastest-growing feature in the legal tech portfolio. Legal teams preferred the Word-native experience over legacy solutions. Market validation confirmed the pivot was correct.</span></li>
+                </ul>
+                <div class="pull-quote">A single competitive study can justify a three-year strategic shift. The Contract Express teardown wasn't just research; it was the strategic foundation for everything that followed in legal tech at Microsoft.</div>
+                <div class="body-h3" style="margin-top: 28px;">Design Leadership Contribution</div>
+                <p class="body-p">This work exemplified design as strategy, not decoration. The study identified not just feature gaps, but a structural platform mismatch between intended experience and delivery surface, then translated that into a clear product direction: Word-native template creation and generation. That's the kind of competitive intelligence that changes organizational direction.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer class="site-footer">
+    <div class="shell">
+        <div class="footer-inner">
+            <span>Built with AI &#10084;&#65039; by Hemant Gupta | 2022-2026</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

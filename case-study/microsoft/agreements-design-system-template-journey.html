@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System + Template Journey Deep Dive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --paper: #FAFAF9;
+            --ink: #121212;
+            --muted: #717174;
+            --rule: rgba(18,18,18,.1);
+            --accent: #2d1f5e;
+            --warm: #F5F0EB;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { display: block; max-width: 100%; }
+
+        .shell { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+        .topbar {
+            border-bottom: 1px solid var(--rule);
+            padding: 14px 0;
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(250,250,249,.92);
+            backdrop-filter: blur(8px);
+        }
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .topbar-name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .topbar-nav { display: flex; gap: 4px; }
+        .topbar-nav a {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-radius: 2px;
+            transition: color .2s, background .2s;
+        }
+        .topbar-nav a:hover { color: var(--ink); background: var(--rule); }
+
+        .breadcrumb {
+            position: sticky;
+            top: 52px;
+            z-index: 190;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--rule);
+            font-size: 12px;
+            color: var(--muted);
+            background: rgba(250,250,249,.96);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-block {
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .hero-kicker {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+        .hero-h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: .96;
+            letter-spacing: -.02em;
+            font-weight: 400;
+            max-width: 920px;
+        }
+        .hero-lede {
+            margin-top: 28px;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(20px, 2.6vw, 30px);
+            line-height: 1.25;
+            font-style: italic;
+            color: #2a2a2a;
+            max-width: 900px;
+        }
+
+        .section {
+            padding: 68px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-inner {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .section-label {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+        }
+        .section-line {
+            margin-top: 16px;
+            height: 32px;
+            border-left: 1px solid var(--rule);
+        }
+
+        .body-h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            line-height: 1.25;
+            letter-spacing: -.01em;
+            font-weight: 400;
+            margin-bottom: 14px;
+        }
+        .body-p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+        .body-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        .body-list li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+            align-items: start;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            color: var(--accent);
+            background: transparent;
+            white-space: nowrap;
+        }
+        .tag.owned {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .callout {
+            padding: 22px;
+            margin: 24px 0;
+            background: var(--warm);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+        }
+        .callout-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .callout-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .pull-quote {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.35;
+            font-style: italic;
+            padding: 24px 0;
+            margin: 26px 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .figma-embed {
+            margin: 28px 0;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .figma-embed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 16px;
+            background: var(--warm);
+            border-bottom: 1px solid var(--rule);
+        }
+        .figma-embed-title {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .figma-embed-link {
+            font-size: 12px;
+            border-bottom: 1px solid var(--accent);
+            white-space: nowrap;
+        }
+        .figma-embed-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #fff;
+        }
+        .figma-embed-meta {
+            padding: 14px 16px;
+            font-size: 13px;
+            color: var(--muted);
+            border-top: 1px solid var(--rule);
+            background: var(--warm);
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--rule);
+            padding: 32px 0;
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .footer-links { display: flex; gap: 20px; }
+
+        @media (max-width: 860px) {
+            .shell { padding: 0 20px; }
+            .section-inner { grid-template-columns: 1fr; gap: 20px; }
+            .figma-embed-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script src="theme-toggle.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="shell">
+        <div class="topbar-inner">
+            <span class="topbar-name">Hemant Gupta — Agreements Deep Dive</span>
+        </div>
+    </div>
+</header>
+
+<div class="breadcrumb">
+    <div class="shell">
+        <a href="full-journey.html">Full Journey</a> / <a href="full-journey.html#ch2">Agreements in Word</a> / <strong>Design System + Template Journey</strong>
+    </div>
+</div>
+
+<section class="hero-block">
+    <div class="shell">
+        <div class="hero-kicker">Agreements In Word Deep Dive / Jun 2023 – May 2025</div>
+        <h1 class="hero-h1">Design System Foundation + End-to-End Template Journey</h1>
+        <p class="hero-lede">In this phase, I combined system stewardship and product ownership: I carried Content Assembly primitives into Agreements as a reusable component language, and I drove the full Template Creation journey plus connected eSignature workflows through repeated experience reviews.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">System<br>Foundation</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">From CA Components to Agreements Consistency</div>
+                <p class="body-p">I treated the design system as operating infrastructure, not visual polish. I brought CA component primitives into Agreements to create a shared implementation vocabulary, including interaction patterns, field semantics, and composition structures that helped multiple designers ship to one quality bar. In practice, this reduced drift across template-related surfaces and shortened review cycles because decisions were made through reusable primitives instead of ad hoc screens.</p>
+                <p class="body-p">This framing is grounded in the same evidence stream that tracked my broader work in this era: recurring ER cycles, design artifacts, and cross-functional reviews tied to template creation and adjacent workflows.</p>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">CA Components Library</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/q1KhpTqOGws0QOhdS1vIJ9/CA---Components-Library?m=auto&t=nWgZ26GpT25qnmqM-6" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/figma-template-journey/ca-component-library.png" alt="Content Assembly component library overview" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Design leadership move:</strong> use one component language to align delivery across designers during the Agreements scale-up phase.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">Template<br>Journey</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">End-to-End Ownership, Not Partial Contribution</div>
+                <p class="body-p">I drove the Template Creation journey as a coherent end-to-end flow, not a set of disconnected screens: create template, set details, define fields, configure conditions, connect data, prepare approvals and signatures, then publish. I treated experience-review findings as inputs for architecture-level changes, not patch fixes.</p>
+                <ul class="body-list">
+                    <li><span class="tag owned">Setup details</span> <span>I shaped template metadata and setup behavior to reduce handoff ambiguity and improve author confidence.</span></li>
+                    <li><span class="tag">Conditional sections</span> <span>ER feedback repeatedly surfaced condition-building complexity, and I used that signal to iterate on flow clarity and structure.</span></li>
+                    <li><span class="tag owned">Capability expansion</span> <span>I moved the experience beyond CA-in-Word migration by introducing behaviors needed for production legal workflows.</span></li>
+                </ul>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">Manage Templates Experience Review</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/pptCT1xGEWX8EHt77JJ3fI/01-Manage-Templates-%F0%9F%9A%A7?node-id=4884-75759" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/figma-template-journey/manage-templates-er.png" alt="Manage templates experience review mockups" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Review pattern:</strong> journey-level critiques were used to tighten flow continuity, not just local UI corrections.</div>
+                </div>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">Template Creation UX Updates</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/StI0llw6syhSsYzru8Bwy6/Template-Creation---PreER-ER---UX-updates?node-id=292-106613" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/figma-template-journey/template-creation-ux-updates.png" alt="Template creation UX updates and pre-ER to ER refinements" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Outcome:</strong> pre-ER to ER updates show intentional iteration on information architecture and authoring cognition.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        <div class="section-inner">
+            <aside>
+                <div class="section-label">eSignature<br>and Team<br>Scale</div>
+                <div class="section-line"></div>
+            </aside>
+            <div>
+                <div class="body-h3">1P eSignature Workflow Story (E2E)</div>
+                <p class="body-p">Within the E2E template journey, I treated 1P eSignature as a final-mile workflow quality problem: authors needed a clear path from template setup to signing readiness, without losing context across document-generation states. I focused the design on sequencing, status clarity, and task continuity so users could move from authoring decisions to send, cancel, and tracking actions with fewer handoff errors.</p>
+                <p class="body-p">The same ER thread that validated my template-creation ownership also captured eSignature ownership signals around send/cancel/status tracking, so this workflow is part of one continuous journey rather than a separate add-on.</p>
+                <div class="figma-embed">
+                    <div class="figma-embed-header">
+                        <span class="figma-embed-title">1P eSignature Workflow in Template + DocGen</span>
+                        <a class="figma-embed-link" href="https://www.figma.com/design/HsRvnf5Q5uajaN0ivwHsd1/06-eSign-for-Syntex-Template---DocGen-%F0%9F%9A%A7?node-id=1002-356469" target="_blank">Open in Figma</a>
+                    </div>
+                    <img src="images/figma-template-journey/esign-workflow-syntex-template-docgen.png" alt="1P eSignature workflow design for Syntex template and document generation" class="figma-embed-img">
+                    <div class="figma-embed-meta"><strong>Design intent:</strong> maintain authoring-to-signing continuity by tightening transition states, action visibility, and workflow feedback loops.</div>
+                </div>
+                <div class="pull-quote">Senior product design here was less about owning isolated screens and more about making a growing team ship coherent outcomes through shared primitives and journey-level decision quality.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="shell">
+        <div class="footer-inner">
+            <span>Built with AI &#10084;&#65039; by Hemant Gupta | 2022-2026</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

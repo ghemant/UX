@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Gupta | Design Portfolio 2022–2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset ──────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Tokens ─────────────────────────────────────────── */
+        :root {
+            --paper:      #FAFAF9;
+            --ink:        #121212;
+            --muted:      #57575D;
+            --rule:       rgba(18,18,18,.46);
+            --accent:     #1B74D6;
+            --accent-alt: #6A56D9;
+            --warm:       #F5F0EB;
+            --ch1:        #1a3a5c;
+            --ch2:        #2d1f5e;
+            --ch3:        #0d3d2e;
+            --shell:      1120px;
+            --ui-hover:   rgba(18,18,18,.08);
+        }
+
+        /* ── Base ───────────────────────────────────────────── */
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+
+        /* ── Shell ──────────────────────────────────────────── */
+        .shell { max-width: var(--shell); margin: 0 auto; padding: 0 32px; }
+
+        /* ── Topbar ─────────────────────────────────────────── */
+        .topbar {
+            border-bottom: 1px solid var(--rule);
+            padding: 14px 0;
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(250,250,249,.92);
+            backdrop-filter: blur(8px);
+        }
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .topbar-name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .02em;
+        }
+
+        /* ── Hero ───────────────────────────────────────────── */
+        .hero-block {
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .hero-kicker {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-kicker .sep { opacity: .4; }
+        .hero-h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(52px, 7.5vw, 86px);
+            line-height: .94;
+            letter-spacing: -.02em;
+            font-weight: 400;
+            max-width: 860px;
+        }
+        .hero-h1 em {
+            font-style: italic;
+            color: var(--muted);
+        }
+        .hero-lede {
+            margin-top: 32px;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(20px, 2.8vw, 30px);
+            line-height: 1.25;
+            font-style: italic;
+            color: #2a2a2a;
+            max-width: 780px;
+        }
+        .hero-stats {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            border: 1px solid var(--rule);
+            background: var(--rule);
+            max-width: 700px;
+        }
+        .hero-stat {
+            background: var(--paper);
+            padding: 18px 20px;
+        }
+        .hero-stat strong {
+            display: block;
+            font-family: 'Instrument Serif', serif;
+            font-size: 34px;
+            line-height: 1;
+            font-weight: 400;
+        }
+        .hero-stat span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+        /* ── Table of contents timeline ───────────────────── */
+        .toc-timeline-section {
+            padding: 56px 0;
+            background: #071321;
+            border-bottom: 1px solid rgba(233,237,243,.26);
+            color: #eef2f7;
+        }
+        .toc-timeline-inner {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 46px;
+            align-items: start;
+        }
+        .toc-label {
+            font-size: 12px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(233,237,243,.86);
+            font-weight: 600;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+        .toc-label-line {
+            margin-top: 12px;
+            width: 36px;
+            height: 2px;
+            background: rgba(233,237,243,.56);
+        }
+        .toc-heading {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(38px, 4.4vw, 54px);
+            font-weight: 400;
+            line-height: .98;
+            margin-bottom: 20px;
+            color: #f4f7fc;
+        }
+        .toc-timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+        .toc-timeline::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: rgba(233,237,243,.36);
+        }
+        .toc-item {
+            position: relative;
+            margin-bottom: 26px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(233,237,243,.2);
+        }
+        .toc-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .toc-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #eef2f7;
+            box-shadow: 0 0 0 2px #071321;
+        }
+        .toc-item-era {
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(233,237,243,.82);
+            margin-bottom: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toc-item-era .era-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--era-color, #eef2f7);
+            flex-shrink: 0;
+        }
+        .toc-item-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 1.06;
+            color: #f4f7fc;
+            margin-bottom: 10px;
+        }
+        .toc-item-title a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        .toc-item-title a:hover {
+            border-color: rgba(244,247,252,.72);
+        }
+        .toc-era-note {
+            font-size: 17px;
+            line-height: 1.55;
+            color: rgba(233,237,243,.94);
+            max-width: 840px;
+        }
+        .toc-evolution {
+            margin-top: 28px;
+            padding-top: 26px;
+            border-top: 1px solid rgba(233,237,243,.2);
+            display: grid;
+            gap: 16px;
+        }
+        .toc-subhead {
+            font-size: 12px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: rgba(233,237,243,.82);
+        }
+        .toc-era-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .toc-era-card {
+            border: 1px solid rgba(233,237,243,.24);
+            border-radius: 12px;
+            padding: 18px 16px;
+            background: rgba(233,237,243,.04);
+        }
+        .toc-era-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .toc-era-dot {
+            width: 14px;
+            height: 14px;
+            margin-top: 7px;
+            border-radius: 50%;
+            background: rgba(233,237,243,.9);
+            flex-shrink: 0;
+        }
+        .toc-era-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(30px, 3.8vw, 44px);
+            line-height: .96;
+            font-weight: 400;
+            color: #f4f7fc;
+            margin-bottom: 4px;
+        }
+        .toc-era-range {
+            font-size: 11px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: rgba(233,237,243,.78);
+            font-weight: 700;
+        }
+        .toc-era-list {
+            display: grid;
+            gap: 11px;
+        }
+        .toc-era-item {
+            display: grid;
+            grid-template-columns: 88px 1fr;
+            gap: 10px;
+        }
+        .toc-era-term {
+            font-size: 10px;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: rgba(233,237,243,.82);
+            font-weight: 700;
+            line-height: 1.45;
+        }
+        .toc-era-desc {
+            font-size: 14px;
+            line-height: 1.45;
+            color: rgba(233,237,243,.94);
+        }
+        .toc-proof-grid {
+            border: 1px solid rgba(233,237,243,.24);
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            background: rgba(233,237,243,.16);
+        }
+        .toc-proof-item {
+            background: rgba(233,237,243,.04);
+            padding: 16px 18px;
+        }
+        .toc-proof-value {
+            display: block;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(34px, 4vw, 54px);
+            line-height: .96;
+            font-weight: 400;
+            color: #f4f7fc;
+        }
+        .toc-proof-label {
+            margin-top: 8px;
+            display: block;
+            font-size: 13px;
+            line-height: 1.4;
+            color: rgba(233,237,243,.88);
+        }
+        .toc-proof-note {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            line-height: 1.45;
+            color: rgba(233,237,243,.9);
+        }
+        .toc-proof-note strong {
+            font-weight: 400;
+            color: #f4f7fc;
+        }
+
+        /* ── Chapter intro banner ────────────────────────────── */
+        .chapter-banner {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .chapter-num {
+            border-right: 1px solid var(--rule);
+            padding: 40px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .chapter-num .n {
+            font-family: 'Instrument Serif', serif;
+            font-size: 64px;
+            line-height: 1;
+            font-weight: 400;
+            opacity: .12;
+        }
+        .chapter-num .label {
+            font-size: 10px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        .chapter-intro {
+            padding: 40px 40px 40px 48px;
+            border-top: 3px solid var(--ch-color, var(--ink));
+        }
+        .chapter-intro h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 14px;
+        }
+        .chapter-intro .period {
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+        .chapter-intro p {
+            font-size: 16px;
+            max-width: 620px;
+            color: #2a2a2a;
+        }
+        .chapter-team {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--rule);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .ct-chip {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 4px;
+            font-size: 11px;
+            letter-spacing: .06em;
+            padding: 5px 11px;
+            border: 1px solid var(--ch-color, var(--ink));
+            background: transparent;
+            border-radius: 2px;
+            color: var(--ch-color, var(--ink));
+            white-space: nowrap;
+        }
+        .ct-chip .ct-val {
+            font-family: 'Instrument Serif', serif;
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--ch-color, var(--ink));
+            line-height: 1;
+        }
+        .ct-chip.role {
+            white-space: normal;
+        }
+
+        /* ── Collapsible era cards ─────────────────────────── */
+        .era-card {
+            border-bottom: 1px solid var(--rule);
+        }
+        .era-card > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        .era-card > summary:focus-visible {
+            outline: 3px solid var(--ch-color, var(--ink));
+            outline-offset: 2px;
+        }
+        .era-card > summary::-webkit-details-marker { display: none; }
+        .era-card > summary .chapter-banner {
+            border-bottom: none;
+        }
+        .era-card > summary .chapter-intro {
+            position: relative;
+            padding-right: 176px;
+        }
+        .era-card > summary .chapter-intro::after {
+            content: '+ Expand';
+            position: absolute;
+            top: 18px;
+            right: 28px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #fff;
+            border: 2px solid var(--ch-color, var(--ink));
+            background: var(--ch-color, var(--ink));
+            border-radius: 999px;
+            padding: 6px 12px;
+            box-shadow: 0 1px 0 rgba(0,0,0,.12);
+        }
+        .era-card[open] > summary .chapter-intro::after {
+            content: '- Collapse';
+        }
+        .era-card-content {
+            border-top: 1px solid var(--rule);
+        }
+
+        /* ── Section layout ─────────────────────────────────── */
+        .section-wrap {
+            padding: 56px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-wrap:last-of-type { border-bottom: none; }
+        .section-inner {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .section-aside {
+            position: sticky;
+            top: 64px;
+        }
+        .section-aside .cat {
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        .section-aside .ch-line {
+            margin-top: 10px;
+            width: 24px; height: 2px;
+            background: var(--ch-color, var(--ink));
+        }
+        /* ── Content primitives ──────────────────────────────── */
+        .body-h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            margin-top: 38px;
+        }
+        .body-h3:first-child { margin-top: 0; }
+        .body-p { font-size: 16px; line-height: 1.75; margin-bottom: 14px; }
+
+        .thumbnail-image {
+            margin-top: 16px;
+            width: 100%;
+            max-width: 680px;
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            background:
+                linear-gradient(135deg, rgba(26,58,92,.06), rgba(26,58,92,.12)),
+                repeating-linear-gradient(
+                    -45deg,
+                    rgba(255,255,255,.6),
+                    rgba(255,255,255,.6) 10px,
+                    rgba(255,255,255,.25) 10px,
+                    rgba(255,255,255,.25) 20px
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .thumbnail-image .thumb-file {
+            font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 11px;
+            letter-spacing: .03em;
+            text-transform: none;
+            word-break: break-all;
+        }
+
+        .thumbnail-image.thumb-link {
+            padding: 0;
+            overflow: hidden;
+            display: block;
+            background: #fff;
+        }
+
+        .thumbnail-image.thumb-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .case-study-link {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 12px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--ch-color, var(--ink));
+            border-bottom: 1px solid var(--ch-color, var(--ink));
+            padding-bottom: 2px;
+        }
+        .deep-dive-pending {
+            margin-top: 12px;
+            font-size: 13px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .contrib-list { list-style: none; padding: 0; margin: 16px 0 24px; }
+        .contrib-list li {
+            padding: 11px 0;
+            border-top: 1px solid var(--rule);
+            font-size: 15px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+        .contrib-list li:last-child { border-bottom: 1px solid var(--rule); }
+        .contrib-list .tag {
+            font-size: 10px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border: 1px solid var(--ch-color, var(--ink));
+            border-radius: 2px;
+            color: var(--ch-color, var(--ink));
+            background: transparent;
+            white-space: nowrap;
+            line-height: 1.8;
+        }
+        .contrib-list .tag.owned { border-color: var(--ch-color, var(--ink)); color: var(--ch-color, var(--ink)); }
+
+        .pull-quote {
+            margin: 36px 0;
+            padding: 0 0 0 20px;
+            border-left: 2px solid var(--ch-color, var(--ink));
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 26px;
+            line-height: 1.25;
+            color: #1e1e1e;
+        }
+
+        .evidence-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .evidence-chip {
+            font-size: 11px;
+            letter-spacing: .06em;
+            padding: 5px 11px;
+            border: 1px solid var(--rule);
+            background: #fff;
+            border-radius: 2px;
+            color: var(--muted);
+        }
+        .evidence-chip.high {
+            border-color: var(--ch-color, var(--ink));
+            color: var(--ch-color, var(--ink));
+            background: transparent;
+        }
+
+
+
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--rule);
+            border: 1px solid var(--rule);
+            margin: 20px 0;
+        }
+        .two-col-cell {
+            background: var(--paper);
+            padding: 18px 20px;
+        }
+        .two-col-cell h4 {
+            font-size: 11px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .two-col-cell p { font-size: 15px; }
+
+        /* ── Synthesis ───────────────────────────────────────── */
+        .synthesis {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 80px 0;
+        }
+        .synthesis-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 34px;
+        }
+        .synthesis-portrait {
+            position: relative;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .portrait-bubble {
+            position: relative;
+            font-size: 12px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: rgba(250,250,249,.92);
+            background: rgba(250,250,249,.12);
+            border: 1px solid rgba(250,250,249,.28);
+            border-radius: 999px;
+            padding: 8px 14px;
+            backdrop-filter: blur(4px);
+        }
+        .portrait-bubble::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -6px;
+            width: 10px;
+            height: 10px;
+            background: rgba(250,250,249,.12);
+            border-left: 1px solid rgba(250,250,249,.28);
+            border-bottom: 1px solid rgba(250,250,249,.28);
+            rotate: -45deg;
+        }
+        .synthesis-portrait img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid rgba(250,250,249,.2);
+            box-shadow: 0 0 0 10px rgba(250,250,249,.04);
+            opacity: 1;
+        }
+        .synthesis-body h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 28px;
+        }
+        .synthesis-body h2 em { font-style: italic; color: rgba(250,250,249,.55); }
+        .competency-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(250,250,249,.12);
+            border: 1px solid rgba(250,250,249,.12);
+            margin-top: 32px;
+        }
+        .competency-cell {
+            background: var(--ink);
+            padding: 22px 24px;
+        }
+        .competency-cell h3 {
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(250,250,249,.55);
+            margin-bottom: 10px;
+        }
+        .competency-cell ul { list-style: none; }
+        .competency-cell li {
+            font-size: 15px;
+            padding: 7px 0;
+            border-top: 1px solid rgba(250,250,249,.08);
+            color: rgba(250,250,249,.88);
+            line-height: 1.5;
+        }
+        .competency-cell li:first-child { border-top: none; }
+
+        /* ── Footer ─────────────────────────────────────────── */
+        .site-footer {
+            padding: 32px 0;
+            border-top: 1px solid var(--rule);
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+        .footer-links a:hover { border-color: var(--ink); color: var(--ink); }
+
+        /* ── Chapter colour scoping ──────────────────────────── */
+        .phase-1 { --ch-color: var(--ch1); }
+        .phase-2 { --ch-color: var(--ch2); }
+        .phase-3 { --ch-color: var(--ch3); }
+
+        /* ── Screenshot gallery ───────────────────────────────── */
+        .screens-section { border-bottom: 1px solid var(--rule); padding: 48px 0; background: var(--warm); }
+        .screens-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+        .screens-label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+        .screens-pivot { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--rule); margin-bottom: 3px; }
+        .screens-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--rule); }
+        .screen-frame { background: var(--paper); overflow: hidden; margin: 0; }
+        .screen-chrome { background: #EBEBEB; padding: 9px 14px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(0,0,0,.08); }
+        .chrome-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(0,0,0,.15); }
+        .screen-img-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--ph-bg, #f2f2f2); }
+        .screen-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top: 0; left: 0; }
+        .screen-img-wrap img.broken { opacity: 0; }
+        .screen-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; text-align: center; }
+        .screen-ph-icon { width: 36px; height: 36px; opacity: .25; color: var(--ch-color, var(--muted)); }
+        .screen-ph-name { font-size: 11px; letter-spacing: .06em; font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace; color: var(--muted); word-break: break-all; }
+        .screen-ph-hint { font-size: 11px; color: var(--muted); opacity: .7; }
+        .screen-meta { padding: 12px 16px; border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        .screen-caption { font-size: 13px; font-weight: 500; line-height: 1.4; }
+        .pivot-pill { display: inline-flex; align-items: center; font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; vertical-align: middle; margin-left: 8px; }
+        .pivot-pill.before { background: rgba(0,0,0,.07); color: var(--muted); }
+        .pivot-pill.after { background: var(--ch-color, var(--ink)); color: #fff; }
+        .screen-filename { font-size: 10px; font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace; color: var(--muted); letter-spacing: .04em; opacity: .8; }
+
+        .chapter-demo {
+            border: 1px solid var(--rule);
+            background: var(--paper);
+            overflow: hidden;
+        }
+        .chapter-demo-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            background: #000;
+        }
+        .chapter-demo-meta {
+            padding: 12px 16px;
+            border-top: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .chapter-demo.locked {
+            position: relative;
+        }
+        .chapter-demo.locked .chapter-demo-video {
+            pointer-events: none;
+            filter: grayscale(1) brightness(.4);
+        }
+        .chapter-demo-lock-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(0,0,0,.45);
+            color: #fff;
+            text-align: center;
+            pointer-events: none;
+        }
+        .lock-badge {
+            font-size: 11px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,.45);
+            padding: 6px 10px;
+            border-radius: 2px;
+            background: rgba(0,0,0,.35);
+        }
+        .lock-note {
+            font-size: 12px;
+            letter-spacing: .04em;
+            color: rgba(255,255,255,.88);
+        }
+
+        /* ── Pivot rationale bridge ─────────────────────────── */
+        .pivot-bridge {
+            border-bottom: 1px solid var(--rule);
+            background: #fff;
+        }
+        .pivot-bridge.phase-1 {
+            --pivot-accent: #9b4e3f;
+            --pivot-tint: rgba(155, 78, 63, .08);
+            background: linear-gradient(180deg, #fff7f4 0%, #fff 65%);
+        }
+        .pivot-bridge.phase-2 {
+            --pivot-accent: #8d5a1f;
+            --pivot-tint: rgba(141, 90, 31, .08);
+            background: linear-gradient(180deg, #fff9f1 0%, #fff 65%);
+        }
+        .pivot-bridge-inner {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            padding: 52px 0;
+        }
+        .pivot-label {
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+            line-height: 1.6;
+            padding-top: 6px;
+        }
+        .pivot-label .ch-line {
+            margin-top: 10px;
+            width: 24px;
+            height: 2px;
+            background: var(--pivot-accent, var(--ch-color, var(--ink)));
+        }
+        .pivot-body h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(28px, 3.6vw, 42px);
+            font-weight: 400;
+            line-height: 1.08;
+            margin-bottom: 10px;
+        }
+        .pivot-range {
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+        .pivot-intro {
+            font-size: 16px;
+            line-height: 1.75;
+            color: #262626;
+            max-width: 880px;
+            margin-bottom: 20px;
+        }
+        .pivot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--rule);
+            border: 1px solid var(--rule);
+        }
+        .pivot-card {
+            background: var(--paper);
+            padding: 18px 20px;
+            box-shadow: inset 2px 0 0 var(--pivot-tint, rgba(0,0,0,.06));
+        }
+        .pivot-card h4 {
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--pivot-accent, var(--muted));
+            margin-bottom: 8px;
+        }
+        .pivot-card p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: #262626;
+        }
+        .pivot-proof {
+            margin-bottom: 20px;
+            border: 1px solid var(--rule);
+            background: rgba(255,255,255,.7);
+        }
+        .pivot-proof-item {
+            display: grid;
+            grid-template-columns: 132px 1fr;
+            gap: 14px;
+            padding: 11px 14px;
+            border-top: 1px solid var(--rule);
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2a2a2a;
+        }
+        .pivot-proof-item:first-child { border-top: none; }
+        .pivot-proof-date {
+            font-size: 10px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--pivot-accent, var(--muted));
+            font-weight: 600;
+            white-space: nowrap;
+            padding-top: 2px;
+        }
+
+        /* ── Responsive ─────────────────────────────────────── */
+        @media (max-width: 860px) {
+            .shell { padding: 0 20px; }
+            .toc-era-grid { grid-template-columns: 1fr; }
+            .toc-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .toc-timeline-inner { grid-template-columns: 1fr; gap: 24px; }
+            .toc-heading { font-size: 36px; margin-bottom: 14px; }
+            .toc-item-title { font-size: 30px; }
+            .toc-era-note { font-size: 16px; }
+            .section-inner, .chapter-banner, .synthesis-inner { grid-template-columns: 1fr; gap: 20px; }
+            .section-aside { position: static; }
+            .chapter-num { border-right: none; border-bottom: 1px solid var(--rule); padding: 24px 20px; }
+            .chapter-intro { padding: 24px 20px; }
+            .era-card > summary .chapter-intro { padding-right: 20px; }
+            .era-card > summary .chapter-intro::after {
+                position: static;
+                display: inline-block;
+                margin-top: 14px;
+            }
+            .competency-grid, .two-col { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .screens-pivot, .screens-detail { grid-template-columns: 1fr; }
+            .screens-header { flex-direction: column; gap: 4px; }
+            .pivot-bridge-inner, .pivot-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .toc-proof-grid { grid-template-columns: 1fr; }
+            .toc-era-item { grid-template-columns: 1fr; gap: 4px; }
+        }
+    </style>
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script src="theme-toggle.js"></script>
+</head>
+<body>
+
+<!-- ── Topbar ───────────────────────────────────────────────── -->
+<header class="topbar">
+    <div class="shell">
+        <div class="topbar-inner">
+            <span class="topbar-name" style="font-weight: bolder;">HEMANT GUPTA &mdash; <span style="font-weight: lighter;">UX & Interaction Designer</span></span>
+        </div>
+    </div>
+</header>
+
+<!-- ── Hero ─────────────────────────────────────────────────── -->
+<section class="hero-block">
+    <div class="shell">
+        <div class="hero-kicker">
+            <span>Product Design</span>
+            <span class="sep">/</span>
+            <span>Microsoft SharePoint</span>
+            <span class="sep">/</span>
+            <span>Jan 2022 &ndash; May 2026</span>
+        </div>
+        <h1 class="hero-h1">4+ years of<br><em>platform-shaping</em><br>design.</h1>
+        <p class="hero-lede">From template authoring to AI-powered vertical solutions&thinsp;&mdash;&thinsp;a continuous arc of system-level thinking, cross-functional ownership, and measurable execution.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <strong>3</strong>
+                <span>Product Eras</span>
+            </div>
+            <div class="hero-stat">
+                <strong>4+</strong>
+                <span>Years</span>
+            </div>
+            <div class="hero-stat">
+                <strong>12+</strong>
+                <span>Features Owned</span>
+            </div>
+            <div class="hero-stat">
+                <strong>IC role</strong>
+                <span>Tactical + Strategic</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="toc-timeline-section" aria-label="Table of contents by era and sub chapters">
+    <div class="shell">
+        <div class="toc-timeline-inner">
+            <aside>
+                <div class="toc-label">Product Era<br>Overview</div>
+                <div class="toc-label-line"></div>
+            </aside>
+            <div>
+                <!-- <h2 class="toc-heading">Era Overview</h2> -->
+                <div class="toc-timeline">
+                    <article class="toc-item" style="--era-color: #79afe8;">
+                        <div class="toc-item-era">Jan 2022 - Jun 2023</div>
+                        <h3 class="toc-item-title"><a href="#ch1">Content Assembly</a></h3>
+                        <p class="toc-era-note">Era 1 established the 0→1 foundation in template-driven generation, conditional logic, and bulk workflow direction.</p>
+                    </article>
+
+                    <article class="toc-item" style="--era-color: #9c8be6;">
+                        <div class="toc-item-era">Jun 2023 - May 2025</div>
+                        <h3 class="toc-item-title"><a href="#ch2">Agreements in Word</a></h3>
+                        <p class="toc-era-note">Era 2 pivoted into Word-native lifecycle design with stronger IA, reusable systems, and cross-team delivery scale.</p>
+                    </article>
+
+                    <article class="toc-item" style="--era-color: #88c5a9;">
+                        <div class="toc-item-era">Jun 2025 - May 2026</div>
+                        <h3 class="toc-item-title"><a href="#ch3">SPAI Verticals</a></h3>
+                        <p class="toc-era-note">Era 3 scaled the platform into AI vertical solutions with system behaviors, forms maturity, and strategy-level alignment.</p>
+                    </article>
+                </div>
+                <div class="toc-evolution" aria-labelledby="toc-evolved-title">
+                    <!-- <h2 class="toc-subhead" id="toc-evolved-title">How The Design Evolved</h2>
+                    <div class="toc-era-grid">
+                        <article class="toc-era-card">
+                            <div class="toc-era-head">
+                                <span class="toc-era-dot" aria-hidden="true"></span>
+                                <div>
+                                    <h3 class="toc-era-title">Content Assembly</h3>
+                                    <p class="toc-era-range">2021 - 2023</p>
+                                </div>
+                            </div>
+                            <dl class="toc-era-list">
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Challenge</dt>
+                                    <dd class="toc-era-desc">Repetitive NDAs and contracts were still assembled manually.</dd>
+                                </div>
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Response</dt>
+                                    <dd class="toc-era-desc">Templates, fields, and conditional logic were established across Word and Teams-adjacent workflows.</dd>
+                                </div>
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Outcome</dt>
+                                    <dd class="toc-era-desc">Strong demand was proven, while complexity still capped broad adoption.</dd>
+                                </div>
+                            </dl>
+                        </article>
+                        <article class="toc-era-card">
+                            <div class="toc-era-head">
+                                <span class="toc-era-dot" aria-hidden="true"></span>
+                                <div>
+                                    <h3 class="toc-era-title">Agreements AI</h3>
+                                    <p class="toc-era-range">2024 - 2025</p>
+                                </div>
+                            </div>
+                            <dl class="toc-era-list">
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Challenge</dt>
+                                    <dd class="toc-era-desc">Legal and finance teams needed AI-supported authoring directly inside Word.</dd>
+                                </div>
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Response</dt>
+                                    <dd class="toc-era-desc">A native ribbon model enabled extraction, redlining, and Copilot-connected workflows.</dd>
+                                </div>
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Outcome</dt>
+                                    <dd class="toc-era-desc">CELA and Finance onboarded early, while billing and packaging gaps surfaced clearly.</dd>
+                                </div>
+                            </dl>
+                        </article>
+                        <article class="toc-era-card">
+                            <div class="toc-era-head">
+                                <span class="toc-era-dot" aria-hidden="true"></span>
+                                <div>
+                                    <h3 class="toc-era-title">SPAI Verticals</h3>
+                                    <p class="toc-era-range">2025 - 2026</p>
+                                </div>
+                            </div>
+                            <dl class="toc-era-list">
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Challenge</dt>
+                                    <dd class="toc-era-desc">Templating alone could not scale cleanly across multiple industries.</dd>
+                                </div>
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Response</dt>
+                                    <dd class="toc-era-desc">Agent-first recipes, forms, and site-builder thinking reframed the platform direction.</dd>
+                                </div>
+                                <div class="toc-era-item">
+                                    <dt class="toc-era-term">Outcome</dt>
+                                    <dd class="toc-era-desc">DocGen Forms reached Public Preview and became a reusable platform signal.</dd>
+                                </div>
+                            </dl>
+                        </article>
+                    </div> -->
+                    <h2 class="toc-subhead" id="toc-proof-title">Business Impact</h2>
+                    <div class="toc-proof-grid" role="list" aria-labelledby="toc-proof-title" aria-label="Key adoption and business metrics across the product eras">
+                        <div class="toc-proof-item" role="listitem">
+                            <span class="toc-proof-value">10K+</span>
+                            <span class="toc-proof-label">NDAs generated</span>
+                        </div>
+                        <div class="toc-proof-item" role="listitem">
+                            <span class="toc-proof-value">$705M+</span>
+                            <span class="toc-proof-label">Partner incentive letters</span>
+                        </div>
+                        <div class="toc-proof-item" role="listitem">
+                            <span class="toc-proof-value">800K+</span>
+                            <span class="toc-proof-label">Documents processed</span>
+                        </div>
+                        <div class="toc-proof-item" role="listitem">
+                            <span class="toc-proof-value">10 / 15</span>
+                            <span class="toc-proof-label">Top customers engaged</span>
+                        </div>
+                    </div>
+                    <!-- <p class="toc-proof-note"><strong>Customer-zero &amp; flagship adopters:</strong> CELA &middot; Microsoft Finance (FD&amp;E) &middot; Coca-Cola</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  CHAPTER 1 · Content Assembly                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<details id="ch1" class="era-card phase-1" open>
+    <summary>
+        <div class="chapter-banner">
+            <div class="chapter-num">
+                <div class="n">01</div>
+                <div class="label">First Era</div>
+            </div>
+            <div class="chapter-intro">
+                <div class="period">Jan 2022 &ndash; Jun 2023</div>
+                <h2>Content Assembly</h2>
+                <p>Evolving a rigid template product into a dynamic, conditionally-driven authoring platform&thinsp;&mdash;&thinsp;while simultaneously shaping the transition toward Word-native and AI-first experiences.</p>
+                <div class="chapter-team">
+                    <span class="ct-chip"><span class="ct-val">1</span> Designer</span>
+                    <span class="ct-chip"><span class="ct-val">2</span> PMs</span>
+                    <span class="ct-chip"><span class="ct-val">~5</span> Engineers</span>
+                    <span class="ct-chip role">IC Designer &mdash; MVP release execution for customer zero</span>
+                </div>
+            </div>
+        </div>
+    </summary>
+    <div class="era-card-content">
+
+    <!-- Screenshots · Content Assembly -->
+    <!-- <div class="screens-section">
+        <div class="shell">
+            <div class="screens-header">
+                <span class="screens-label">Experience evolution &mdash; product screenshots</span>
+                <span class="screens-label" style="opacity:.5">Chapter demo video</span>
+            </div>
+            <figure class="chapter-demo">
+                <video class="chapter-demo-video" controls preload="metadata" playsinline>
+                    <source src="videos/content-assembly-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="chapter-demo-meta">
+                    <span class="screen-caption">Content Assembly &mdash; Chapter Demo</span>
+                    <code class="screen-filename">videos/content-assembly-demo.mp4</code>
+                </figcaption>
+            </figure>
+        </div>
+    </div> -->
+
+    <!-- Conditional Logic & Research -->
+    <div class="shell">
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Conditional Logic<br>&amp; Research</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Conditional Logic &amp; Research</div>
+                    <p class="body-p">I led end-to-end UX validation for conditional placeholder and field logic, the feature that unlocked dynamic document generation without multiple template variants. I authored UT enquiries and ran prototype walkthroughs directly with users to stress-test field behavior, then translated those insights into the contextual content assembly specification using conditional placeholders (Jul&ndash;Sept 2022). This work also fed into CY23 H1 planning, where I contributed to strategy and adoption direction for scaling the capability (Nov 2022).</p>
+                    <div class="thumbnail-image thumb-link" aria-label="Conditional logic and research thumbnail">
+                        <img src="images/ca-thumb-conditional-fields-research.png" alt="Conditional logic and research thumbnail">
+                    </div>
+                    <p class="deep-dive-pending">Deep dive is yet to be added. To be discussed in 1:1 setup.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Automation & Scale -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Automation<br>&amp; Scale</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Bulk and Automated Document Generation</div>
+                    <p class="body-p">I co-drove the design and feature direction for bulk document generation, establishing UX patterns that helped non-technical users trigger document production at scale. This included co-driving the Dec 2022 spec design review, contributing to automated generation scope and direction in Nov 2022, and shaping discoverability through an end-to-end list-page workshop in Jan 2023.</p>
+                    <a class="thumbnail-image thumb-link" href="bulk-document-generation.html">
+                        <img src="images/ca-thumb-automation-scale.png" alt="Bulk and automated document generation thumbnail">
+                    </a>
+                    <span class="case-study-link"><a href="bulk-document-generation.html">Take a deeper dive</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Research → Strategic Pivot -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Competitive<br>Research</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Contract Express Teardown: The Strategic Foundation</div>
+                    <p class="body-p">Before defining Agreements' direction, I conducted a competitive analysis of Contract Express—a leading legal tech document generation platform. The teardown validated questionnaire-driven workflows and clarified a hard architecture constraint in our existing Content Assembly model: because the experience was invoked from SharePoint and rendered in a webpage iframe with a side panel, true in-canvas editing in that offering was not feasible. This insight drove the pivot to provide template creation and document generation directly in users' Word flow of work, shifting the platform trajectory to Agreements (Word-native).</p>
+                    <a class="thumbnail-image thumb-link" href="contract-express-study.html">
+                        <img src="images/ca-thumb-contract-express.png" alt="Contract Express teardown study thumbnail">
+                    </a>
+                    <span class="case-study-link"><a href="contract-express-study.html">Take a deeper dive</a></span>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- /shell -->
+
+    <section class="pivot-bridge phase-1">
+        <div class="shell">
+            <div class="pivot-bridge-inner">
+                <aside class="pivot-label">
+                    Pivot Rationale
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="pivot-body">
+                    <h3>Challenge Trigger: Why Content Assembly Had to Pivot into Agreements in Word</h3>
+                    <div class="pivot-range">Evidence window: Jan 2022 &ndash; Jun 2023</div>
+                    <p class="pivot-intro">In this phase, I helped prove demand for dynamic generation, but we also faced compounding delivery constraints: fragmented authoring surfaces, low discoverability, limited lifecycle depth, and unclear monetization communication for customers. These challenges directed the product to pivot into a Word-native, premium contract workflow model.</p>
+                    <div class="pivot-proof">
+                        <div class="pivot-proof-item">
+                            <span class="pivot-proof-date">Jul&ndash;Dec 2022</span>
+                            <span>Conditional placeholders and bulk DocGen specs validated value, but exposed complexity and setup friction for broad business-user adoption.</span>
+                        </div>
+                        <div class="pivot-proof-item">
+                            <span class="pivot-proof-date">Oct 2022</span>
+                            <span>PAYG billing UX and entitlement threads surfaced monetization clarity as a product requirement, not just a pricing-side task.</span>
+                        </div>
+                        <div class="pivot-proof-item">
+                            <span class="pivot-proof-date">Mar&ndash;Jun 2023</span>
+                            <span>Research and Word-native direction work converged on reducing context switching and moving contract workflows into the primary authoring surface.</span>
+                        </div>
+                    </div>
+                    <div class="pivot-grid">
+                        <div class="pivot-card">
+                            <h4>Product constraint</h4>
+                            <p>Users had to jump between Word and web surfaces, templates remained power-user heavy, and discoverability was weak in list and entry-point flows, creating friction for non-technical adoption.</p>
+                        </div>
+                        <div class="pivot-card">
+                            <h4>Business and monetization</h4>
+                            <p>Leadership needed a differentiated SharePoint Premium offering, while monetization work (PAYG and entitlement UX) made packaging clarity central to customer adoption conversations.</p>
+                        </div>
+                        <div class="pivot-card">
+                            <h4>LT platform strategy</h4>
+                            <p>M365 and Word were shifting to AI-first authoring; I aligned with the team on a Word-native model because Content Assembly's SharePoint-invoked iframe + side-panel architecture could not provide true in-canvas editing for legal workflows.</p>
+                        </div>
+                        <div class="pivot-card">
+                            <h4>Execution signal</h4>
+                            <p>Conditional logic, bulk generation, and research evidence proved demand for dynamic workflows, but also exposed lifecycle gaps, driving the move to Agreements in Word where review, amendment, and governance could be productized end-to-end.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</details>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  CHAPTER 2 · Agreements in Word                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<details id="ch2" class="era-card phase-2" open>
+    <summary>
+        <div class="chapter-banner">
+            <div class="chapter-num">
+                <div class="n">02</div>
+                <div class="label">Second Era</div>
+            </div>
+            <div class="chapter-intro">
+                <div class="period">Jun 2023 &ndash; May 2025</div>
+                <h2>Agreements in Word</h2>
+                <p>Reframing contract creation from isolated authoring into a governed, Word-native lifecycle&thinsp;&mdash;&thinsp;with co-authored PM specs, amendment modeling, and AI-connected workflows as key outputs.</p>
+                <div class="chapter-team">
+                    <span class="ct-chip"><span class="ct-val">3</span> Designers</span>
+                    <span class="ct-chip"><span class="ct-val">3</span> PMs</span>
+                    <span class="ct-chip"><span class="ct-val">~11</span> Engineers</span>
+                    <span class="ct-chip role">IC Designer &mdash; influencing Word-native pivot; ramping up new members &amp; mentoring peers</span>
+                </div>
+            </div>
+        </div>
+    </summary>
+    <div class="era-card-content">
+
+    <!-- Screenshots · Agreements in Word -->
+    <div class="screens-section">
+        <div class="shell">
+            <!-- <div class="screens-header">
+                <span class="screens-label">Experience evolution &mdash; product screenshots</span>
+                <span class="screens-label" style="opacity:.5">Chapter demo video</span>
+            </div> -->
+            <figure class="chapter-demo">
+                <video class="chapter-demo-video" controls preload="metadata" playsinline>
+                    <source src="videos/agreements_in_word_demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="chapter-demo-meta">
+                    <span class="screen-caption">Agreements in Word &mdash; Walkthrough Demo</span>
+                    <code class="screen-filename">In house demo video created with the team on what the Agreements in Word experiences like.</code>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="shell">
+        <!-- Ribbon IA & Word Partner Collaboration -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Ribbon IA &amp;<br>Word Partner</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Agreements Ribbon IA &mdash; Word-Native Surface Design</div>
+                    <p class="body-p">I led the end-to-end information architecture for Agreements inside the Word ribbon, from early concept exploration through cross-team alignment with Word&rsquo;s design partner team. Across multi-month reviews and workshops (Jan 2024 through Dec 2024), I explored three IA models, organized the core concept review, produced context-setting walkthroughs, co-drove tab icon workshops, and owned content-controls design; this work resolved the Backstage-versus-tab tension by formalizing a dedicated Agreements tab with licensing-driven visibility and consistent behavior across Win32, Web, and Mac.</p>
+                    <div class="thumbnail-image thumb-link" aria-label="Ribbon IA and Word partner collaboration thumbnail">
+                        <img src="images/aiw-thumb-ribbon-ia-word-partner-1.png" alt="Ribbon IA and Word partner collaboration thumbnail">
+                    </div>
+                    <p class="deep-dive-pending">Deep dive is yet to be added. To be discussed in 1:1 setup.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design System + Template Creation Ownership -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Design System<br>&amp; Template Journey</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Component Library Foundation, E2E Template Creation, and eSignature Flows</div>
+                    <p class="body-p">I established the CA component library foundation and used it to create a consistency layer for the Agreements in Word era, enabling faster and more coherent delivery across designers and squads. In parallel, I independently drove the end-to-end Template Creation user journey through recurring experience reviews, carrying the flow from setup details to advanced capabilities such as conditional sections, richer template metadata, and integrated eSignature workflow paths. This was not a simple migration of Content Assembly UX into Word; it was a capability expansion that modernized authoring for production legal workflows while preserving learnability.</p>
+                    <p class="body-p">I also ramped up two new designers into high-impact ownership areas: one on Document Generation + Approval workflow and another on Manage Snippets. The operating model was deliberate: reusable component primitives, clear journey architecture, and review rituals that let multiple designers ship with one quality bar.</p>
+                    <a class="thumbnail-image thumb-link" href="agreements-design-system-template-journey.html">
+                        <img src="images/aiw-thumb-design-system-template-journey.png" alt="Design system and template creation journey thumbnail">
+                    </a>
+                    <span class="case-study-link"><a href="agreements-design-system-template-journey.html">Take a deeper dive</a></span>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Design proposals -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Design<br>Proposals</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Discovery, Backstage Integration and In-app learning videos</div>
+                    <p class="body-p">I led proactive design proposals that shaped how Agreements experiences are discovered and how AI capabilities are introduced to users, bringing design upstream into strategy rather than reacting downstream. I authored the Backstage discovery proposal, the Agreements In-app learning videos & help resources. For this I drove partnerships with Word team and did storyboarding with in house Motion designer for learning videos.</p>
+                    <div class="thumbnail-image thumb-link" aria-label="Design proposals thumbnail">
+                        <img src="images/aiw-thumb-design-proposals.png" alt="Design proposals thumbnail">
+                    </div>
+                    <p class="deep-dive-pending">Deep dive is yet to be added. To be discussed in 1:1 setup.</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+    </div><!-- /shell -->
+
+    <section class="pivot-bridge phase-2">
+        <div class="shell">
+            <div class="pivot-bridge-inner">
+                <aside class="pivot-label">
+                    Pivot Rationale
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="pivot-body">
+                    <h3>Challenge Trigger: Why Agreements in Word Had to Pivot into SharePoint AI Verticals</h3>
+                    <div class="pivot-range">Evidence window: Jun 2023 &ndash; May 2025</div>
+                    <p class="pivot-intro">In Agreements in Word, I helped establish a strong contract core, but the next challenge was scale: one solution line could not absorb cross-domain demand, AI expectations, and platform reuse goals simultaneously. Those pressures directed us to pivot into SharePoint AI Verticals.</p>
+                    <div class="pivot-proof">
+                        <div class="pivot-proof-item">
+                            <span class="pivot-proof-date">2024 H1</span>
+                            <span>Word-native lifecycle and DocGen Forms architecture stabilized, proving execution feasibility but also revealing reuse opportunities beyond contract-only scenarios.</span>
+                        </div>
+                        <div class="pivot-proof-item">
+                            <span class="pivot-proof-date">2024 H2</span>
+                            <span>AI roadmap, Copilot strategy, and platform threads shifted focus from feature completion to reusable intelligence and automation building blocks.</span>
+                        </div>
+                        <div class="pivot-proof-item">
+                            <span class="pivot-proof-date">2025 Q1&ndash;Q2</span>
+                            <span>Customer validation, performance, and scale discussions pushed operating decisions toward platformization, customer-first sequencing, and multi-vertical delivery.</span>
+                        </div>
+                    </div>
+                    <div class="pivot-grid">
+                        <div class="pivot-card">
+                            <h4>Product maturity gap</h4>
+                            <p>Core contract workflows matured, yet backlog pressure shifted to reusable systems like conditional logic, form intelligence, and orchestration patterns that could serve multiple vertical scenarios beyond Agreements alone.</p>
+                        </div>
+                        <div class="pivot-card">
+                            <h4>Business scale objective</h4>
+                            <p>The next growth step required expanding from a single contract solution into legal, HR, and procurement outcomes, improving TAM and reducing dependency on one workflow category.</p>
+                        </div>
+                        <div class="pivot-card">
+                            <h4>LT strategy and AI</h4>
+                            <p>Copilot and AI roadmap work reframed the product direction around vertical intelligence, automation, and reusable platform components, with platform-vs-bespoke sequencing becoming a leadership-level decision thread.</p>
+                        </div>
+                        <div class="pivot-card">
+                            <h4>Operating model shift</h4>
+                            <p>Cross-team execution required customer-first validation, reliability, and shared building blocks; this drove the SPAI pivot where DocGen Forms and conditional visibility became foundational capabilities for all vertical solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</details>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  CHAPTER 3 · SharePoint AI Verticals                      -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<details id="ch3" class="era-card phase-3" open>
+    <summary>
+        <div class="chapter-banner">
+            <div class="chapter-num">
+                <div class="n">03</div>
+                <div class="label">Present Era</div>
+            </div>
+            <div class="chapter-intro">
+                <div class="period">Jun 2025 &ndash; May 2026</div>
+                <h2>SharePoint AI Verticals</h2>
+                <p>Translating the forms and template platform into reusable, AI-native vertical solutions&thinsp;&mdash;&thinsp;with conditional logic as a platform anchor, and a sustained presence in strategic leadership alignment.</p>
+                <div class="chapter-team">
+                    <span class="ct-chip"><span class="ct-val">3</span> Designers</span>
+                    <span class="ct-chip"><span class="ct-val">2.5</span> PMs</span>
+                    <span class="ct-chip"><span class="ct-val">~14</span> Engineers</span>
+                    <span class="ct-chip role">IC Designer &mdash; strategic cross-functional alignment through ambiguous, fast-pivoting phase</span>
+                </div>
+            </div>
+        </div>
+    </summary>
+    <div class="era-card-content">
+
+    <!-- Screenshots · SharePoint AI Verticals -->
+    <div class="screens-section">
+        <div class="shell">
+            <!-- <div class="screens-header">
+                <span class="screens-label">Experience evolution &mdash; product screenshots</span>
+                <span class="screens-label" style="opacity:.5">Chapter demo video</span>
+            </div> -->
+            <figure class="chapter-demo locked">
+                <video class="chapter-demo-video" preload="metadata" playsinline aria-disabled="true" tabindex="-1">
+                    <source src="videos/spai-verticals-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="chapter-demo-lock-overlay" aria-hidden="true">
+                    <span class="lock-badge">Demo Video Locked</span>
+                    <!-- <span class="lock-note">Content unavailable in this portfolio view</span> -->
+                </div>
+                <figcaption class="chapter-demo-meta">
+                    <span class="screen-caption">SPAI Verticals &mdash; Vision Demo</span>
+                    <code class="screen-filename">Since it is a vision demo, I cannot disclose the details due to NDA.</code>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="shell">
+        <!-- Conditional logic system -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Platform<br>Execution</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Conditional Visibility Logic &mdash; Design Owner</div>
+                    <p class="body-p">I led end-to-end UX direction for conditional visibility in DocGen Forms, treating it as a platform language rather than a single feature so legal, HR, and procurement scenarios could scale consistently. From Feb through May 2026, I owned rule-builder and show/hide semantics, authored the conditional visibility technical model, led wall reviews and Figma ERs, and contributed to adjacent autofill plus pagination and sectioning behaviors where visibility rules intersected implementation detail.</p>
+                    <a class="thumbnail-image thumb-link" href="spai-conditional-visibility-logic.html">
+                        <img src="images/spai-thumb-system-level-design.png" alt="System-level design thumbnail">
+                    </a>
+                    <span class="case-study-link"><a href="spai-conditional-visibility-logic.html">Take a deeper dive</a></span>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- DocGen platform -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">System-Level<br>Design<br>Execution</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">DocGen Forms &mdash; MVP through GA and V2</div>
+                    <p class="body-p">I contributed across the full DocGen Forms maturity arc from Sep 2025 to May 2026, spanning early platform evolution, GA readiness, and V2 alignment. The work included creation flow, navigation, AI field-detection UX, and end-to-end review support through Figma ER walkthroughs, with tracked attribution and a consistent focus on keeping Forms positioned as the foundational layer for AI vertical scenarios across the SPAI surface.</p>
+                    <a class="thumbnail-image thumb-link" href="spai-docgen-forms-mvp-ga-v2.html">
+                        <img src="images/spai-thumb-platform-execution.png" alt="Platform execution thumbnail">
+                    </a>
+                    <span class="case-study-link"><a href="spai-docgen-forms-mvp-ga-v2.html">Take a deeper dive</a></span>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy -->
+        <div class="section-wrap">
+            <div class="section-inner">
+                <aside class="section-aside">
+                    <div class="cat">Strategy &amp;<br>Alignment</div>
+                    <div class="ch-line"></div>
+                </aside>
+                <div class="section-body">
+                    <div class="body-h3">Vertical Platformization and Leadership Cadence</div>
+                    <p class="body-p">I consistently participated in SP AI Leads syncs from Mar through May 2026, contributing to strategic decisions on bespoke-versus-platform sequencing, customer-first validation, and vertical architecture across legal, HR, and procurement. This leadership cadence built on my earlier contributions to AI vertical framing and solutions vocabulary (Jul&ndash;Oct 2025) and continued through HR workflow alignment work (Nov 2025&ndash;Mar 2026), with sustained cross-functional engagement across meetings, Teams threads, and email channels.</p>
+                    <div class="thumbnail-image thumb-link" aria-label="Strategy and alignment thumbnail">
+                        <img src="images/spai-thumb-strategy-alignment.png" alt="Strategy and alignment thumbnail">
+                    </div>
+                    <p class="deep-dive-pending">Deep dive is yet to be added. To be discussed in 1:1 setup.</p>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- /shell -->
+    </div>
+</details>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  Synthesis                                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="synthesis" class="synthesis">
+    <div class="shell">
+        <div class="synthesis-inner">
+            <div class="synthesis-body">
+                <h2>What My Work Says<br>About <em>Me</em>.</h2>
+
+                <div class="competency-grid">
+                    <div class="competency-cell">
+                        <h3>Systems Thinking</h3>
+                        <ul>
+                            <li>I defined reusable interaction models for conditional logic across three product generations.</li>
+                            <li>I shaped platform framing over isolated features throughout the SPAI arc</li>
+                            <li>I connected UX semantics to implementation constraints and PM spec language.</li>
+                        </ul>
+                    </div>
+                    <div class="competency-cell">
+                        <h3>Design Leadership</h3>
+                        <ul>
+                            <li>I co-authored three PM specs with direct implementation influence.</li>
+                            <li>I proactively proposed discovery and AI onboarding designs ahead of roadmap.</li>
+                            <li>I led wall reviews and Figma ERs for platform-defining capabilities</li>
+                        </ul>
+                    </div>
+                    <div class="competency-cell">
+                        <h3>Cross-Functional Influence</h3>
+                        <ul>
+                            <li>I sustained collaboration with PM, engineering, and research across IDC, Dublin, and Redmond.</li>
+                            <li>I participated in recurring leadership syncs at strategic decision altitude.</li>
+                            <li>I reduced downstream rework by embedding design intent into specs early.</li>
+                        </ul>
+                    </div>
+                    <div class="competency-cell">
+                        <h3>Execution Depth</h3>
+                        <ul>
+                            <li>I owned outcomes end-to-end from research validation through GA readiness reviews.</li>
+                            <li>I maintained contribution across framing, iteration, and delivery checkpoints.</li>
+                            <li>I surfaced blockers and unblocked teams across high-dependency threads.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="synthesis-portrait">
+                <div class="portrait-bubble">Thanks for your time</div>
+                <img src="images/designer-portrait-placeholder.png" alt="Product designer portrait placeholder">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer class="site-footer">
+    <div class="shell">
+        <div class="footer-inner">
+            <span>Built with AI &#10084;&#65039; by Hemant Gupta | 2022-2026</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
